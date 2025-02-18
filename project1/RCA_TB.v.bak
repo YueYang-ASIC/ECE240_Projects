@@ -1,0 +1,25 @@
+
+module RCA_8_TB;
+localparam data_width = 8;
+reg [data_width-1:0]	A,B; 
+reg 			CIN;
+wire [data_width-1:0] 	SUM;
+wire 			COUT;
+
+RCA_8 #(.data_width(8)) uut (.A,.B,.CIN,.SUM,.COUT);
+
+ 
+initial begin
+        integer i;
+         $display("|       A       |       B       | Cin |   Sum   | Cout |"); 
+        for (i = 0; i < 10; i = i + 1) begin   
+            A = $random;  
+            B = $random;  
+            CIN = $random % 2; 
+            #5;  
+            $display("| %b | %b |  %b  | %b |  %b  |", A, B, CIN, SUM, COUT);
+        end
+        $stop;  
+end
+
+endmodule 

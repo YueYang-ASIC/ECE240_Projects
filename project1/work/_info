@@ -1,0 +1,76 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Desktop/NXP_Interview/Round2
+vFA
+Z0 !s110 1739846453
+!i10b 1
+!s100 RBFJGOn1T7HdCXzBlNE9V0
+I`L@87C@dJ8N;h^lGii<Oe3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1
+w1739846452
+8C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/FA.v
+FC:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/FA.v
+L0 2
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1739846453.000000
+!s107 C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/FA.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/FA.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+n@f@a
+vRCA_8
+R0
+!i10b 1
+!s100 ;M=;JgH4X;9<==2Gc[NL03
+I;=]Yo8nRLFM8n<;K6i0R42
+R1
+R2
+w1739846320
+8C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_8.v
+FC:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_8.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_8.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_8.v|
+!i113 1
+R5
+R6
+n@r@c@a_8
+vRCA_8_TB
+R0
+!i10b 1
+!s100 ES[6[zhMoVO:7eNSF4`470
+IBnKbg9UED_^FMYOmPXo[J1
+R1
+R2
+w1739846210
+8C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v
+FC:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v|
+!i113 1
+R5
+R6
+n@r@c@a_8_@t@b
