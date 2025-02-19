@@ -1,4 +1,4 @@
-# dc-template.tcl script 
+# dc-RCA_8.tcl script 
 #
 # 2018/02/15  Added *_ANALYZE_SECTION comments to new Makefile can automatically
 #             add .v files to dc-*.tcl. Also updated some comments.
@@ -61,9 +61,8 @@ set input_delay     [expr {$clk_period} - {$input_setup}]
 
 # It appears one "analyze" command is needed for each .v file. This works best
 # (only?) with one command line per module.
-# BEFORE_ANALYZE_SECTION
-analyze -format verilog ./RCA_8.v
-# AFTER_ANALYZE_SECTION
+analyze -format verilog RCA_8.v
+analyze -format verilog FA.v
 
 elaborate $NameDesign
 current_design $NameDesign

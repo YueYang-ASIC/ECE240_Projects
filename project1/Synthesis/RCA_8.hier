@@ -1,0 +1,18 @@
+ 
+****************************************
+Report : hierarchy
+Design : RCA_8
+Version: S-2021.06-SP5-1
+Date   : Wed Feb 19 01:02:40 2025
+****************************************
+
+RCA_8
+    AOI21_X1         NangateOpenCellLibrary
+    AOI22_X1         NangateOpenCellLibrary
+    DFF_X1           NangateOpenCellLibrary
+    INV_X1           NangateOpenCellLibrary
+    OAI21_X1         NangateOpenCellLibrary
+    OR2_X1           NangateOpenCellLibrary
+    XNOR2_X1         NangateOpenCellLibrary
+    XOR2_X1          NangateOpenCellLibrary
+1

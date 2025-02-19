@@ -1,0 +1,132 @@
+ 
+****************************************
+Report : cell
+Design : RCA_8
+Version: S-2021.06-SP5-1
+Date   : Wed Feb 19 01:02:40 2025
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+A_reg_reg[0]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+A_reg_reg[1]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+A_reg_reg[2]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+A_reg_reg[3]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+A_reg_reg[4]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+A_reg_reg[5]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+A_reg_reg[6]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+A_reg_reg[7]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+B_reg_reg[0]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+B_reg_reg[1]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+B_reg_reg[2]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+B_reg_reg[3]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+B_reg_reg[4]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+B_reg_reg[5]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+B_reg_reg[6]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+B_reg_reg[7]              DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+CIN_reg_reg               DFF_X1          NangateOpenCellLibrary
+                                                          4.522000  n
+U19                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U20                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U21                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U22                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U23                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U24                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U25                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U26                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U27                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U28                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U29                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U30                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U31                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U32                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U33                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U34                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U35                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U36                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U37                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U38                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U39                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U40                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U41                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U42                       AOI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U43                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U44                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U45                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U46                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U47                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+U48                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U49                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+U50                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U51                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+U52                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U53                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+U54                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U55                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U56                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U57                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+--------------------------------------------------------------------------------
+Total 56 cells                                            124.487997
+1

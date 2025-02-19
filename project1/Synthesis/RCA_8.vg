@@ -1,0 +1,77 @@
+/////////////////////////////////////////////////////////////
+// Created by: Synopsys DC Expert(TM) in wire load mode
+// Version   : S-2021.06-SP5-1
+// Date      : Wed Feb 19 01:02:40 2025
+/////////////////////////////////////////////////////////////
+
+
+module RCA_8 ( clk, A, B, CIN, SUM, COUT );
+  input [7:0] A;
+  input [7:0] B;
+  output [7:0] SUM;
+  input clk, CIN;
+  output COUT;
+  wire   CIN_reg, n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14,
+         n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28,
+         n29, n30, n31, n32, n33;
+  wire   [7:0] A_reg;
+  wire   [7:0] B_reg;
+
+  DFF_X1 \A_reg_reg[7]  ( .D(A[7]), .CK(clk), .Q(A_reg[7]), .QN(n1) );
+  DFF_X1 \A_reg_reg[6]  ( .D(A[6]), .CK(clk), .Q(A_reg[6]) );
+  DFF_X1 \A_reg_reg[5]  ( .D(A[5]), .CK(clk), .Q(A_reg[5]) );
+  DFF_X1 \A_reg_reg[4]  ( .D(A[4]), .CK(clk), .Q(A_reg[4]) );
+  DFF_X1 \A_reg_reg[3]  ( .D(A[3]), .CK(clk), .Q(A_reg[3]) );
+  DFF_X1 \A_reg_reg[2]  ( .D(A[2]), .CK(clk), .Q(A_reg[2]) );
+  DFF_X1 \A_reg_reg[1]  ( .D(A[1]), .CK(clk), .Q(A_reg[1]) );
+  DFF_X1 \A_reg_reg[0]  ( .D(A[0]), .CK(clk), .Q(A_reg[0]), .QN(n9) );
+  DFF_X1 \B_reg_reg[7]  ( .D(B[7]), .CK(clk), .Q(B_reg[7]) );
+  DFF_X1 \B_reg_reg[6]  ( .D(B[6]), .CK(clk), .Q(B_reg[6]) );
+  DFF_X1 \B_reg_reg[5]  ( .D(B[5]), .CK(clk), .Q(B_reg[5]) );
+  DFF_X1 \B_reg_reg[4]  ( .D(B[4]), .CK(clk), .Q(B_reg[4]) );
+  DFF_X1 \B_reg_reg[3]  ( .D(B[3]), .CK(clk), .Q(B_reg[3]) );
+  DFF_X1 \B_reg_reg[2]  ( .D(B[2]), .CK(clk), .Q(B_reg[2]) );
+  DFF_X1 \B_reg_reg[1]  ( .D(B[1]), .CK(clk), .Q(B_reg[1]) );
+  DFF_X1 \B_reg_reg[0]  ( .D(B[0]), .CK(clk), .Q(B_reg[0]), .QN(n10) );
+  DFF_X1 CIN_reg_reg ( .D(CIN), .CK(clk), .Q(CIN_reg) );
+  INV_X1 U19 ( .A(n11), .ZN(n2) );
+  INV_X1 U20 ( .A(n22), .ZN(n3) );
+  INV_X1 U21 ( .A(n23), .ZN(n4) );
+  INV_X1 U22 ( .A(n25), .ZN(n5) );
+  INV_X1 U23 ( .A(n27), .ZN(n6) );
+  INV_X1 U24 ( .A(n29), .ZN(n7) );
+  INV_X1 U25 ( .A(n31), .ZN(n8) );
+  XNOR2_X1 U26 ( .A(n11), .B(n12), .ZN(SUM[7]) );
+  XNOR2_X1 U27 ( .A(B_reg[7]), .B(n1), .ZN(n12) );
+  XOR2_X1 U28 ( .A(n4), .B(n13), .Z(SUM[6]) );
+  XOR2_X1 U29 ( .A(B_reg[6]), .B(A_reg[6]), .Z(n13) );
+  XOR2_X1 U30 ( .A(n5), .B(n14), .Z(SUM[5]) );
+  XOR2_X1 U31 ( .A(B_reg[5]), .B(A_reg[5]), .Z(n14) );
+  XOR2_X1 U32 ( .A(n6), .B(n15), .Z(SUM[4]) );
+  XOR2_X1 U33 ( .A(B_reg[4]), .B(A_reg[4]), .Z(n15) );
+  XOR2_X1 U34 ( .A(n7), .B(n16), .Z(SUM[3]) );
+  XOR2_X1 U35 ( .A(B_reg[3]), .B(A_reg[3]), .Z(n16) );
+  XOR2_X1 U36 ( .A(n8), .B(n17), .Z(SUM[2]) );
+  XOR2_X1 U37 ( .A(B_reg[2]), .B(A_reg[2]), .Z(n17) );
+  XOR2_X1 U38 ( .A(n18), .B(n19), .Z(SUM[1]) );
+  XOR2_X1 U39 ( .A(B_reg[1]), .B(A_reg[1]), .Z(n19) );
+  XOR2_X1 U40 ( .A(A_reg[0]), .B(n20), .Z(SUM[0]) );
+  XOR2_X1 U41 ( .A(CIN_reg), .B(B_reg[0]), .Z(n20) );
+  AOI21_X1 U42 ( .B1(n4), .B2(A_reg[6]), .A(n3), .ZN(n11) );
+  OAI21_X1 U43 ( .B1(A_reg[6]), .B2(n4), .A(B_reg[6]), .ZN(n22) );
+  OAI21_X1 U44 ( .B1(n9), .B2(n10), .A(n33), .ZN(n18) );
+  OAI21_X1 U45 ( .B1(A_reg[0]), .B2(B_reg[0]), .A(CIN_reg), .ZN(n33) );
+  AOI22_X1 U46 ( .A1(n5), .A2(A_reg[5]), .B1(n24), .B2(B_reg[5]), .ZN(n23) );
+  OR2_X1 U47 ( .A1(A_reg[5]), .A2(n5), .ZN(n24) );
+  AOI22_X1 U48 ( .A1(n8), .A2(A_reg[2]), .B1(n30), .B2(B_reg[2]), .ZN(n29) );
+  OR2_X1 U49 ( .A1(A_reg[2]), .A2(n8), .ZN(n30) );
+  AOI22_X1 U50 ( .A1(n7), .A2(A_reg[3]), .B1(n28), .B2(B_reg[3]), .ZN(n27) );
+  OR2_X1 U51 ( .A1(A_reg[3]), .A2(n7), .ZN(n28) );
+  AOI22_X1 U52 ( .A1(n18), .A2(A_reg[1]), .B1(n32), .B2(B_reg[1]), .ZN(n31) );
+  OR2_X1 U53 ( .A1(A_reg[1]), .A2(n18), .ZN(n32) );
+  OAI21_X1 U54 ( .B1(n11), .B2(n1), .A(n21), .ZN(COUT) );
+  OAI21_X1 U55 ( .B1(A_reg[7]), .B2(n2), .A(B_reg[7]), .ZN(n21) );
+  AOI22_X1 U56 ( .A1(n6), .A2(A_reg[4]), .B1(n26), .B2(B_reg[4]), .ZN(n25) );
+  OR2_X1 U57 ( .A1(A_reg[4]), .A2(n6), .ZN(n26) );
+endmodule
+

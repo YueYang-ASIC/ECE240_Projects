@@ -31,7 +31,7 @@
 
 
 #----- Set the top-level module name here
-NAME		:= abc
+NAME		:= RCA_8
 
 #----- Some variables
 USERNAME	:= $(shell whoami)

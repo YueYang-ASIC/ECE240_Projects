@@ -1,0 +1,556 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 10
+        -max_paths 10
+Design : RCA_8
+Version: S-2021.06-SP5-1
+Date   : Wed Feb 19 01:02:40 2025
+****************************************
+
+Operating Conditions: fast   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: B_reg_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: COUT (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RCA_8              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  B_reg_reg[0]/CK (DFF_X1)                 0.00       0.00 r
+  B_reg_reg[0]/Q (DFF_X1)                  0.05       0.05 f
+  U45/ZN (OAI21_X1)                        0.04       0.09 r
+  U44/ZN (OAI21_X1)                        0.04       0.13 f
+  U53/ZN (OR2_X1)                          0.04       0.17 f
+  U52/ZN (AOI22_X1)                        0.04       0.21 r
+  U25/ZN (INV_X1)                          0.03       0.23 f
+  U49/ZN (OR2_X1)                          0.04       0.27 f
+  U48/ZN (AOI22_X1)                        0.04       0.31 r
+  U24/ZN (INV_X1)                          0.03       0.34 f
+  U51/ZN (OR2_X1)                          0.04       0.38 f
+  U50/ZN (AOI22_X1)                        0.04       0.41 r
+  U23/ZN (INV_X1)                          0.03       0.44 f
+  U57/ZN (OR2_X1)                          0.04       0.48 f
+  U56/ZN (AOI22_X1)                        0.04       0.52 r
+  U22/ZN (INV_X1)                          0.03       0.55 f
+  U47/ZN (OR2_X1)                          0.04       0.59 f
+  U46/ZN (AOI22_X1)                        0.04       0.62 r
+  U21/ZN (INV_X1)                          0.03       0.65 f
+  U43/ZN (OAI21_X1)                        0.04       0.69 r
+  U20/ZN (INV_X1)                          0.02       0.71 f
+  U42/ZN (AOI21_X1)                        0.05       0.76 r
+  U19/ZN (INV_X1)                          0.03       0.79 f
+  U55/ZN (OAI21_X1)                        0.03       0.82 r
+  U54/ZN (OAI21_X1)                        0.03       0.85 f
+  COUT (out)                               0.01       0.86 f
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  output external delay                   -0.16       3.64
+  data required time                                  3.64
+  -----------------------------------------------------------
+  data required time                                  3.64
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         2.78
+
+
+  Startpoint: B_reg_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: COUT (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RCA_8              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  B_reg_reg[0]/CK (DFF_X1)                 0.00       0.00 r
+  B_reg_reg[0]/Q (DFF_X1)                  0.05       0.05 f
+  U45/ZN (OAI21_X1)                        0.04       0.09 r
+  U44/ZN (OAI21_X1)                        0.04       0.13 f
+  U53/ZN (OR2_X1)                          0.04       0.17 f
+  U52/ZN (AOI22_X1)                        0.04       0.21 r
+  U25/ZN (INV_X1)                          0.03       0.23 f
+  U49/ZN (OR2_X1)                          0.04       0.27 f
+  U48/ZN (AOI22_X1)                        0.04       0.31 r
+  U24/ZN (INV_X1)                          0.03       0.34 f
+  U51/ZN (OR2_X1)                          0.04       0.38 f
+  U50/ZN (AOI22_X1)                        0.04       0.41 r
+  U23/ZN (INV_X1)                          0.03       0.44 f
+  U57/ZN (OR2_X1)                          0.04       0.48 f
+  U56/ZN (AOI22_X1)                        0.04       0.52 r
+  U22/ZN (INV_X1)                          0.03       0.55 f
+  U47/ZN (OR2_X1)                          0.04       0.59 f
+  U46/ZN (AOI22_X1)                        0.04       0.62 r
+  U21/ZN (INV_X1)                          0.03       0.65 f
+  U43/ZN (OAI21_X1)                        0.04       0.69 r
+  U20/ZN (INV_X1)                          0.02       0.71 f
+  U42/ZN (AOI21_X1)                        0.05       0.76 r
+  U19/ZN (INV_X1)                          0.03       0.79 f
+  U55/ZN (OAI21_X1)                        0.03       0.82 r
+  U54/ZN (OAI21_X1)                        0.03       0.85 f
+  COUT (out)                               0.01       0.86 f
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  output external delay                   -0.16       3.64
+  data required time                                  3.64
+  -----------------------------------------------------------
+  data required time                                  3.64
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         2.78
+
+
+  Startpoint: B_reg_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: COUT (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RCA_8              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  B_reg_reg[0]/CK (DFF_X1)                 0.00       0.00 r
+  B_reg_reg[0]/Q (DFF_X1)                  0.05       0.05 f
+  U45/ZN (OAI21_X1)                        0.04       0.09 r
+  U44/ZN (OAI21_X1)                        0.03       0.12 f
+  U53/ZN (OR2_X1)                          0.04       0.17 f
+  U52/ZN (AOI22_X1)                        0.04       0.20 r
+  U25/ZN (INV_X1)                          0.03       0.23 f
+  U49/ZN (OR2_X1)                          0.04       0.27 f
+  U48/ZN (AOI22_X1)                        0.04       0.31 r
+  U24/ZN (INV_X1)                          0.03       0.34 f
+  U51/ZN (OR2_X1)                          0.04       0.37 f
+  U50/ZN (AOI22_X1)                        0.04       0.41 r
+  U23/ZN (INV_X1)                          0.03       0.44 f
+  U57/ZN (OR2_X1)                          0.04       0.48 f
+  U56/ZN (AOI22_X1)                        0.04       0.52 r
+  U22/ZN (INV_X1)                          0.03       0.54 f
+  U47/ZN (OR2_X1)                          0.04       0.58 f
+  U46/ZN (AOI22_X1)                        0.04       0.62 r
+  U21/ZN (INV_X1)                          0.03       0.65 f
+  U43/ZN (OAI21_X1)                        0.04       0.69 r
+  U20/ZN (INV_X1)                          0.02       0.71 f
+  U42/ZN (AOI21_X1)                        0.05       0.76 r
+  U19/ZN (INV_X1)                          0.03       0.79 f
+  U55/ZN (OAI21_X1)                        0.03       0.82 r
+  U54/ZN (OAI21_X1)                        0.03       0.85 f
+  COUT (out)                               0.01       0.86 f
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  output external delay                   -0.16       3.64
+  data required time                                  3.64
+  -----------------------------------------------------------
+  data required time                                  3.64
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         2.78
+
+
+  Startpoint: B_reg_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: COUT (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RCA_8              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  B_reg_reg[0]/CK (DFF_X1)                 0.00       0.00 r
+  B_reg_reg[0]/Q (DFF_X1)                  0.05       0.05 f
+  U45/ZN (OAI21_X1)                        0.04       0.09 r
+  U44/ZN (OAI21_X1)                        0.04       0.13 f
+  U53/ZN (OR2_X1)                          0.04       0.17 f
+  U52/ZN (AOI22_X1)                        0.04       0.21 r
+  U25/ZN (INV_X1)                          0.03       0.23 f
+  U49/ZN (OR2_X1)                          0.04       0.27 f
+  U48/ZN (AOI22_X1)                        0.04       0.31 r
+  U24/ZN (INV_X1)                          0.03       0.34 f
+  U51/ZN (OR2_X1)                          0.04       0.38 f
+  U50/ZN (AOI22_X1)                        0.04       0.41 r
+  U23/ZN (INV_X1)                          0.03       0.44 f
+  U57/ZN (OR2_X1)                          0.04       0.48 f
+  U56/ZN (AOI22_X1)                        0.04       0.52 r
+  U22/ZN (INV_X1)                          0.03       0.55 f
+  U47/ZN (OR2_X1)                          0.04       0.59 f
+  U46/ZN (AOI22_X1)                        0.04       0.62 r
+  U21/ZN (INV_X1)                          0.03       0.65 f
+  U43/ZN (OAI21_X1)                        0.04       0.69 r
+  U20/ZN (INV_X1)                          0.02       0.71 f
+  U42/ZN (AOI21_X1)                        0.05       0.76 r
+  U19/ZN (INV_X1)                          0.03       0.79 f
+  U55/ZN (OAI21_X1)                        0.03       0.82 r
+  U54/ZN (OAI21_X1)                        0.03       0.85 f
+  COUT (out)                               0.01       0.86 f
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  output external delay                   -0.16       3.64
+  data required time                                  3.64
+  -----------------------------------------------------------
+  data required time                                  3.64
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         2.78
+
+
+  Startpoint: B_reg_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: COUT (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RCA_8              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  B_reg_reg[0]/CK (DFF_X1)                 0.00       0.00 r
+  B_reg_reg[0]/Q (DFF_X1)                  0.05       0.05 f
+  U45/ZN (OAI21_X1)                        0.04       0.09 r
+  U44/ZN (OAI21_X1)                        0.04       0.13 f
+  U53/ZN (OR2_X1)                          0.04       0.17 f
+  U52/ZN (AOI22_X1)                        0.04       0.21 r
+  U25/ZN (INV_X1)                          0.03       0.23 f
+  U49/ZN (OR2_X1)                          0.04       0.27 f
+  U48/ZN (AOI22_X1)                        0.03       0.31 r
+  U24/ZN (INV_X1)                          0.03       0.34 f
+  U51/ZN (OR2_X1)                          0.04       0.37 f
+  U50/ZN (AOI22_X1)                        0.04       0.41 r
+  U23/ZN (INV_X1)                          0.03       0.44 f
+  U57/ZN (OR2_X1)                          0.04       0.48 f
+  U56/ZN (AOI22_X1)                        0.04       0.52 r
+  U22/ZN (INV_X1)                          0.03       0.54 f
+  U47/ZN (OR2_X1)                          0.04       0.58 f
+  U46/ZN (AOI22_X1)                        0.04       0.62 r
+  U21/ZN (INV_X1)                          0.03       0.65 f
+  U43/ZN (OAI21_X1)                        0.04       0.69 r
+  U20/ZN (INV_X1)                          0.02       0.71 f
+  U42/ZN (AOI21_X1)                        0.05       0.76 r
+  U19/ZN (INV_X1)                          0.03       0.79 f
+  U55/ZN (OAI21_X1)                        0.03       0.82 r
+  U54/ZN (OAI21_X1)                        0.03       0.85 f
+  COUT (out)                               0.01       0.86 f
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  output external delay                   -0.16       3.64
+  data required time                                  3.64
+  -----------------------------------------------------------
+  data required time                                  3.64
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         2.78
+
+
+  Startpoint: B_reg_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: COUT (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RCA_8              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  B_reg_reg[0]/CK (DFF_X1)                 0.00       0.00 r
+  B_reg_reg[0]/Q (DFF_X1)                  0.05       0.05 f
+  U45/ZN (OAI21_X1)                        0.04       0.09 r
+  U44/ZN (OAI21_X1)                        0.04       0.13 f
+  U53/ZN (OR2_X1)                          0.04       0.17 f
+  U52/ZN (AOI22_X1)                        0.04       0.21 r
+  U25/ZN (INV_X1)                          0.03       0.23 f
+  U49/ZN (OR2_X1)                          0.04       0.27 f
+  U48/ZN (AOI22_X1)                        0.04       0.31 r
+  U24/ZN (INV_X1)                          0.03       0.34 f
+  U51/ZN (OR2_X1)                          0.04       0.38 f
+  U50/ZN (AOI22_X1)                        0.04       0.41 r
+  U23/ZN (INV_X1)                          0.03       0.44 f
+  U57/ZN (OR2_X1)                          0.04       0.48 f
+  U56/ZN (AOI22_X1)                        0.04       0.52 r
+  U22/ZN (INV_X1)                          0.03       0.55 f
+  U47/ZN (OR2_X1)                          0.04       0.59 f
+  U46/ZN (AOI22_X1)                        0.03       0.62 r
+  U21/ZN (INV_X1)                          0.03       0.65 f
+  U43/ZN (OAI21_X1)                        0.04       0.69 r
+  U20/ZN (INV_X1)                          0.02       0.71 f
+  U42/ZN (AOI21_X1)                        0.05       0.76 r
+  U19/ZN (INV_X1)                          0.03       0.79 f
+  U55/ZN (OAI21_X1)                        0.03       0.82 r
+  U54/ZN (OAI21_X1)                        0.03       0.85 f
+  COUT (out)                               0.01       0.86 f
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  output external delay                   -0.16       3.64
+  data required time                                  3.64
+  -----------------------------------------------------------
+  data required time                                  3.64
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         2.78
+
+
+  Startpoint: B_reg_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: COUT (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RCA_8              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  B_reg_reg[0]/CK (DFF_X1)                 0.00       0.00 r
+  B_reg_reg[0]/Q (DFF_X1)                  0.05       0.05 f
+  U45/ZN (OAI21_X1)                        0.04       0.09 r
+  U44/ZN (OAI21_X1)                        0.04       0.13 f
+  U53/ZN (OR2_X1)                          0.04       0.17 f
+  U52/ZN (AOI22_X1)                        0.04       0.21 r
+  U25/ZN (INV_X1)                          0.03       0.23 f
+  U49/ZN (OR2_X1)                          0.04       0.27 f
+  U48/ZN (AOI22_X1)                        0.04       0.31 r
+  U24/ZN (INV_X1)                          0.03       0.34 f
+  U51/ZN (OR2_X1)                          0.04       0.38 f
+  U50/ZN (AOI22_X1)                        0.03       0.41 r
+  U23/ZN (INV_X1)                          0.03       0.44 f
+  U57/ZN (OR2_X1)                          0.04       0.48 f
+  U56/ZN (AOI22_X1)                        0.04       0.52 r
+  U22/ZN (INV_X1)                          0.03       0.54 f
+  U47/ZN (OR2_X1)                          0.04       0.58 f
+  U46/ZN (AOI22_X1)                        0.04       0.62 r
+  U21/ZN (INV_X1)                          0.03       0.65 f
+  U43/ZN (OAI21_X1)                        0.04       0.69 r
+  U20/ZN (INV_X1)                          0.02       0.71 f
+  U42/ZN (AOI21_X1)                        0.05       0.76 r
+  U19/ZN (INV_X1)                          0.03       0.79 f
+  U55/ZN (OAI21_X1)                        0.03       0.82 r
+  U54/ZN (OAI21_X1)                        0.03       0.85 f
+  COUT (out)                               0.01       0.86 f
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  output external delay                   -0.16       3.64
+  data required time                                  3.64
+  -----------------------------------------------------------
+  data required time                                  3.64
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         2.78
+
+
+  Startpoint: B_reg_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: COUT (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RCA_8              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  B_reg_reg[0]/CK (DFF_X1)                 0.00       0.00 r
+  B_reg_reg[0]/Q (DFF_X1)                  0.05       0.05 f
+  U45/ZN (OAI21_X1)                        0.04       0.09 r
+  U44/ZN (OAI21_X1)                        0.04       0.13 f
+  U53/ZN (OR2_X1)                          0.04       0.17 f
+  U52/ZN (AOI22_X1)                        0.04       0.21 r
+  U25/ZN (INV_X1)                          0.03       0.23 f
+  U49/ZN (OR2_X1)                          0.04       0.27 f
+  U48/ZN (AOI22_X1)                        0.04       0.31 r
+  U24/ZN (INV_X1)                          0.03       0.34 f
+  U51/ZN (OR2_X1)                          0.04       0.38 f
+  U50/ZN (AOI22_X1)                        0.04       0.41 r
+  U23/ZN (INV_X1)                          0.03       0.44 f
+  U57/ZN (OR2_X1)                          0.04       0.48 f
+  U56/ZN (AOI22_X1)                        0.03       0.52 r
+  U22/ZN (INV_X1)                          0.03       0.54 f
+  U47/ZN (OR2_X1)                          0.04       0.58 f
+  U46/ZN (AOI22_X1)                        0.04       0.62 r
+  U21/ZN (INV_X1)                          0.03       0.65 f
+  U43/ZN (OAI21_X1)                        0.04       0.69 r
+  U20/ZN (INV_X1)                          0.02       0.71 f
+  U42/ZN (AOI21_X1)                        0.05       0.76 r
+  U19/ZN (INV_X1)                          0.03       0.79 f
+  U55/ZN (OAI21_X1)                        0.03       0.82 r
+  U54/ZN (OAI21_X1)                        0.03       0.85 f
+  COUT (out)                               0.01       0.86 f
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  output external delay                   -0.16       3.64
+  data required time                                  3.64
+  -----------------------------------------------------------
+  data required time                                  3.64
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         2.78
+
+
+  Startpoint: B_reg_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: COUT (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RCA_8              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  B_reg_reg[0]/CK (DFF_X1)                 0.00       0.00 r
+  B_reg_reg[0]/Q (DFF_X1)                  0.05       0.05 f
+  U45/ZN (OAI21_X1)                        0.04       0.09 r
+  U44/ZN (OAI21_X1)                        0.04       0.13 f
+  U53/ZN (OR2_X1)                          0.04       0.17 f
+  U52/ZN (AOI22_X1)                        0.03       0.20 r
+  U25/ZN (INV_X1)                          0.03       0.23 f
+  U49/ZN (OR2_X1)                          0.04       0.27 f
+  U48/ZN (AOI22_X1)                        0.04       0.31 r
+  U24/ZN (INV_X1)                          0.03       0.34 f
+  U51/ZN (OR2_X1)                          0.04       0.37 f
+  U50/ZN (AOI22_X1)                        0.04       0.41 r
+  U23/ZN (INV_X1)                          0.03       0.44 f
+  U57/ZN (OR2_X1)                          0.04       0.48 f
+  U56/ZN (AOI22_X1)                        0.04       0.52 r
+  U22/ZN (INV_X1)                          0.03       0.54 f
+  U47/ZN (OR2_X1)                          0.04       0.58 f
+  U46/ZN (AOI22_X1)                        0.04       0.62 r
+  U21/ZN (INV_X1)                          0.03       0.65 f
+  U43/ZN (OAI21_X1)                        0.04       0.69 r
+  U20/ZN (INV_X1)                          0.02       0.71 f
+  U42/ZN (AOI21_X1)                        0.05       0.76 r
+  U19/ZN (INV_X1)                          0.03       0.79 f
+  U55/ZN (OAI21_X1)                        0.03       0.82 r
+  U54/ZN (OAI21_X1)                        0.03       0.85 f
+  COUT (out)                               0.01       0.86 f
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  output external delay                   -0.16       3.64
+  data required time                                  3.64
+  -----------------------------------------------------------
+  data required time                                  3.64
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         2.78
+
+
+  Startpoint: B_reg_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: COUT (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RCA_8              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  B_reg_reg[0]/CK (DFF_X1)                 0.00       0.00 r
+  B_reg_reg[0]/Q (DFF_X1)                  0.05       0.05 f
+  U45/ZN (OAI21_X1)                        0.04       0.09 r
+  U44/ZN (OAI21_X1)                        0.04       0.13 f
+  U53/ZN (OR2_X1)                          0.04       0.17 f
+  U52/ZN (AOI22_X1)                        0.04       0.21 r
+  U25/ZN (INV_X1)                          0.03       0.23 f
+  U49/ZN (OR2_X1)                          0.04       0.27 f
+  U48/ZN (AOI22_X1)                        0.04       0.31 r
+  U24/ZN (INV_X1)                          0.03       0.34 f
+  U51/ZN (OR2_X1)                          0.04       0.38 f
+  U50/ZN (AOI22_X1)                        0.04       0.41 r
+  U23/ZN (INV_X1)                          0.03       0.44 f
+  U57/ZN (OR2_X1)                          0.04       0.48 f
+  U56/ZN (AOI22_X1)                        0.04       0.52 r
+  U22/ZN (INV_X1)                          0.03       0.55 f
+  U47/ZN (OR2_X1)                          0.04       0.59 f
+  U46/ZN (AOI22_X1)                        0.04       0.62 r
+  U21/ZN (INV_X1)                          0.03       0.65 f
+  U43/ZN (OAI21_X1)                        0.04       0.69 r
+  U20/ZN (INV_X1)                          0.02       0.71 f
+  U42/ZN (AOI21_X1)                        0.05       0.76 r
+  U19/ZN (INV_X1)                          0.03       0.79 f
+  U55/ZN (OAI21_X1)                        0.03       0.82 r
+  U54/ZN (OAI21_X1)                        0.03       0.85 f
+  COUT (out)                               0.01       0.86 f
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  output external delay                   -0.16       3.64
+  data required time                                  3.64
+  -----------------------------------------------------------
+  data required time                                  3.64
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         2.78
+
+
+1
