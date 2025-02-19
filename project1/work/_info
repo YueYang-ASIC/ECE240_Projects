@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/Desktop/NXP_Interview/Round2
 vFA
-Z0 !s110 1739846453
+Z0 !s110 1739926039
 !i10b 1
 !s100 RBFJGOn1T7HdCXzBlNE9V0
 I`L@87C@dJ8N;h^lGii<Oe3
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1739846453.000000
+Z4 !s108 1739926039.000000
 !s107 C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/FA.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/FA.v|
 !i113 1
@@ -33,11 +33,11 @@ n@f@a
 vRCA_8
 R0
 !i10b 1
-!s100 ;M=;JgH4X;9<==2Gc[NL03
-I;=]Yo8nRLFM8n<;K6i0R42
+!s100 0V[7f@<=>nFImea72O`YO0
+IeX?SjmQ2GBK93QRAUnL_m1
 R1
 R2
-w1739846320
+w1739926034
 8C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_8.v
 FC:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_8.v
 L0 2
@@ -55,22 +55,44 @@ n@r@c@a_8
 vRCA_8_TB
 R0
 !i10b 1
-!s100 ES[6[zhMoVO:7eNSF4`470
-IBnKbg9UED_^FMYOmPXo[J1
+!s100 k<^fZJTFQ>zY7=0zmk[iS1
+I2:3]n:`^LT`E`YO;`Ko;o1
 R1
 R2
-w1739846210
-8C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v
-FC:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v
-L0 2
+w1739925985
+Z7 8C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v
+Z8 FC:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v
+L0 3
 R3
 r1
 !s85 0
 31
 R4
 !s107 C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v|
 !i113 1
 R5
 R6
 n@r@c@a_8_@t@b
+vRCA_TB
+!s110 1739925973
+!i10b 1
+!s100 0YF1aRIWgBb<EAd^zon8o0
+Iblbo0=@XoW:ZFk8G`MOh@0
+R1
+R2
+w1739925972
+R7
+R8
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1739925973.000000
+!s107 C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v|
+R9
+!i113 1
+R5
+R6
+n@r@c@a_@t@b

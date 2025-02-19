@@ -1,9 +1,9 @@
-C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_8.v {1 {vlog -work work -stats=none C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_8.v
+C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v {1 {vlog -work work -stats=none C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/RCA_TB.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module RCA_8
+-- Compiling module RCA_8_TB
 
 Top level modules:
-	RCA_8
+	RCA_8_TB
 
 } {} {}} C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/FA.v {1 {vlog -work work -stats=none C:/Users/lunay/Documents/GitHub_Luna/ECE240/ECE240_Projects/project1/FA.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
