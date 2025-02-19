@@ -1,8 +1,8 @@
 `timescale 1ns / 1ps
-module RCA_8 #(parameter data_width=8) (CLK,A,B,CIN,SUM,COUT);
+module RCA_8 #(parameter data_width=8) (clk,A,B,CIN,SUM,COUT);
 input [data_width-1:0]	A,B; 
 input CIN;
-input CLK;
+input clk;
 output [data_width-1:0] SUM;
 output COUT;
 
@@ -11,7 +11,7 @@ wire [data_width-1:0] carry;
 reg [data_width-1:0] A_reg, B_reg;
 reg CIN_reg;
 
-always @(posedge CLK) begin
+always @(posedge clk) begin
 	A_reg <= A;
 	B_reg <= B;
 	CIN_reg <= CIN;

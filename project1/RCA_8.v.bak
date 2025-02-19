@@ -3,7 +3,7 @@ module RCA_8 #(parameter data_width=8) (CLK,A,B,CIN,SUM,COUT);
 input [data_width-1:0]	A,B; 
 input CIN;
 input CLK;
-output reg [data_width-1:0] SUM;
+output [data_width-1:0] SUM;
 output COUT;
 
 wire [data_width-1:0] carry;
