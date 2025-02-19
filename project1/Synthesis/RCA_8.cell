@@ -3,7 +3,7 @@
 Report : cell
 Design : RCA_8
 Version: S-2021.06-SP5-1
-Date   : Wed Feb 19 01:02:40 2025
+Date   : Wed Feb 19 01:47:25 2025
 ****************************************
 
 Attributes:
@@ -31,8 +31,8 @@ A_reg_reg[6]              DFF_X1          NangateOpenCellLibrary
                                                           4.522000  n
 A_reg_reg[7]              DFF_X1          NangateOpenCellLibrary
                                                           4.522000  n
-B_reg_reg[0]              DFF_X1          NangateOpenCellLibrary
-                                                          4.522000  n
+B_reg_reg[0]              SDFF_X1         NangateOpenCellLibrary
+                                                          6.118000  n
 B_reg_reg[1]              DFF_X1          NangateOpenCellLibrary
                                                           4.522000  n
 B_reg_reg[2]              DFF_X1          NangateOpenCellLibrary
@@ -50,8 +50,6 @@ B_reg_reg[7]              DFF_X1          NangateOpenCellLibrary
 CIN_reg_reg               DFF_X1          NangateOpenCellLibrary
                                                           4.522000  n
 U19                       INV_X1          NangateOpenCellLibrary
-                                                          0.532000  
-U20                       INV_X1          NangateOpenCellLibrary
                                                           0.532000  
 U21                       INV_X1          NangateOpenCellLibrary
                                                           0.532000  
@@ -91,42 +89,56 @@ U38                       XOR2_X1         NangateOpenCellLibrary
                                                           1.596000  
 U39                       XOR2_X1         NangateOpenCellLibrary
                                                           1.596000  
-U40                       XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
 U41                       XOR2_X1         NangateOpenCellLibrary
                                                           1.596000  
-U42                       AOI21_X1        NangateOpenCellLibrary
+U42                       OR2_X1          NangateOpenCellLibrary
                                                           1.064000  
-U43                       OAI21_X1        NangateOpenCellLibrary
-                                                          1.064000  
-U44                       OAI21_X1        NangateOpenCellLibrary
-                                                          1.064000  
-U45                       OAI21_X1        NangateOpenCellLibrary
-                                                          1.064000  
+U43                       NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U44                       BUF_X1          NangateOpenCellLibrary
+                                                          0.798000  
+U45                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
 U46                       AOI22_X1        NangateOpenCellLibrary
                                                           1.330000  
-U47                       OR2_X1          NangateOpenCellLibrary
-                                                          1.064000  
-U48                       AOI22_X1        NangateOpenCellLibrary
+U47                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U49                       AOI22_X1        NangateOpenCellLibrary
                                                           1.330000  
-U49                       OR2_X1          NangateOpenCellLibrary
-                                                          1.064000  
 U50                       AOI22_X1        NangateOpenCellLibrary
                                                           1.330000  
-U51                       OR2_X1          NangateOpenCellLibrary
+U51                       BUF_X1          NangateOpenCellLibrary
+                                                          0.798000  
+U52                       NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U53                       NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U54                       NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U55                       NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U56                       OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U52                       AOI22_X1        NangateOpenCellLibrary
+U57                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U58                       AOI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U59                       AOI22_X1        NangateOpenCellLibrary
                                                           1.330000  
-U53                       OR2_X1          NangateOpenCellLibrary
-                                                          1.064000  
-U54                       OAI21_X1        NangateOpenCellLibrary
-                                                          1.064000  
-U55                       OAI21_X1        NangateOpenCellLibrary
-                                                          1.064000  
-U56                       AOI22_X1        NangateOpenCellLibrary
+U60                       AOI22_X1        NangateOpenCellLibrary
                                                           1.330000  
-U57                       OR2_X1          NangateOpenCellLibrary
+U61                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U62                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U63                       AOI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U64                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U65                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U66                       OR2_X1          NangateOpenCellLibrary
                                                           1.064000  
 --------------------------------------------------------------------------------
-Total 56 cells                                            124.487997
+Total 62 cells                                            132.201997
 1

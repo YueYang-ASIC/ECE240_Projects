@@ -8,7 +8,7 @@ Report : power
         -analysis_effort low
 Design : RCA_8
 Version: S-2021.06-SP5-1
-Date   : Wed Feb 19 01:02:40 2025
+Date   : Wed Feb 19 01:47:26 2025
 ****************************************
 
 
@@ -34,12 +34,12 @@ Power-specific unit information :
     Leakage Power Units = 1nW
 
 
-  Cell Internal Power  =  31.2564 uW   (83%)
-  Net Switching Power  =   6.2610 uW   (17%)
+  Cell Internal Power  = 181.0548 uW   (81%)
+  Net Switching Power  =  41.6036 uW   (19%)
                          ---------
-Total Dynamic Power    =  37.5174 uW  (100%)
+Total Dynamic Power    = 222.6584 uW  (100%)
 
-Cell Leakage Power     =   8.4315 uW
+Cell Leakage Power     =   9.0241 uW
 
 
                  Internal         Switching           Leakage            Total
@@ -49,9 +49,9 @@ io_pad             0.0000            0.0000            0.0000            0.0000 
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register          25.6987            2.1457        4.7057e+03           32.5502  (  70.84%)
+register         146.5385           14.4444        4.7676e+03          165.7505  (  71.54%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational      5.5577            4.1153        3.7257e+03           13.3987  (  29.16%)
+combinational     34.5163           27.1592        4.2565e+03           65.9320  (  28.46%)
 --------------------------------------------------------------------------------------------------
-Total             31.2564 uW         6.2610 uW     8.4315e+03 nW        45.9489 uW
+Total            181.0548 uW        41.6036 uW     9.0241e+03 nW       231.6825 uW
 1
