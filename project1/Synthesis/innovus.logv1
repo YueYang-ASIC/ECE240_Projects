@@ -1,0 +1,407 @@
+[02/19 05:10:04      0s] 
+[02/19 05:10:04      0s] Cadence Innovus(TM) Implementation System.
+[02/19 05:10:04      0s] Copyright 2020 Cadence Design Systems, Inc. All rights reserved worldwide.
+[02/19 05:10:04      0s] 
+[02/19 05:10:04      0s] Version:	v20.10-p004_1, built Thu May 7 20:02:41 PDT 2020
+[02/19 05:10:04      0s] Options:	
+[02/19 05:10:04      0s] Date:		Wed Feb 19 05:10:04 2025
+[02/19 05:10:04      0s] Host:		nc-csuaf4-l01.apporto.com (x86_64 w/Linux 3.10.0-1160.59.1.el7.x86_64) (4cores*8cpus*Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz 55296KB)
+[02/19 05:10:04      0s] OS:		CentOS Linux release 7.9.2009 (Core)
+[02/19 05:10:04      0s] 
+[02/19 05:10:04      0s] License:
+[02/19 05:10:04      0s] 		invs	Innovus Implementation System	20.1	checkout succeeded
+[02/19 05:10:04      0s] 		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+[02/19 05:10:12      8s] **WARN: (IMPOPT-801):	Genus executable not found in PATH. Install Genus, add the path to the genus executable in the PATH variable and rerun Innovus.
+[02/19 05:10:13      8s] @(#)CDS: Innovus v20.10-p004_1 (64bit) 05/07/2020 20:02 (Linux 2.6.32-431.11.2.el6.x86_64)
+[02/19 05:10:13      8s] @(#)CDS: NanoRoute 20.10-p004_1 NR200413-0234/20_10-UB (database version 18.20.505) {superthreading v1.69}
+[02/19 05:10:13      8s] @(#)CDS: AAE 20.10-p005 (64bit) 05/07/2020 (Linux 2.6.32-431.11.2.el6.x86_64)
+[02/19 05:10:13      8s] @(#)CDS: CTE 20.10-p005_1 () Apr 14 2020 09:14:28 ( )
+[02/19 05:10:13      8s] @(#)CDS: SYNTECH 20.10-b004_1 () Mar 12 2020 22:18:21 ( )
+[02/19 05:10:13      8s] @(#)CDS: CPE v20.10-p006
+[02/19 05:10:13      8s] @(#)CDS: IQuantus/TQuantus 19.1.3-s155 (64bit) Sun Nov 3 18:26:52 PST 2019 (Linux 2.6.32-431.11.2.el6.x86_64)
+[02/19 05:10:13      8s] @(#)CDS: OA 22.60-p028 Tue Dec  3 14:08:48 2019
+[02/19 05:10:13      8s] @(#)CDS: SGN 19.10-d001 (24-May-2019) (64 bit executable, Qt5.9.0)
+[02/19 05:10:13      8s] @(#)CDS: RCDB 11.15.0
+[02/19 05:10:13      8s] @(#)CDS: STYLUS 20.10-p002_1 (03/12/2020 10:11 PDT)
+[02/19 05:10:13      8s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_19824_nc-csuaf4-l01.apporto.com_c11879_csufresno_ZU1LzG.
+
+[02/19 05:10:13      8s] Change the soft stacksize limit to 0.2%RAM (62 mbytes). Set global soft_stack_size_limit to change the value.
+[02/19 05:10:13      9s] 
+[02/19 05:10:13      9s] **INFO:  MMMC transition support version v31-84 
+[02/19 05:10:13      9s] 
+[02/19 05:10:13      9s] <CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+[02/19 05:10:13      9s] <CMD> suppressMessage ENCEXT-2799
+[02/19 05:10:14      9s] <CMD> win
+[02/19 05:10:28     10s] <CMD> set init_verilog abc.vg
+[02/19 05:10:28     10s] <CMD> set init_top_cell abc
+[02/19 05:10:28     10s] <CMD> set init_mmmc_file template.view
+[02/19 05:10:28     10s] <CMD> set init_gnd_net VSS
+[02/19 05:10:28     10s] <CMD> set init_pwr_net VDD
+[02/19 05:10:28     10s] <CMD> set init_lef_file /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/lef/NangateOpenCellLibrary.lef
+[02/19 05:10:28     10s] <CMD> set ::TimeLib::tsgMarkCellLatchConstructFlag 1
+[02/19 05:10:28     10s] <CMD> set conf_qxconf_file NULL
+[02/19 05:10:28     10s] <CMD> set conf_qxlib_file NULL
+[02/19 05:10:28     10s] <CMD> set defHierChar /
+[02/19 05:10:28     10s] <CMD> set distributed_client_message_echo 1
+[02/19 05:10:28     10s] <CMD> set distributed_mmmc_disable_reports_auto_redirection 0
+[02/19 05:10:28     10s] <CMD> set enc_enable_print_mode_command_reset_options 1
+[02/19 05:10:28     10s] <CMD> set init_design_settop 0
+[02/19 05:10:28     10s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:10:28     10s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:10:28     10s] <CMD> set latch_time_borrow_mode max_borrow
+[02/19 05:10:28     10s] <CMD> set pegDefaultResScaleFactor 1
+[02/19 05:10:28     10s] <CMD> set pegDetailResScaleFactor 1
+[02/19 05:10:28     10s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:10:28     10s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:10:28     10s] <CMD> set report_inactive_arcs_format {from to when arc_type sense reason}
+[02/19 05:10:28     10s] **WARN: (IMPUDM-33):	Global variable "timing_enable_default_delay_arc" is obsolete and will be removed in a future release. The obsolete variable still works in this release, but to avoid this warning and to ensure compatibility with future releases, remove the obsolete variable from your script.
+[02/19 05:10:28     10s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:10:28     10s] <CMD> suppressMessage -silent GLOBAL-100
+[02/19 05:10:28     10s] <CMD> unsuppressMessage -silent GLOBAL-100
+[02/19 05:10:28     10s] **WARN: (IMPUDM-33):	Global variable "timing_enable_default_delay_arc" is obsolete and will be removed in a future release. The obsolete variable still works in this release, but to avoid this warning and to ensure compatibility with future releases, remove the obsolete variable from your script.
+[02/19 05:10:28     10s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:10:28     10s] <CMD> suppressMessage -silent GLOBAL-100
+[02/19 05:10:28     10s] <CMD> unsuppressMessage -silent GLOBAL-100
+[02/19 05:10:28     10s] <CMD> set timing_enable_default_delay_arc 1
+[02/19 05:10:38     10s] <CMD> set init_verilog RCA_8.vg
+[02/19 05:10:38     10s] <CMD> init_design
+[02/19 05:10:38     10s] #% Begin Load MMMC data ... (date=02/19 05:10:38, mem=552.8M)
+[02/19 05:10:38     10s] **ERROR: (TCLCMD-989):	cannot open SDC file 'abc.sdc' for mode 'synth'
+<CMD> set init_verilog RCA_8.vg
+[02/19 05:10:39     11s] <CMD> init_design
+[02/19 05:10:39     11s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:10:39     11s] % Begin Load MMMC data ... (date=02/19 05:10:39, mem=552.9M)
+[02/19 05:10:39     11s] **ERROR: (TCLCMD-989):	cannot open SDC file 'abc.sdc' for mode 'synth'
+<CMD> set init_verilog RCA_8.vg
+[02/19 05:10:39     11s] <CMD> init_design
+[02/19 05:10:39     11s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:10:39     11s] % Begin Load MMMC data ... (date=02/19 05:10:39, mem=552.9M)
+[02/19 05:10:39     11s] **ERROR: (TCLCMD-989):	cannot open SDC file 'abc.sdc' for mode 'synth'
+<CMD> set init_verilog RCA_8.vg
+[02/19 05:10:39     11s] <CMD> init_design
+[02/19 05:10:39     11s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:10:39     11s] % Begin Load MMMC data ... (date=02/19 05:10:39, mem=552.9M)
+[02/19 05:10:39     11s] **ERROR: (TCLCMD-989):	cannot open SDC file 'abc.sdc' for mode 'synth'
+<CMD> set init_verilog RCA_8.vg
+[02/19 05:10:40     11s] <CMD> init_design
+[02/19 05:10:40     11s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:10:40     11s] % Begin Load MMMC data ... (date=02/19 05:10:40, mem=552.9M)
+[02/19 05:10:40     11s] **ERROR: (TCLCMD-989):	cannot open SDC file 'abc.sdc' for mode 'synth'
+<CMD> set init_verilog RCA_8.vg
+[02/19 05:10:40     11s] <CMD> init_design
+[02/19 05:10:40     11s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:10:40     11s] % Begin Load MMMC data ... (date=02/19 05:10:40, mem=552.9M)
+[02/19 05:10:40     11s] **ERROR: (TCLCMD-989):	cannot open SDC file 'abc.sdc' for mode 'synth'
+<CMD> set init_verilog RCA_8.vg
+[02/19 05:10:40     11s] <CMD> init_design
+[02/19 05:10:40     11s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:10:40     11s] % Begin Load MMMC data ... (date=02/19 05:10:40, mem=552.9M)
+[02/19 05:10:40     11s] **ERROR: (TCLCMD-989):	cannot open SDC file 'abc.sdc' for mode 'synth'
+<CMD> set init_verilog RCA_8.vg
+[02/19 05:10:40     11s] <CMD> init_design
+[02/19 05:10:40     11s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:10:40     11s] % Begin Load MMMC data ... (date=02/19 05:10:40, mem=553.0M)
+[02/19 05:10:40     11s] **ERROR: (TCLCMD-989):	cannot open SDC file 'abc.sdc' for mode 'synth'
+<CMD> set init_verilog RCA_8.vg
+[02/19 05:10:40     11s] <CMD> init_design
+[02/19 05:10:40     11s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:10:40     11s] % Begin Load MMMC data ... (date=02/19 05:10:40, mem=553.0M)
+[02/19 05:10:40     11s] **ERROR: (TCLCMD-989):	cannot open SDC file 'abc.sdc' for mode 'synth'
+<CMD> set init_verilog RCA_8.vg
+[02/19 05:10:40     11s] <CMD> init_design
+[02/19 05:10:40     11s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:10:41     11s] % Begin Load MMMC data ... (date=02/19 05:10:41, mem=553.0M)
+[02/19 05:10:41     11s] **ERROR: (TCLCMD-989):	cannot open SDC file 'abc.sdc' for mode 'synth'
+<CMD> zoomBox -0.10500 -0.05100 0.33300 0.12500
+[02/19 05:10:47     11s] <CMD> zoomBox -0.08200 -0.03700 0.29100 0.11300
+[02/19 05:10:57     12s] <CMD> zoomSelected -margin 50
+[02/19 05:18:45     33s] <CMD> set init_verilog RCA_8.vg
+[02/19 05:18:45     33s] <CMD> set init_top_cell RCA_8
+[02/19 05:18:45     33s] <CMD> set init_mmmc_file template.view
+[02/19 05:18:45     33s] <CMD> set init_gnd_net VSS
+[02/19 05:18:45     33s] <CMD> set init_pwr_net VDD
+[02/19 05:18:45     33s] <CMD> set init_lef_file /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/lef/NangateOpenCellLibrary.lef
+[02/19 05:18:45     33s] <CMD> set ::TimeLib::tsgMarkCellLatchConstructFlag 1
+[02/19 05:18:45     33s] <CMD> set conf_qxconf_file NULL
+[02/19 05:18:45     33s] <CMD> set conf_qxlib_file NULL
+[02/19 05:18:45     33s] <CMD> set defHierChar /
+[02/19 05:18:45     33s] <CMD> set distributed_client_message_echo 1
+[02/19 05:18:45     33s] <CMD> set distributed_mmmc_disable_reports_auto_redirection 0
+[02/19 05:18:45     33s] <CMD> set enc_enable_print_mode_command_reset_options 1
+[02/19 05:18:45     33s] <CMD> set init_design_settop 0
+[02/19 05:18:45     33s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:45     33s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:45     33s] <CMD> set latch_time_borrow_mode max_borrow
+[02/19 05:18:45     33s] <CMD> set pegDefaultResScaleFactor 1
+[02/19 05:18:45     33s] <CMD> set pegDetailResScaleFactor 1
+[02/19 05:18:45     33s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:45     33s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:45     33s] <CMD> set report_inactive_arcs_format {from to when arc_type sense reason}
+[02/19 05:18:45     33s] **WARN: (IMPUDM-33):	Global variable "timing_enable_default_delay_arc" is obsolete and will be removed in a future release. The obsolete variable still works in this release, but to avoid this warning and to ensure compatibility with future releases, remove the obsolete variable from your script.
+[02/19 05:18:45     33s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:45     33s] <CMD> suppressMessage -silent GLOBAL-100
+[02/19 05:18:45     33s] <CMD> unsuppressMessage -silent GLOBAL-100
+[02/19 05:18:45     33s] **WARN: (IMPUDM-33):	Global variable "timing_enable_default_delay_arc" is obsolete and will be removed in a future release. The obsolete variable still works in this release, but to avoid this warning and to ensure compatibility with future releases, remove the obsolete variable from your script.
+[02/19 05:18:45     33s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:45     33s] <CMD> suppressMessage -silent GLOBAL-100
+[02/19 05:18:45     33s] <CMD> unsuppressMessage -silent GLOBAL-100
+[02/19 05:18:45     33s] <CMD> set timing_enable_default_delay_arc 1
+[02/19 05:18:46     33s] <CMD> init_design
+[02/19 05:18:46     33s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:18:46     33s] % Begin Load MMMC data ... (date=02/19 05:18:46, mem=555.0M)
+[02/19 05:18:46     33s] % End Load MMMC data ... (date=02/19 05:18:46, total cpu=0:00:00.0, real=0:00:00.0, peak res=555.1M, current mem=555.1M)
+[02/19 05:18:46     33s] 
+[02/19 05:18:46     33s] Loading LEF file /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/lef/NangateOpenCellLibrary.lef ...
+[02/19 05:18:46     33s] Set DBUPerIGU to M2 pitch 380.
+[02/19 05:18:46     33s] 
+[02/19 05:18:46     33s] viaInitial starts at Wed Feb 19 05:18:46 2025
+viaInitial ends at Wed Feb 19 05:18:46 2025
+
+##  Check design process and node:  
+##  Both design process and tech node are not set.
+
+[02/19 05:18:46     33s] Loading view definition file from template.view
+[02/19 05:18:46     33s] Reading worst timing library '/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary_worst_low_ccs.lib' ...
+[02/19 05:18:48     34s] Read 134 cells in library 'NangateOpenCellLibrary' 
+[02/19 05:18:48     34s] Reading fast timing library '/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary_fast_ccs.lib' ...
+[02/19 05:18:49     35s] Read 134 cells in library 'NangateOpenCellLibrary' 
+[02/19 05:18:49     35s] Ending "PreSetAnalysisView" (total cpu=0:00:02.6, real=0:00:03.0, peak res=678.7M, current mem=569.7M)
+[02/19 05:18:49     35s] *** End library_loading (cpu=0.04min, real=0.05min, mem=11.0M, fe_cpu=0.60min, fe_real=8.75min, fe_mem=738.7M) ***
+[02/19 05:18:49     35s] % Begin Load netlist data ... (date=02/19 05:18:49, mem=569.6M)
+[02/19 05:18:49     35s] *** Begin netlist parsing (mem=738.7M) ***
+[02/19 05:18:49     35s] Created 134 new cells from 2 timing libraries.
+[02/19 05:18:49     35s] Reading netlist ...
+[02/19 05:18:49     35s] Backslashed names will retain backslash and a trailing blank character.
+[02/19 05:18:49     35s] Reading verilog netlist 'RCA_8.vg'
+[02/19 05:18:49     35s] 
+[02/19 05:18:49     35s] *** Memory Usage v#1 (Current mem = 738.715M, initial mem = 268.238M) ***
+[02/19 05:18:49     35s] *** End netlist parsing (cpu=0:00:00.0, real=0:00:00.0, mem=738.7M) ***
+[02/19 05:18:49     35s] % End Load netlist data ... (date=02/19 05:18:49, total cpu=0:00:00.0, real=0:00:00.0, peak res=574.6M, current mem=574.6M)
+[02/19 05:18:49     35s] Set top cell to RCA_8.
+[02/19 05:18:49     36s] Hooked 268 DB cells to tlib cells.
+[02/19 05:18:49     36s] Ending "BindLib:" (total cpu=0:00:00.0, real=0:00:00.0, peak res=584.8M, current mem=584.8M)
+[02/19 05:18:49     36s] Starting recursive module instantiation check.
+[02/19 05:18:49     36s] No recursion found.
+[02/19 05:18:49     36s] Building hierarchical netlist for Cell RCA_8 ...
+[02/19 05:18:49     36s] *** Netlist is unique.
+[02/19 05:18:49     36s] Setting Std. cell height to 2800 DBU (smallest netlist inst).
+[02/19 05:18:49     36s] ** info: there are 269 modules.
+[02/19 05:18:49     36s] ** info: there are 62 stdCell insts.
+[02/19 05:18:49     36s] 
+[02/19 05:18:49     36s] *** Memory Usage v#1 (Current mem = 782.141M, initial mem = 268.238M) ***
+[02/19 05:18:49     36s] Generated pitch 1.68 in metal10 is different from 1.6 defined in technology file in preferred direction.
+[02/19 05:18:49     36s] Generated pitch 0.84 in metal8 is different from 0.8 defined in technology file in preferred direction.
+[02/19 05:18:49     36s] Generated pitch 0.84 in metal7 is different from 0.8 defined in technology file in preferred direction.
+[02/19 05:18:49     36s] Set Default Net Delay as 1000 ps.
+[02/19 05:18:49     36s] Set Default Net Load as 0.5 pF. 
+[02/19 05:18:49     36s] Set Default Input Pin Transition as 0.1 ps.
+[02/19 05:18:49     36s] Extraction setup Started 
+[02/19 05:18:49     36s] Initializing multi-corner RC extraction with 1 active RC Corners ...
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2773):	The via resistance between layers M0 and M1 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[02/19 05:18:49     36s] Type 'man IMPEXT-2773' for more detail.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2773):	The via resistance between layers M1 and M2 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[02/19 05:18:49     36s] Type 'man IMPEXT-2773' for more detail.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2773):	The via resistance between layers M2 and M3 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[02/19 05:18:49     36s] Type 'man IMPEXT-2773' for more detail.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2773):	The via resistance between layers M3 and M4 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[02/19 05:18:49     36s] Type 'man IMPEXT-2773' for more detail.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2773):	The via resistance between layers M4 and M5 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[02/19 05:18:49     36s] Type 'man IMPEXT-2773' for more detail.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2773):	The via resistance between layers M5 and M6 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[02/19 05:18:49     36s] Type 'man IMPEXT-2773' for more detail.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2773):	The via resistance between layers M6 and M7 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[02/19 05:18:49     36s] Type 'man IMPEXT-2773' for more detail.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2773):	The via resistance between layers M7 and M8 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[02/19 05:18:49     36s] Type 'man IMPEXT-2773' for more detail.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2773):	The via resistance between layers M8 and M9 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[02/19 05:18:49     36s] Type 'man IMPEXT-2773' for more detail.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2773):	The via resistance between layers M9 and M10 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[02/19 05:18:49     36s] Type 'man IMPEXT-2773' for more detail.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M1 is not defined in the cap table. Therefore, the LEF value 0.38 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M2 is not defined in the cap table. Therefore, the LEF value 0.25 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M3 is not defined in the cap table. Therefore, the LEF value 0.25 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M4 is not defined in the cap table. Therefore, the LEF value 0.21 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M5 is not defined in the cap table. Therefore, the LEF value 0.21 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M6 is not defined in the cap table. Therefore, the LEF value 0.21 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M7 is not defined in the cap table. Therefore, the LEF value 0.075 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M8 is not defined in the cap table. Therefore, the LEF value 0.075 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M9 is not defined in the cap table. Therefore, the LEF value 0.03 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[02/19 05:18:49     36s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M10 is not defined in the cap table. Therefore, the LEF value 0.03 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[02/19 05:18:49     36s] Summary of Active RC-Corners : 
+[02/19 05:18:49     36s]  
+[02/19 05:18:49     36s]  Analysis View: worst
+[02/19 05:18:49     36s]     RC-Corner Name        : default_rc_corner
+[02/19 05:18:49     36s]     RC-Corner Index       : 0
+[02/19 05:18:49     36s]     RC-Corner Temperature : 25 Celsius
+[02/19 05:18:49     36s]     RC-Corner Cap Table   : ''
+[02/19 05:18:49     36s]     RC-Corner PreRoute Res Factor         : 1
+[02/19 05:18:49     36s]     RC-Corner PreRoute Cap Factor         : 1
+[02/19 05:18:49     36s]     RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+[02/19 05:18:49     36s]     RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+[02/19 05:18:49     36s]     RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+[02/19 05:18:49     36s]     RC-Corner PreRoute Clock Res Factor   : 1	[Derived from Cap Table]
+[02/19 05:18:49     36s]     RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from Cap Table]
+[02/19 05:18:49     36s]     RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+[02/19 05:18:49     36s]     RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+[02/19 05:18:49     36s]  
+[02/19 05:18:49     36s]  Analysis View: fast
+[02/19 05:18:49     36s]     RC-Corner Name        : default_rc_corner
+[02/19 05:18:49     36s]     RC-Corner Index       : 0
+[02/19 05:18:49     36s]     RC-Corner Temperature : 25 Celsius
+[02/19 05:18:49     36s]     RC-Corner Cap Table   : ''
+[02/19 05:18:49     36s]     RC-Corner PreRoute Res Factor         : 1
+[02/19 05:18:49     36s]     RC-Corner PreRoute Cap Factor         : 1
+[02/19 05:18:49     36s]     RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+[02/19 05:18:49     36s]     RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+[02/19 05:18:49     36s]     RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+[02/19 05:18:49     36s]     RC-Corner PreRoute Clock Res Factor   : 1	[Derived from Cap Table]
+[02/19 05:18:49     36s]     RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from Cap Table]
+[02/19 05:18:49     36s]     RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+[02/19 05:18:49     36s]     RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+[02/19 05:18:49     36s] LayerId::1 widthSet size::1
+[02/19 05:18:49     36s] LayerId::2 widthSet size::1
+[02/19 05:18:49     36s] LayerId::3 widthSet size::1
+[02/19 05:18:49     36s] LayerId::4 widthSet size::1
+[02/19 05:18:49     36s] LayerId::5 widthSet size::1
+[02/19 05:18:49     36s] LayerId::6 widthSet size::1
+[02/19 05:18:49     36s] LayerId::7 widthSet size::1
+[02/19 05:18:49     36s] LayerId::8 widthSet size::1
+[02/19 05:18:49     36s] LayerId::9 widthSet size::1
+[02/19 05:18:49     36s] LayerId::10 widthSet size::1
+[02/19 05:18:49     36s] Updating RC grid for preRoute extraction ...
+[02/19 05:18:49     36s] Initializing multi-corner resistance tables ...
+[02/19 05:18:49     36s] **Info: Trial Route has Max Route Layer 15/10.
+[02/19 05:18:49     36s] {RT default_rc_corner 0 10 10 {4 1} {7 0} {9 0} 3}
+[02/19 05:18:49     36s] Preroute length aware model : LLS: 2-3 ; HLS: 3-5 ; rDens: 0.000000 ; uaWl: 0.000000 ; uaWlH: 0.000000 ; aWlH: 0.000000 ; Pmax: 0.850000 ; wcR: 0.000000 ; newSi: 0.000000 ; pMod: 80 ; 
+[02/19 05:18:49     36s] *Info: initialize multi-corner CTS.
+[02/19 05:18:49     36s] Ending "SetAnalysisView" (total cpu=0:00:00.0, real=0:00:00.0, peak res=761.1M, current mem=596.1M)
+[02/19 05:18:49     36s] Reading timing constraints file 'RCA_8.sdc' ...
+[02/19 05:18:49     36s] Current (total cpu=0:00:36.3, real=0:08:45, peak res=772.8M, current mem=772.8M)
+[02/19 05:18:49     36s] **WARN: (TCLCMD-1461):	Skipped unsupported command: set_units (File RCA_8.sdc, Line 8).
+[02/19 05:18:49     36s] 
+[02/19 05:18:49     36s] **WARN: (TCLNL-330):	set_input_delay on clock root 'clk' is not supported. You should use the -source option to set_clock_latency to provide this offset. You can also use the global timing_allow_input_delay_on_clock_source to allow set_input_delay assertion to have an effect on clock source paths beginning at this clock root. (File RCA_8.sdc, Line 21).
+[02/19 05:18:49     36s] 
+[02/19 05:18:49     36s] INFO (CTE): Reading of timing constraints file RCA_8.sdc completed, with 2 WARNING
+[02/19 05:18:49     36s] WARNING (CTE-25): Line: 9 of File RCA_8.sdc : Skipped unsupported command: set_max_area
+[02/19 05:18:49     36s] 
+[02/19 05:18:49     36s] 
+[02/19 05:18:49     36s] Ending "Constraint file reading stats" (total cpu=0:00:00.0, real=0:00:00.0, peak res=791.7M, current mem=791.7M)
+[02/19 05:18:50     36s] Current (total cpu=0:00:36.3, real=0:08:46, peak res=791.7M, current mem=791.7M)
+[02/19 05:18:50     36s] Creating Cell Server ...(0, 1, 1, 1)
+[02/19 05:18:50     36s] Summary for sequential cells identification: 
+[02/19 05:18:50     36s]   Identified SBFF number: 16
+[02/19 05:18:50     36s]   Identified MBFF number: 0
+[02/19 05:18:50     36s]   Identified SB Latch number: 0
+[02/19 05:18:50     36s]   Identified MB Latch number: 0
+[02/19 05:18:50     36s]   Not identified SBFF number: 0
+[02/19 05:18:50     36s]   Not identified MBFF number: 0
+[02/19 05:18:50     36s]   Not identified SB Latch number: 0
+[02/19 05:18:50     36s]   Not identified MB Latch number: 0
+[02/19 05:18:50     36s]   Number of sequential cells which are not FFs: 13
+[02/19 05:18:50     36s] Total number of combinational cells: 99
+[02/19 05:18:50     36s] Total number of sequential cells: 29
+[02/19 05:18:50     36s] Total number of tristate cells: 6
+[02/19 05:18:50     36s] Total number of level shifter cells: 0
+[02/19 05:18:50     36s] Total number of power gating cells: 0
+[02/19 05:18:50     36s] Total number of isolation cells: 0
+[02/19 05:18:50     36s] Total number of power switch cells: 0
+[02/19 05:18:50     36s] Total number of pulse generator cells: 0
+[02/19 05:18:50     36s] Total number of always on buffers: 0
+[02/19 05:18:50     36s] Total number of retention cells: 0
+[02/19 05:18:50     36s] List of usable buffers: BUF_X1 BUF_X2 BUF_X4 BUF_X8 BUF_X16 BUF_X32 CLKBUF_X1 CLKBUF_X2 CLKBUF_X3
+[02/19 05:18:50     36s] Total number of usable buffers: 9
+[02/19 05:18:50     36s] List of unusable buffers:
+[02/19 05:18:50     36s] Total number of unusable buffers: 0
+[02/19 05:18:50     36s] List of usable inverters: INV_X1 INV_X2 INV_X4 INV_X8 INV_X16 INV_X32
+[02/19 05:18:50     36s] Total number of usable inverters: 6
+[02/19 05:18:50     36s] List of unusable inverters:
+[02/19 05:18:50     36s] Total number of unusable inverters: 0
+[02/19 05:18:50     36s] List of identified usable delay cells:
+[02/19 05:18:50     36s] Total number of identified usable delay cells: 0
+[02/19 05:18:50     36s] List of identified unusable delay cells:
+[02/19 05:18:50     36s] Total number of identified unusable delay cells: 0
+[02/19 05:18:50     36s] Creating Cell Server, finished. 
+[02/19 05:18:50     36s] 
+[02/19 05:18:50     36s] No delay cells were detected in the set of buffers. Buffers will be used to fix hold violations.
+[02/19 05:18:50     36s] Deleting Cell Server ...
+[02/19 05:18:50     36s] Ending "Cell type marking" (total cpu=0:00:00.0, real=0:00:00.0, peak res=813.3M, current mem=813.3M)
+[02/19 05:18:50     36s] Creating Cell Server ...(0, 0, 0, 0)
+[02/19 05:18:50     36s] Summary for sequential cells identification: 
+[02/19 05:18:50     36s]   Identified SBFF number: 16
+[02/19 05:18:50     36s]   Identified MBFF number: 0
+[02/19 05:18:50     36s]   Identified SB Latch number: 0
+[02/19 05:18:50     36s]   Identified MB Latch number: 0
+[02/19 05:18:50     36s]   Not identified SBFF number: 0
+[02/19 05:18:50     36s]   Not identified MBFF number: 0
+[02/19 05:18:50     36s]   Not identified SB Latch number: 0
+[02/19 05:18:50     36s]   Not identified MB Latch number: 0
+[02/19 05:18:50     36s]   Number of sequential cells which are not FFs: 13
+[02/19 05:18:50     36s]  Visiting view : worst
+[02/19 05:18:50     36s]    : PowerDomain = none : Weighted F : unweighted  = 8.40 (1.000) with rcCorner = 0
+[02/19 05:18:50     36s]    : PowerDomain = none : Weighted F : unweighted  = 6.60 (1.000) with rcCorner = -1
+[02/19 05:18:50     36s]  Visiting view : fast
+[02/19 05:18:50     36s]    : PowerDomain = none : Weighted F : unweighted  = 6.00 (1.000) with rcCorner = 0
+[02/19 05:18:50     36s]    : PowerDomain = none : Weighted F : unweighted  = 4.50 (1.000) with rcCorner = -1
+[02/19 05:18:50     36s]  Setting StdDelay to 8.40
+[02/19 05:18:50     36s] Creating Cell Server, finished. 
+[02/19 05:18:50     36s] 
+[02/19 05:18:50     36s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:18:58     36s] <CMD> set init_verilog RCA_8.vg
+[02/19 05:18:58     36s] <CMD> set init_top_cell RCA_8
+[02/19 05:18:58     36s] <CMD> set init_mmmc_file template.view
+[02/19 05:18:58     36s] <CMD> set init_gnd_net VSS
+[02/19 05:18:58     36s] <CMD> set init_pwr_net VDD
+[02/19 05:18:58     36s] <CMD> set init_lef_file /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/lef/NangateOpenCellLibrary.lef
+[02/19 05:18:58     36s] <CMD> set ::TimeLib::tsgMarkCellLatchConstructFlag 1
+[02/19 05:18:58     36s] <CMD> set conf_qxconf_file NULL
+[02/19 05:18:58     36s] <CMD> set conf_qxlib_file NULL
+[02/19 05:18:58     36s] <CMD> set defHierChar /
+[02/19 05:18:58     36s] <CMD> set distributed_client_message_echo 1
+[02/19 05:18:58     36s] <CMD> set distributed_mmmc_disable_reports_auto_redirection 0
+[02/19 05:18:58     36s] <CMD> set enc_enable_print_mode_command_reset_options 1
+[02/19 05:18:58     36s] <CMD> set init_design_settop 0
+[02/19 05:18:58     36s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:58     36s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:58     36s] <CMD> set latch_time_borrow_mode max_borrow
+[02/19 05:18:58     36s] <CMD> set pegDefaultResScaleFactor 1
+[02/19 05:18:58     36s] <CMD> set pegDetailResScaleFactor 1
+[02/19 05:18:58     36s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:58     36s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:58     36s] <CMD> set report_inactive_arcs_format {from to when arc_type sense reason}
+[02/19 05:18:58     36s] **WARN: (IMPUDM-33):	Global variable "timing_enable_default_delay_arc" is obsolete and will be removed in a future release. The obsolete variable still works in this release, but to avoid this warning and to ensure compatibility with future releases, remove the obsolete variable from your script.
+[02/19 05:18:58     36s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:58     36s] <CMD> suppressMessage -silent GLOBAL-100
+[02/19 05:18:58     36s] <CMD> unsuppressMessage -silent GLOBAL-100
+[02/19 05:18:58     36s] **WARN: (IMPUDM-33):	Global variable "timing_enable_default_delay_arc" is obsolete and will be removed in a future release. The obsolete variable still works in this release, but to avoid this warning and to ensure compatibility with future releases, remove the obsolete variable from your script.
+[02/19 05:18:58     36s] <CMD> get_message -id GLOBAL-100 -suppress
+[02/19 05:18:58     36s] <CMD> suppressMessage -silent GLOBAL-100
+[02/19 05:18:58     36s] <CMD> unsuppressMessage -silent GLOBAL-100
+[02/19 05:18:58     36s] <CMD> set timing_enable_default_delay_arc 1
+[02/19 05:19:14     38s] <CMD> save_global RCA_8.globals
+[02/19 05:19:15     38s] <CMD> init_design
+[02/19 05:19:15     38s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:19:15     38s] **WARN: (IMPSYT-7329):	Cannot load design with init_design, after design is already in memory.  This command is skipped.
+[02/19 05:19:15     38s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[02/19 05:23:53     50s] 
+--------------------------------------------------------------------------------
+Exiting Innovus on Wed Feb 19 05:23:53 2025
+  Total CPU time:     0:00:50
+  Total real time:    0:13:50
+  Peak memory (main): 820.23MB
+
+[02/19 05:23:53     50s] 
+[02/19 05:23:53     50s] *** Memory Usage v#1 (Current mem = 1016.180M, initial mem = 268.238M) ***
+[02/19 05:23:53     50s] 
+[02/19 05:23:53     50s] *** Summary of all messages that are not suppressed in this session:
+[02/19 05:23:53     50s] Severity  ID               Count  Summary                                  
+[02/19 05:23:53     50s] WARNING   IMPEXT-2766         10  The sheet resistance for layer %s is not...
+[02/19 05:23:53     50s] WARNING   IMPEXT-2773         10  The via resistance between layers %s and...
+[02/19 05:23:53     50s] WARNING   IMPSYT-7329          1  Cannot load design with init_design, aft...
+[02/19 05:23:53     50s] WARNING   IMPOPT-801           1  Genus executable not found in PATH%s. In...
+[02/19 05:23:53     50s] WARNING   IMPUDM-33            6  Global variable "%s" is obsolete and wil...
+[02/19 05:23:53     50s] ERROR     TCLCMD-989          10  cannot open SDC file '%s' for mode '%s'  
+[02/19 05:23:53     50s] WARNING   TCLCMD-1461          1  Skipped unsupported command: %s          
+[02/19 05:23:53     50s] WARNING   TCLNL-330            1  set_input_delay on clock root '%s' is no...
+[02/19 05:23:53     50s] *** Message Summary: 30 warning(s), 10 error(s)
+[02/19 05:23:53     50s] 
+[02/19 05:23:53     50s] --- Ending "Innovus" (totcpu=0:00:50.9, real=0:13:49, mem=1016.2M) ---
