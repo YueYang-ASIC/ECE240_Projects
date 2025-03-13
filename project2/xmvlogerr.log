@@ -1,0 +1,14 @@
+ERROR (VERILOGIN-28): Failed to run the xmvlog analyzer because the analyzer binary could not be located.
+Either the analyzer binary does not exist in the shell search path or you do
+not have the required permissions on the file. Set the correct shell search
+path and update the file permissions before running the command again.
+ERROR (VERILOGIN-5): Unable to open the specified log file (xmvlog.log) for reading. Either the file does not
+exist or you do not have read permission on the file.
+INFO (VERILOGIN-215): Analyzing design file(s)  ...
+
+INFO (VERILOGIN-264): Done.
+
+ERROR (VERILOGIN-28): Failed to run the xmvlog analyzer because the analyzer binary could not be located.
+Either the analyzer binary does not exist in the shell search path or you do
+not have the required permissions on the file. Set the correct shell search
+path and update the file permissions before running the command again.

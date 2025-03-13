@@ -1,0 +1,65 @@
+\o Program:		@(#)$CDS: libManager version 6.1.8 - CAT37 01/13/2022 14:23 (sjfdcl1035) $
+\o Sub version:		sub-version  s233 
+\o Arguments:		-mpssession virtuoso15627 -mpshost nc-csuaf4-l01.apporto.com 
+\o Working Directory:	nc-csuaf4-l01.apporto.com:/home/c11879_csufresno/Documents/ECE240_Projects/project2
+\o 64-bit offsets
+\o Qt version: 		5.9.1
+\o Log file is "/home/c11879_csufresno/Documents/ECE240_Projects/project2/libManager.log".
+\o Opening libManager window.
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(cdsLibManager list(119 69 940 517))
+\o changeWorkingDir("/home/c11879_csufresno/Documents/ECE240_Projects/project2") unnecessary.
+\o ddSetForcedLib("") unnecessary.
+\o MPS service: map window
+\o Library Manager customization server connected.
+\a cdsLibManager->libListBox->value = "6T"
+\a cdsLibManager->libLineEdit->value = "6T"
+\a cdsLibManager->cellListBox->value = "6T_adder_sche"
+\a cdsLibManager->cellLineEdit->value = "6T_adder_sche"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a lmgrLogShowPopup("mainListPopup1" 179 48 2 "6T_adder_sche")
+\a cdsLibManager->editDeleteButton->value = t
+\a deleteForm->deleteFilterEdit->value = "*"
+\a deleteForm->notDeleteFilterEdit->value = "*"
+\a nrSetWindowVisibility(deleteForm "show")
+\a nrSetCurrentWindow(deleteForm)
+\a nrResizeWindow(deleteForm list(266 112 627 425))
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(445 242 268 91))
+\a mcMBXDLG->pushButton1->value = t
+\o Deleting cell "6T_adder_sche" from library "6T".
+\a nrSetWindowVisibility(workingDialogForm "show")
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(workingDialogForm)
+\o Deleted cell '6T/6T_adder_sche'.
+\o Deletion of 1 cell done.
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "6T"
+\a cdsLibManager->libLineEdit->value = "6T"
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(deleteForm list(266 38 627 425))
+\a nrResizeWindow(workingDialogForm list(445 184 268 133))
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a _lmgrCloseIconify("cdsLibManager" 1)
+\a nrSetWindowVisibility(cdsLibManager "show")
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a _lmgrCloseIconify("cdsLibManager" 1)
+\a nrSetWindowVisibility(cdsLibManager "show")
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a _lmgrCloseIconify("cdsLibManager" 1)
+\a nrSetWindowVisibility(cdsLibManager "show")
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->fileExitButton->value = t
+\o libManager is exiting.
+\a exit(0)

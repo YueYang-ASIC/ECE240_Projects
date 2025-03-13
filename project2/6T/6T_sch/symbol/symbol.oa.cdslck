@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      c11879_csufresno
+HostName                       nc-csuaf4-l01.apporto.com
+ProcessIdentifier              7851
+ProcessCreationTime_UTC        1741846860
+ProcessCreationTime_Readable   Thu Mar 13 06:21:00 2025 UTC
+AppIdentifier                  OA File System Design Manager
+OSType                         unix
+ReasonForPlacingEditLock       OpenAccess edit lock
+FilePathUsedToEditLock         /home/c11879_csufresno/Documents/ECE240_Projects/project2/6T/6T_sch/symbol/symbol.oa.cdslck.dirlck
+TimeEditLocked                 Thu Mar 13 06:27:03 2025 UTC

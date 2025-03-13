@@ -1,0 +1,17 @@
+// VerilogA for 6T, 2T_xor, veriloga
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module 2T_xor(XxorY, X, XB, Y);
+output XxorY;
+electrical XxorY;
+input X;
+electrical X;
+input XB;
+electrical XB;
+input Y;
+electrical Y;
+
+
+endmodule
