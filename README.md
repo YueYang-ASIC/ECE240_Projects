@@ -1,5 +1,8 @@
 # ECE240_Projects
 
+***IMPORTANT: When pulling new libaries, the cds.lib file will need to be updated manually as it is unique for each machine.***
+
+
 Project #1
 Due on 02/21/2025
 
