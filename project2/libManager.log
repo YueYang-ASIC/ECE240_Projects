@@ -1,76 +1,53 @@
 \o Program:		@(#)$CDS: libManager version 6.1.8 - CAT37 01/13/2022 14:23 (sjfdcl1035) $
 \o Sub version:		sub-version  s233 
-\o Arguments:		-unmapped -mpssession virtuoso8423 -mpshost nc-csuaf4-l01.apporto.com 
+\o Arguments:		-mpssession virtuoso29039 -mpshost nc-csuaf4-l01.apporto.com 
 \o Working Directory:	nc-csuaf4-l01.apporto.com:/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/project2
 \o 64-bit offsets
 \o Qt version: 		5.9.1
-\o changeWorkingDir("/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/project2") unnecessary.
-\o ddSetForcedLib("") unnecessary.
 \o Log file is "/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/project2/libManager.log".
 \o Opening libManager window.
-\a nrSetWindowVisibility(cdsLibManager "show")
-\o MPS service: map window
-\o Library Manager customization server connected.
 \a nrSetCurrentWindow(cdsLibManager)
 \a nrResizeWindow(cdsLibManager list(119 69 940 517))
-\a cdsLibManager->libListBox->value = "6T"
-\a cdsLibManager->libLineEdit->value = "6T"
-\a cdsLibManager->cellListBox->value = "6T_2_sim"
-\a cdsLibManager->cellLineEdit->value = "6T_2_sim"
+\o changeWorkingDir("/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/project2") unnecessary.
+\o ddSetForcedLib("") unnecessary.
+\o MPS service: map window
+\o Library Manager customization server connected.
+\a cdsLibManager->libListBox->value = "14T"
+\a cdsLibManager->libLineEdit->value = "14T"
+\a cdsLibManager->cellListBox->value = "14T_sim"
+\a cdsLibManager->cellLineEdit->value = "14T_sim"
 \a cdsLibManager->viewListBox->value = "schematic"
 \a cdsLibManager->viewLineEdit->value = "schematic"
 \a cdsLibManager->viewLineEdit->value = ""
 \a cdsLibManager->viewListBox->value = nil
-\a lmgrLogShowPopup("mainListPopup1" 111 60 2 "6T_2_sim")
+\a lmgrLogShowPopup("mainListPopup1" 46 94 2 "14T_sim")
 \a cdsLibManager->editDeleteButton->value = t
 \a deleteForm->deleteFilterEdit->value = "*"
 \a deleteForm->notDeleteFilterEdit->value = "*"
 \a nrSetWindowVisibility(deleteForm "show")
 \a nrSetCurrentWindow(deleteForm)
 \a nrResizeWindow(deleteForm list(266 112 627 425))
-\a deleteForm->notDeleteListBox->value = '("6T_2" )
-\a deleteForm->moveToDeleteButton->value = t
 \a deleteForm->OK->value = t
-\o QUESTION (CLM-199): The following 2 items are marked for deletion.  Are you sure?
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
 \a nrSetWindowVisibility(mcMBXDLG "show")
 \a nrSetCurrentWindow(mcMBXDLG)
 \a nrResizeWindow(mcMBXDLG list(445 242 268 91))
 \a mcMBXDLG->pushButton1->value = t
-\o Deleting 2 cells from library "6T".
+\o Deleting cell "14T_sim" from library "14T".
 \a nrSetWindowVisibility(workingDialogForm "show")
-\o Deleting cell "6T_2".
 \a nrSetCurrentWindow(cdsLibManager)
-\a nrSetCurrentWindow(workingDialogForm)
-\o Deleted cell '6T/6T_2'.
-\o Deleting cell "6T_2_sim".
-\o Deleted cell '6T/6T_2_sim'.
-\o Deletion of 2 cells done.
+\o Deleted cell '14T/14T_sim'.
+\o Deletion of 1 cell done.
+\a cdsLibManager->cellLineEdit->value = ""
 \a nrResizeWindow(workingDialogForm list(445 258 268 133))
 \a nrResizeWindow(deleteForm list(266 38 627 425))
-\a cdsLibManager->cellListBox->value = nil
-\a cdsLibManager->cellLineEdit->value = ""
+\a nrSetCurrentWindow(workingDialogForm)
 \a nrSetCurrentWindow(cdsLibManager)
 \a cdsLibManager->libListBox->value = nil
 \a cdsLibManager->libLineEdit->value = ""
-\a cdsLibManager->libListBox->value = "6T"
-\a cdsLibManager->libLineEdit->value = "6T"
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->libListBox->value = "14T"
+\a cdsLibManager->libLineEdit->value = "14T"
 \a nrResizeWindow(workingDialogForm list(445 184 268 133))
 \a nrSetWindowVisibility(cdsLibManager "hide")
 \a _lmgrCloseIconify("cdsLibManager" 1)
-\a cdsLibManager->libListBox->value = nil
-\a cdsLibManager->libLineEdit->value = ""
-\a cdsLibManager->libListBox->value = "6T"
-\a cdsLibManager->libLineEdit->value = "6T"
-\a nrSetWindowVisibility(cdsLibManager "show")
-\a nrSetCurrentWindow(cdsLibManager)
-\a nrSetWindowVisibility(cdsLibManager "hide")
-\a _lmgrCloseIconify("cdsLibManager" 1)
-\a nrSetWindowVisibility(cdsLibManager "show")
-\a nrSetCurrentWindow(cdsLibManager)
-\a nrSetWindowVisibility(cdsLibManager "hide")
-\a _lmgrCloseIconify("cdsLibManager" 1)
-\a nrSetWindowVisibility(cdsLibManager "show")
-\a nrSetCurrentWindow(cdsLibManager)
-\a cdsLibManager->fileExitButton->value = t
-\o libManager is exiting.
-\a exit(0)
