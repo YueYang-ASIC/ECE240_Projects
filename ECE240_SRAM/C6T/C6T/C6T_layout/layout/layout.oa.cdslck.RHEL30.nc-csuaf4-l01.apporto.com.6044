@@ -6,11 +6,11 @@
 LockStakeVersion               1.1
 LoginName                      c11879_csufresno
 HostName                       nc-csuaf4-l01.apporto.com
-ProcessIdentifier              29039
-ProcessCreationTime_UTC        1742487078
-ProcessCreationTime_Readable   Thu Mar 20 16:11:18 2025 UTC
+ProcessIdentifier              6044
+ProcessCreationTime_UTC        1741230728
+ProcessCreationTime_Readable   Thu Mar  6 03:12:08 2025 UTC
 AppIdentifier                  OA File System Design Manager
 OSType                         unix
 ReasonForPlacingEditLock       OpenAccess edit lock
-FilePathUsedToEditLock         /home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/project2/6T/6T_sim/schematic/sch.oa.cdslck
-TimeEditLocked                 Thu Mar 20 16:11:41 2025 UTC
+FilePathUsedToEditLock         /home/c11879_csufresno/Documents/ECE240_SRAM/C6T/C6T/C6T_layout/layout/layout.oa.cdslck
+TimeEditLocked                 Thu Mar  6 03:15:40 2025 UTC
