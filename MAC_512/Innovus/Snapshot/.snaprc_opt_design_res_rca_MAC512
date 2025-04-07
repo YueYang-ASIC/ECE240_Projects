@@ -1,0 +1,21 @@
+#----------------------------------------------------------
+# Snapshot/.snaprc_opt_design_res_rca_MAC512 : snapshot resource file                          
+# label = opt_design_res_rca_MAC512                                      
+#----------------------------------------------------------
+set tmpstr ""
+set tmpbar ""
+lappend tmpstr "dir" $sdir
+lappend tmpstr "label" opt_design_res_rca_MAC512
+lappend tmpstr "fplan" $sdir/ss_opt_design_res_rca_MAC512.fplan.gif
+lappend tmpstr "amoeba" $sdir/ss_opt_design_res_rca_MAC512.amoeba.gif
+lappend tmpstr "place" $sdir/ss_opt_design_res_rca_MAC512.place.gif
+lappend tmpstr "trgGlbOverflowPctH" 0.00402201343169
+lappend tmpstr "trgGlbOverflowPctV" 0.00166597251145
+lappend tmpbar "Congestion"
+lappend tmpstr "Congestion" 0.00568798594314
+lappend tmpbar WNS
+lappend tmpstr WNS -0.001
+lappend tmpbar TNS
+lappend tmpstr TNS -0.001
+lappend tmpbar Overlap
+lappend tmpstr Overlap 0

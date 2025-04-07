@@ -1,0 +1,756 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 10
+        -max_paths 10
+Design : MAC_512
+Version: S-2021.06-SP5-1
+Date   : Wed Apr  2 16:18:02 2025
+****************************************
+
+Operating Conditions: fast   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: A_reg_reg[83]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: acc_reg_reg[379]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MAC_512            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  A_reg_reg[83]/CK (DFFR_X1)               0.00       0.00 r
+  A_reg_reg[83]/Q (DFFR_X1)                0.14       0.14 r
+  U52784/ZN (XNOR2_X1)                     0.11       0.25 f
+  U52652/ZN (NAND2_X1)                     0.13       0.38 r
+  U31496/Z (BUF_X1)                        0.13       0.51 r
+  U31851/Z (BUF_X1)                        0.12       0.62 r
+  U36427/ZN (OAI22_X1)                     0.05       0.68 f
+  U10547/CO (FA_X1)                        0.07       0.74 f
+  U10479/CO (FA_X1)                        0.07       0.82 f
+  U10413/CO (FA_X1)                        0.07       0.89 f
+  U10349/CO (FA_X1)                        0.07       0.96 f
+  U10285/CO (FA_X1)                        0.07       1.03 f
+  U10222/CO (FA_X1)                        0.07       1.11 f
+  U10159/CO (FA_X1)                        0.07       1.18 f
+  U10097/CO (FA_X1)                        0.07       1.25 f
+  U10035/CO (FA_X1)                        0.06       1.31 f
+  U9973/S (FA_X1)                          0.09       1.39 r
+  U9972/S (FA_X1)                          0.08       1.48 f
+  U33813/ZN (NOR2_X1)                      0.04       1.52 r
+  U33357/ZN (OAI21_X1)                     0.04       1.56 f
+  U33358/ZN (AOI21_X1)                     0.06       1.61 r
+  U52829/ZN (OAI21_X1)                     0.04       1.66 f
+  U33306/ZN (AOI21_X1)                     0.05       1.71 r
+  U33053/ZN (OAI21_X1)                     0.03       1.74 f
+  U53000/ZN (AOI21_X1)                     0.10       1.84 r
+  U31587/Z (BUF_X1)                        0.12       1.96 r
+  U31683/Z (BUF_X1)                        0.13       2.09 r
+  U34860/ZN (OAI21_X1)                     0.05       2.14 f
+  U34858/ZN (XNOR2_X1)                     0.05       2.19 f
+  U8212/ZN (NOR2_X1)                       0.05       2.24 r
+  U6720/ZN (OAI21_X1)                      0.04       2.28 f
+  U6721/ZN (AOI21_X1)                      0.05       2.33 r
+  U9680/ZN (OAI21_X1)                      0.04       2.37 f
+  U9786/ZN (AOI21_X1)                      0.04       2.41 r
+  U9784/ZN (OAI21_X1)                      0.03       2.44 f
+  U9778/ZN (AOI21_X1)                      0.04       2.47 r
+  U9794/ZN (OAI21_X1)                      0.03       2.50 f
+  U5607/ZN (AOI21_X1)                      0.11       2.61 r
+  U5514/Z (BUF_X1)                         0.12       2.73 r
+  U5370/Z (BUF_X1)                         0.13       2.86 r
+  U7812/ZN (NOR2_X1)                       0.04       2.90 f
+  U7811/ZN (XNOR2_X1)                      0.05       2.95 f
+  U1671/Z (MUX2_X1)                        0.04       2.99 f
+  acc_reg_reg[379]/D (DFFR_X1)             0.01       3.00 f
+  data arrival time                                   3.00
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  acc_reg_reg[379]/CK (DFFR_X1)            0.00       3.80 r
+  library setup time                      -0.02       3.78
+  data required time                                  3.78
+  -----------------------------------------------------------
+  data required time                                  3.78
+  data arrival time                                  -3.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.78
+
+
+  Startpoint: A_reg_reg[83]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: acc_reg_reg[377]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MAC_512            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  A_reg_reg[83]/CK (DFFR_X1)               0.00       0.00 r
+  A_reg_reg[83]/Q (DFFR_X1)                0.14       0.14 r
+  U52784/ZN (XNOR2_X1)                     0.11       0.25 f
+  U52652/ZN (NAND2_X1)                     0.13       0.38 r
+  U31496/Z (BUF_X1)                        0.13       0.51 r
+  U31851/Z (BUF_X1)                        0.12       0.62 r
+  U36427/ZN (OAI22_X1)                     0.05       0.68 f
+  U10547/CO (FA_X1)                        0.07       0.74 f
+  U10479/CO (FA_X1)                        0.07       0.82 f
+  U10413/CO (FA_X1)                        0.07       0.89 f
+  U10349/CO (FA_X1)                        0.07       0.96 f
+  U10285/CO (FA_X1)                        0.07       1.03 f
+  U10222/CO (FA_X1)                        0.07       1.11 f
+  U10159/CO (FA_X1)                        0.07       1.18 f
+  U10097/CO (FA_X1)                        0.07       1.25 f
+  U10035/CO (FA_X1)                        0.06       1.31 f
+  U9973/S (FA_X1)                          0.09       1.39 r
+  U9972/S (FA_X1)                          0.08       1.48 f
+  U33813/ZN (NOR2_X1)                      0.04       1.52 r
+  U33357/ZN (OAI21_X1)                     0.04       1.56 f
+  U33358/ZN (AOI21_X1)                     0.06       1.61 r
+  U52829/ZN (OAI21_X1)                     0.04       1.66 f
+  U33306/ZN (AOI21_X1)                     0.05       1.71 r
+  U33053/ZN (OAI21_X1)                     0.03       1.74 f
+  U53000/ZN (AOI21_X1)                     0.10       1.84 r
+  U31587/Z (BUF_X1)                        0.12       1.96 r
+  U31683/Z (BUF_X1)                        0.13       2.09 r
+  U34860/ZN (OAI21_X1)                     0.05       2.14 f
+  U34858/ZN (XNOR2_X1)                     0.05       2.19 f
+  U8212/ZN (NOR2_X1)                       0.05       2.24 r
+  U6720/ZN (OAI21_X1)                      0.04       2.28 f
+  U6721/ZN (AOI21_X1)                      0.05       2.33 r
+  U9680/ZN (OAI21_X1)                      0.04       2.37 f
+  U9786/ZN (AOI21_X1)                      0.04       2.41 r
+  U9784/ZN (OAI21_X1)                      0.03       2.44 f
+  U9778/ZN (AOI21_X1)                      0.04       2.47 r
+  U9794/ZN (OAI21_X1)                      0.03       2.50 f
+  U5607/ZN (AOI21_X1)                      0.11       2.61 r
+  U5514/Z (BUF_X1)                         0.12       2.73 r
+  U5370/Z (BUF_X1)                         0.13       2.86 r
+  U7809/ZN (NOR2_X1)                       0.04       2.90 f
+  U7808/ZN (XNOR2_X1)                      0.05       2.95 f
+  U1673/Z (MUX2_X1)                        0.04       2.99 f
+  acc_reg_reg[377]/D (DFFR_X1)             0.01       3.00 f
+  data arrival time                                   3.00
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  acc_reg_reg[377]/CK (DFFR_X1)            0.00       3.80 r
+  library setup time                      -0.02       3.78
+  data required time                                  3.78
+  -----------------------------------------------------------
+  data required time                                  3.78
+  data arrival time                                  -3.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.78
+
+
+  Startpoint: A_reg_reg[83]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: acc_reg_reg[375]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MAC_512            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  A_reg_reg[83]/CK (DFFR_X1)               0.00       0.00 r
+  A_reg_reg[83]/Q (DFFR_X1)                0.14       0.14 r
+  U52784/ZN (XNOR2_X1)                     0.11       0.25 f
+  U52652/ZN (NAND2_X1)                     0.13       0.38 r
+  U31496/Z (BUF_X1)                        0.13       0.51 r
+  U31851/Z (BUF_X1)                        0.12       0.62 r
+  U36427/ZN (OAI22_X1)                     0.05       0.68 f
+  U10547/CO (FA_X1)                        0.07       0.74 f
+  U10479/CO (FA_X1)                        0.07       0.82 f
+  U10413/CO (FA_X1)                        0.07       0.89 f
+  U10349/CO (FA_X1)                        0.07       0.96 f
+  U10285/CO (FA_X1)                        0.07       1.03 f
+  U10222/CO (FA_X1)                        0.07       1.11 f
+  U10159/CO (FA_X1)                        0.07       1.18 f
+  U10097/CO (FA_X1)                        0.07       1.25 f
+  U10035/CO (FA_X1)                        0.06       1.31 f
+  U9973/S (FA_X1)                          0.09       1.39 r
+  U9972/S (FA_X1)                          0.08       1.48 f
+  U33813/ZN (NOR2_X1)                      0.04       1.52 r
+  U33357/ZN (OAI21_X1)                     0.04       1.56 f
+  U33358/ZN (AOI21_X1)                     0.06       1.61 r
+  U52829/ZN (OAI21_X1)                     0.04       1.66 f
+  U33306/ZN (AOI21_X1)                     0.05       1.71 r
+  U33053/ZN (OAI21_X1)                     0.03       1.74 f
+  U53000/ZN (AOI21_X1)                     0.10       1.84 r
+  U31587/Z (BUF_X1)                        0.12       1.96 r
+  U31683/Z (BUF_X1)                        0.13       2.09 r
+  U34860/ZN (OAI21_X1)                     0.05       2.14 f
+  U34858/ZN (XNOR2_X1)                     0.05       2.19 f
+  U8212/ZN (NOR2_X1)                       0.05       2.24 r
+  U6720/ZN (OAI21_X1)                      0.04       2.28 f
+  U6721/ZN (AOI21_X1)                      0.05       2.33 r
+  U9680/ZN (OAI21_X1)                      0.04       2.37 f
+  U9786/ZN (AOI21_X1)                      0.04       2.41 r
+  U9784/ZN (OAI21_X1)                      0.03       2.44 f
+  U9778/ZN (AOI21_X1)                      0.04       2.47 r
+  U9794/ZN (OAI21_X1)                      0.03       2.50 f
+  U5607/ZN (AOI21_X1)                      0.11       2.61 r
+  U5514/Z (BUF_X1)                         0.12       2.73 r
+  U5370/Z (BUF_X1)                         0.13       2.86 r
+  U7806/ZN (NOR2_X1)                       0.04       2.90 f
+  U7805/ZN (XNOR2_X1)                      0.05       2.95 f
+  U1675/Z (MUX2_X1)                        0.04       2.99 f
+  acc_reg_reg[375]/D (DFFR_X1)             0.01       3.00 f
+  data arrival time                                   3.00
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  acc_reg_reg[375]/CK (DFFR_X1)            0.00       3.80 r
+  library setup time                      -0.02       3.78
+  data required time                                  3.78
+  -----------------------------------------------------------
+  data required time                                  3.78
+  data arrival time                                  -3.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.78
+
+
+  Startpoint: A_reg_reg[83]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: acc_reg_reg[369]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MAC_512            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  A_reg_reg[83]/CK (DFFR_X1)               0.00       0.00 r
+  A_reg_reg[83]/Q (DFFR_X1)                0.14       0.14 r
+  U52784/ZN (XNOR2_X1)                     0.11       0.25 f
+  U52652/ZN (NAND2_X1)                     0.13       0.38 r
+  U31496/Z (BUF_X1)                        0.13       0.51 r
+  U31851/Z (BUF_X1)                        0.12       0.62 r
+  U36427/ZN (OAI22_X1)                     0.05       0.68 f
+  U10547/CO (FA_X1)                        0.07       0.74 f
+  U10479/CO (FA_X1)                        0.07       0.82 f
+  U10413/CO (FA_X1)                        0.07       0.89 f
+  U10349/CO (FA_X1)                        0.07       0.96 f
+  U10285/CO (FA_X1)                        0.07       1.03 f
+  U10222/CO (FA_X1)                        0.07       1.11 f
+  U10159/CO (FA_X1)                        0.07       1.18 f
+  U10097/CO (FA_X1)                        0.07       1.25 f
+  U10035/CO (FA_X1)                        0.06       1.31 f
+  U9973/S (FA_X1)                          0.09       1.39 r
+  U9972/S (FA_X1)                          0.08       1.48 f
+  U33813/ZN (NOR2_X1)                      0.04       1.52 r
+  U33357/ZN (OAI21_X1)                     0.04       1.56 f
+  U33358/ZN (AOI21_X1)                     0.06       1.61 r
+  U52829/ZN (OAI21_X1)                     0.04       1.66 f
+  U33306/ZN (AOI21_X1)                     0.05       1.71 r
+  U33053/ZN (OAI21_X1)                     0.03       1.74 f
+  U53000/ZN (AOI21_X1)                     0.10       1.84 r
+  U31587/Z (BUF_X1)                        0.12       1.96 r
+  U31683/Z (BUF_X1)                        0.13       2.09 r
+  U34860/ZN (OAI21_X1)                     0.05       2.14 f
+  U34858/ZN (XNOR2_X1)                     0.05       2.19 f
+  U8212/ZN (NOR2_X1)                       0.05       2.24 r
+  U6720/ZN (OAI21_X1)                      0.04       2.28 f
+  U6721/ZN (AOI21_X1)                      0.05       2.33 r
+  U9680/ZN (OAI21_X1)                      0.04       2.37 f
+  U9786/ZN (AOI21_X1)                      0.04       2.41 r
+  U9784/ZN (OAI21_X1)                      0.03       2.44 f
+  U9778/ZN (AOI21_X1)                      0.04       2.47 r
+  U9794/ZN (OAI21_X1)                      0.03       2.50 f
+  U5607/ZN (AOI21_X1)                      0.11       2.61 r
+  U5514/Z (BUF_X1)                         0.12       2.73 r
+  U5370/Z (BUF_X1)                         0.13       2.86 r
+  U7742/ZN (NOR2_X1)                       0.04       2.90 f
+  U7741/ZN (XNOR2_X1)                      0.05       2.95 f
+  U1681/Z (MUX2_X1)                        0.04       2.99 f
+  acc_reg_reg[369]/D (DFFR_X1)             0.01       3.00 f
+  data arrival time                                   3.00
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  acc_reg_reg[369]/CK (DFFR_X1)            0.00       3.80 r
+  library setup time                      -0.02       3.78
+  data required time                                  3.78
+  -----------------------------------------------------------
+  data required time                                  3.78
+  data arrival time                                  -3.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.78
+
+
+  Startpoint: A_reg_reg[83]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: acc_reg_reg[361]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MAC_512            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  A_reg_reg[83]/CK (DFFR_X1)               0.00       0.00 r
+  A_reg_reg[83]/Q (DFFR_X1)                0.14       0.14 r
+  U52784/ZN (XNOR2_X1)                     0.11       0.25 f
+  U52652/ZN (NAND2_X1)                     0.13       0.38 r
+  U31496/Z (BUF_X1)                        0.13       0.51 r
+  U31851/Z (BUF_X1)                        0.12       0.62 r
+  U36427/ZN (OAI22_X1)                     0.05       0.68 f
+  U10547/CO (FA_X1)                        0.07       0.74 f
+  U10479/CO (FA_X1)                        0.07       0.82 f
+  U10413/CO (FA_X1)                        0.07       0.89 f
+  U10349/CO (FA_X1)                        0.07       0.96 f
+  U10285/CO (FA_X1)                        0.07       1.03 f
+  U10222/CO (FA_X1)                        0.07       1.11 f
+  U10159/CO (FA_X1)                        0.07       1.18 f
+  U10097/CO (FA_X1)                        0.07       1.25 f
+  U10035/CO (FA_X1)                        0.06       1.31 f
+  U9973/S (FA_X1)                          0.09       1.39 r
+  U9972/S (FA_X1)                          0.08       1.48 f
+  U33813/ZN (NOR2_X1)                      0.04       1.52 r
+  U33357/ZN (OAI21_X1)                     0.04       1.56 f
+  U33358/ZN (AOI21_X1)                     0.06       1.61 r
+  U52829/ZN (OAI21_X1)                     0.04       1.66 f
+  U33306/ZN (AOI21_X1)                     0.05       1.71 r
+  U33053/ZN (OAI21_X1)                     0.03       1.74 f
+  U53000/ZN (AOI21_X1)                     0.10       1.84 r
+  U31587/Z (BUF_X1)                        0.12       1.96 r
+  U31683/Z (BUF_X1)                        0.13       2.09 r
+  U34860/ZN (OAI21_X1)                     0.05       2.14 f
+  U34858/ZN (XNOR2_X1)                     0.05       2.19 f
+  U8212/ZN (NOR2_X1)                       0.05       2.24 r
+  U6720/ZN (OAI21_X1)                      0.04       2.28 f
+  U6721/ZN (AOI21_X1)                      0.05       2.33 r
+  U9680/ZN (OAI21_X1)                      0.04       2.37 f
+  U9786/ZN (AOI21_X1)                      0.04       2.41 r
+  U9784/ZN (OAI21_X1)                      0.03       2.44 f
+  U9778/ZN (AOI21_X1)                      0.04       2.47 r
+  U9794/ZN (OAI21_X1)                      0.03       2.50 f
+  U5607/ZN (AOI21_X1)                      0.11       2.61 r
+  U5514/Z (BUF_X1)                         0.12       2.73 r
+  U5370/Z (BUF_X1)                         0.13       2.86 r
+  U7730/ZN (NOR2_X1)                       0.04       2.90 f
+  U7729/ZN (XNOR2_X1)                      0.05       2.95 f
+  U1689/Z (MUX2_X1)                        0.04       2.99 f
+  acc_reg_reg[361]/D (DFFR_X1)             0.01       3.00 f
+  data arrival time                                   3.00
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  acc_reg_reg[361]/CK (DFFR_X1)            0.00       3.80 r
+  library setup time                      -0.02       3.78
+  data required time                                  3.78
+  -----------------------------------------------------------
+  data required time                                  3.78
+  data arrival time                                  -3.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.78
+
+
+  Startpoint: A_reg_reg[83]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: acc_reg_reg[359]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MAC_512            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  A_reg_reg[83]/CK (DFFR_X1)               0.00       0.00 r
+  A_reg_reg[83]/Q (DFFR_X1)                0.14       0.14 r
+  U52784/ZN (XNOR2_X1)                     0.11       0.25 f
+  U52652/ZN (NAND2_X1)                     0.13       0.38 r
+  U31496/Z (BUF_X1)                        0.13       0.51 r
+  U31851/Z (BUF_X1)                        0.12       0.62 r
+  U36427/ZN (OAI22_X1)                     0.05       0.68 f
+  U10547/CO (FA_X1)                        0.07       0.74 f
+  U10479/CO (FA_X1)                        0.07       0.82 f
+  U10413/CO (FA_X1)                        0.07       0.89 f
+  U10349/CO (FA_X1)                        0.07       0.96 f
+  U10285/CO (FA_X1)                        0.07       1.03 f
+  U10222/CO (FA_X1)                        0.07       1.11 f
+  U10159/CO (FA_X1)                        0.07       1.18 f
+  U10097/CO (FA_X1)                        0.07       1.25 f
+  U10035/CO (FA_X1)                        0.06       1.31 f
+  U9973/S (FA_X1)                          0.09       1.39 r
+  U9972/S (FA_X1)                          0.08       1.48 f
+  U33813/ZN (NOR2_X1)                      0.04       1.52 r
+  U33357/ZN (OAI21_X1)                     0.04       1.56 f
+  U33358/ZN (AOI21_X1)                     0.06       1.61 r
+  U52829/ZN (OAI21_X1)                     0.04       1.66 f
+  U33306/ZN (AOI21_X1)                     0.05       1.71 r
+  U33053/ZN (OAI21_X1)                     0.03       1.74 f
+  U53000/ZN (AOI21_X1)                     0.10       1.84 r
+  U31587/Z (BUF_X1)                        0.12       1.96 r
+  U31683/Z (BUF_X1)                        0.13       2.09 r
+  U34860/ZN (OAI21_X1)                     0.05       2.14 f
+  U34858/ZN (XNOR2_X1)                     0.05       2.19 f
+  U8212/ZN (NOR2_X1)                       0.05       2.24 r
+  U6720/ZN (OAI21_X1)                      0.04       2.28 f
+  U6721/ZN (AOI21_X1)                      0.05       2.33 r
+  U9680/ZN (OAI21_X1)                      0.04       2.37 f
+  U9786/ZN (AOI21_X1)                      0.04       2.41 r
+  U9784/ZN (OAI21_X1)                      0.03       2.44 f
+  U9778/ZN (AOI21_X1)                      0.04       2.47 r
+  U9794/ZN (OAI21_X1)                      0.03       2.50 f
+  U5607/ZN (AOI21_X1)                      0.11       2.61 r
+  U5514/Z (BUF_X1)                         0.12       2.73 r
+  U5370/Z (BUF_X1)                         0.13       2.86 r
+  U7727/ZN (NOR2_X1)                       0.04       2.90 f
+  U7726/ZN (XNOR2_X1)                      0.05       2.95 f
+  U1691/Z (MUX2_X1)                        0.04       2.99 f
+  acc_reg_reg[359]/D (DFFR_X1)             0.01       3.00 f
+  data arrival time                                   3.00
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  acc_reg_reg[359]/CK (DFFR_X1)            0.00       3.80 r
+  library setup time                      -0.02       3.78
+  data required time                                  3.78
+  -----------------------------------------------------------
+  data required time                                  3.78
+  data arrival time                                  -3.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.78
+
+
+  Startpoint: A_reg_reg[83]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: acc_reg_reg[349]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MAC_512            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  A_reg_reg[83]/CK (DFFR_X1)               0.00       0.00 r
+  A_reg_reg[83]/Q (DFFR_X1)                0.14       0.14 r
+  U52784/ZN (XNOR2_X1)                     0.11       0.25 f
+  U52652/ZN (NAND2_X1)                     0.13       0.38 r
+  U31496/Z (BUF_X1)                        0.13       0.51 r
+  U31851/Z (BUF_X1)                        0.12       0.62 r
+  U36427/ZN (OAI22_X1)                     0.05       0.68 f
+  U10547/CO (FA_X1)                        0.07       0.74 f
+  U10479/CO (FA_X1)                        0.07       0.82 f
+  U10413/CO (FA_X1)                        0.07       0.89 f
+  U10349/CO (FA_X1)                        0.07       0.96 f
+  U10285/CO (FA_X1)                        0.07       1.03 f
+  U10222/CO (FA_X1)                        0.07       1.11 f
+  U10159/CO (FA_X1)                        0.07       1.18 f
+  U10097/CO (FA_X1)                        0.07       1.25 f
+  U10035/CO (FA_X1)                        0.06       1.31 f
+  U9973/S (FA_X1)                          0.09       1.39 r
+  U9972/S (FA_X1)                          0.08       1.48 f
+  U33813/ZN (NOR2_X1)                      0.04       1.52 r
+  U33357/ZN (OAI21_X1)                     0.04       1.56 f
+  U33358/ZN (AOI21_X1)                     0.06       1.61 r
+  U52829/ZN (OAI21_X1)                     0.04       1.66 f
+  U33306/ZN (AOI21_X1)                     0.05       1.71 r
+  U33053/ZN (OAI21_X1)                     0.03       1.74 f
+  U53000/ZN (AOI21_X1)                     0.10       1.84 r
+  U31587/Z (BUF_X1)                        0.12       1.96 r
+  U31683/Z (BUF_X1)                        0.13       2.09 r
+  U34860/ZN (OAI21_X1)                     0.05       2.14 f
+  U34858/ZN (XNOR2_X1)                     0.05       2.19 f
+  U8212/ZN (NOR2_X1)                       0.05       2.24 r
+  U6720/ZN (OAI21_X1)                      0.04       2.28 f
+  U6721/ZN (AOI21_X1)                      0.05       2.33 r
+  U9680/ZN (OAI21_X1)                      0.04       2.37 f
+  U9786/ZN (AOI21_X1)                      0.04       2.41 r
+  U9784/ZN (OAI21_X1)                      0.03       2.44 f
+  U9778/ZN (AOI21_X1)                      0.04       2.47 r
+  U9794/ZN (OAI21_X1)                      0.03       2.50 f
+  U5607/ZN (AOI21_X1)                      0.11       2.61 r
+  U5514/Z (BUF_X1)                         0.12       2.73 r
+  U5370/Z (BUF_X1)                         0.13       2.86 r
+  U7712/ZN (NOR2_X1)                       0.04       2.90 f
+  U7711/ZN (XNOR2_X1)                      0.05       2.95 f
+  U1701/Z (MUX2_X1)                        0.04       2.99 f
+  acc_reg_reg[349]/D (DFFR_X1)             0.01       3.00 f
+  data arrival time                                   3.00
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  acc_reg_reg[349]/CK (DFFR_X1)            0.00       3.80 r
+  library setup time                      -0.02       3.78
+  data required time                                  3.78
+  -----------------------------------------------------------
+  data required time                                  3.78
+  data arrival time                                  -3.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.78
+
+
+  Startpoint: A_reg_reg[83]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: acc_reg_reg[269]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MAC_512            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  A_reg_reg[83]/CK (DFFR_X1)               0.00       0.00 r
+  A_reg_reg[83]/Q (DFFR_X1)                0.14       0.14 r
+  U52784/ZN (XNOR2_X1)                     0.11       0.25 f
+  U52652/ZN (NAND2_X1)                     0.13       0.38 r
+  U31496/Z (BUF_X1)                        0.13       0.51 r
+  U31851/Z (BUF_X1)                        0.12       0.62 r
+  U36427/ZN (OAI22_X1)                     0.05       0.68 f
+  U10547/CO (FA_X1)                        0.07       0.74 f
+  U10479/CO (FA_X1)                        0.07       0.82 f
+  U10413/CO (FA_X1)                        0.07       0.89 f
+  U10349/CO (FA_X1)                        0.07       0.96 f
+  U10285/CO (FA_X1)                        0.07       1.03 f
+  U10222/CO (FA_X1)                        0.07       1.11 f
+  U10159/CO (FA_X1)                        0.07       1.18 f
+  U10097/CO (FA_X1)                        0.07       1.25 f
+  U10035/CO (FA_X1)                        0.06       1.31 f
+  U9973/S (FA_X1)                          0.09       1.39 r
+  U9972/S (FA_X1)                          0.08       1.48 f
+  U33813/ZN (NOR2_X1)                      0.04       1.52 r
+  U33357/ZN (OAI21_X1)                     0.04       1.56 f
+  U33358/ZN (AOI21_X1)                     0.06       1.61 r
+  U52829/ZN (OAI21_X1)                     0.04       1.66 f
+  U33306/ZN (AOI21_X1)                     0.05       1.71 r
+  U33053/ZN (OAI21_X1)                     0.03       1.74 f
+  U53000/ZN (AOI21_X1)                     0.10       1.84 r
+  U31587/Z (BUF_X1)                        0.12       1.96 r
+  U31683/Z (BUF_X1)                        0.13       2.09 r
+  U34860/ZN (OAI21_X1)                     0.05       2.14 f
+  U34858/ZN (XNOR2_X1)                     0.05       2.19 f
+  U8212/ZN (NOR2_X1)                       0.05       2.24 r
+  U6720/ZN (OAI21_X1)                      0.04       2.28 f
+  U6721/ZN (AOI21_X1)                      0.05       2.33 r
+  U9680/ZN (OAI21_X1)                      0.04       2.37 f
+  U9786/ZN (AOI21_X1)                      0.04       2.41 r
+  U9784/ZN (OAI21_X1)                      0.03       2.44 f
+  U9778/ZN (AOI21_X1)                      0.04       2.47 r
+  U9794/ZN (OAI21_X1)                      0.03       2.50 f
+  U5607/ZN (AOI21_X1)                      0.11       2.61 r
+  U5514/Z (BUF_X1)                         0.12       2.73 r
+  U5370/Z (BUF_X1)                         0.13       2.86 r
+  U7777/ZN (NOR2_X1)                       0.04       2.90 f
+  U7776/ZN (XNOR2_X1)                      0.05       2.95 f
+  U1781/Z (MUX2_X1)                        0.04       2.99 f
+  acc_reg_reg[269]/D (DFFR_X1)             0.01       3.00 f
+  data arrival time                                   3.00
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  acc_reg_reg[269]/CK (DFFR_X1)            0.00       3.80 r
+  library setup time                      -0.02       3.78
+  data required time                                  3.78
+  -----------------------------------------------------------
+  data required time                                  3.78
+  data arrival time                                  -3.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.78
+
+
+  Startpoint: A_reg_reg[83]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: acc_reg_reg[261]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MAC_512            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  A_reg_reg[83]/CK (DFFR_X1)               0.00       0.00 r
+  A_reg_reg[83]/Q (DFFR_X1)                0.14       0.14 r
+  U52784/ZN (XNOR2_X1)                     0.11       0.25 f
+  U52652/ZN (NAND2_X1)                     0.13       0.38 r
+  U31496/Z (BUF_X1)                        0.13       0.51 r
+  U31851/Z (BUF_X1)                        0.12       0.62 r
+  U36427/ZN (OAI22_X1)                     0.05       0.68 f
+  U10547/CO (FA_X1)                        0.07       0.74 f
+  U10479/CO (FA_X1)                        0.07       0.82 f
+  U10413/CO (FA_X1)                        0.07       0.89 f
+  U10349/CO (FA_X1)                        0.07       0.96 f
+  U10285/CO (FA_X1)                        0.07       1.03 f
+  U10222/CO (FA_X1)                        0.07       1.11 f
+  U10159/CO (FA_X1)                        0.07       1.18 f
+  U10097/CO (FA_X1)                        0.07       1.25 f
+  U10035/CO (FA_X1)                        0.06       1.31 f
+  U9973/S (FA_X1)                          0.09       1.39 r
+  U9972/S (FA_X1)                          0.08       1.48 f
+  U33813/ZN (NOR2_X1)                      0.04       1.52 r
+  U33357/ZN (OAI21_X1)                     0.04       1.56 f
+  U33358/ZN (AOI21_X1)                     0.06       1.61 r
+  U52829/ZN (OAI21_X1)                     0.04       1.66 f
+  U33306/ZN (AOI21_X1)                     0.05       1.71 r
+  U33053/ZN (OAI21_X1)                     0.03       1.74 f
+  U53000/ZN (AOI21_X1)                     0.10       1.84 r
+  U31587/Z (BUF_X1)                        0.12       1.96 r
+  U31683/Z (BUF_X1)                        0.13       2.09 r
+  U34860/ZN (OAI21_X1)                     0.05       2.14 f
+  U34858/ZN (XNOR2_X1)                     0.05       2.19 f
+  U8212/ZN (NOR2_X1)                       0.05       2.24 r
+  U6720/ZN (OAI21_X1)                      0.04       2.28 f
+  U6721/ZN (AOI21_X1)                      0.05       2.33 r
+  U9680/ZN (OAI21_X1)                      0.04       2.37 f
+  U9786/ZN (AOI21_X1)                      0.04       2.41 r
+  U9784/ZN (OAI21_X1)                      0.03       2.44 f
+  U9778/ZN (AOI21_X1)                      0.04       2.47 r
+  U9794/ZN (OAI21_X1)                      0.03       2.50 f
+  U5607/ZN (AOI21_X1)                      0.11       2.61 r
+  U5514/Z (BUF_X1)                         0.12       2.73 r
+  U5370/Z (BUF_X1)                         0.13       2.86 r
+  U7765/ZN (NOR2_X1)                       0.04       2.90 f
+  U7764/ZN (XNOR2_X1)                      0.05       2.95 f
+  U1789/Z (MUX2_X1)                        0.04       2.99 f
+  acc_reg_reg[261]/D (DFFR_X1)             0.01       3.00 f
+  data arrival time                                   3.00
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  acc_reg_reg[261]/CK (DFFR_X1)            0.00       3.80 r
+  library setup time                      -0.02       3.78
+  data required time                                  3.78
+  -----------------------------------------------------------
+  data required time                                  3.78
+  data arrival time                                  -3.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.78
+
+
+  Startpoint: A_reg_reg[83]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: acc_reg_reg[259]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MAC_512            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  A_reg_reg[83]/CK (DFFR_X1)               0.00       0.00 r
+  A_reg_reg[83]/Q (DFFR_X1)                0.14       0.14 r
+  U52784/ZN (XNOR2_X1)                     0.11       0.25 f
+  U52652/ZN (NAND2_X1)                     0.13       0.38 r
+  U31496/Z (BUF_X1)                        0.13       0.51 r
+  U31851/Z (BUF_X1)                        0.12       0.62 r
+  U36427/ZN (OAI22_X1)                     0.05       0.68 f
+  U10547/CO (FA_X1)                        0.07       0.74 f
+  U10479/CO (FA_X1)                        0.07       0.82 f
+  U10413/CO (FA_X1)                        0.07       0.89 f
+  U10349/CO (FA_X1)                        0.07       0.96 f
+  U10285/CO (FA_X1)                        0.07       1.03 f
+  U10222/CO (FA_X1)                        0.07       1.11 f
+  U10159/CO (FA_X1)                        0.07       1.18 f
+  U10097/CO (FA_X1)                        0.07       1.25 f
+  U10035/CO (FA_X1)                        0.06       1.31 f
+  U9973/S (FA_X1)                          0.09       1.39 r
+  U9972/S (FA_X1)                          0.08       1.48 f
+  U33813/ZN (NOR2_X1)                      0.04       1.52 r
+  U33357/ZN (OAI21_X1)                     0.04       1.56 f
+  U33358/ZN (AOI21_X1)                     0.06       1.61 r
+  U52829/ZN (OAI21_X1)                     0.04       1.66 f
+  U33306/ZN (AOI21_X1)                     0.05       1.71 r
+  U33053/ZN (OAI21_X1)                     0.03       1.74 f
+  U53000/ZN (AOI21_X1)                     0.10       1.84 r
+  U31587/Z (BUF_X1)                        0.12       1.96 r
+  U31683/Z (BUF_X1)                        0.13       2.09 r
+  U34860/ZN (OAI21_X1)                     0.05       2.14 f
+  U34858/ZN (XNOR2_X1)                     0.05       2.19 f
+  U8212/ZN (NOR2_X1)                       0.05       2.24 r
+  U6720/ZN (OAI21_X1)                      0.04       2.28 f
+  U6721/ZN (AOI21_X1)                      0.05       2.33 r
+  U9680/ZN (OAI21_X1)                      0.04       2.37 f
+  U9786/ZN (AOI21_X1)                      0.04       2.41 r
+  U9784/ZN (OAI21_X1)                      0.03       2.44 f
+  U9778/ZN (AOI21_X1)                      0.04       2.47 r
+  U9794/ZN (OAI21_X1)                      0.03       2.50 f
+  U5607/ZN (AOI21_X1)                      0.11       2.61 r
+  U5514/Z (BUF_X1)                         0.12       2.73 r
+  U5370/Z (BUF_X1)                         0.13       2.86 r
+  U7762/ZN (NOR2_X1)                       0.04       2.90 f
+  U7761/ZN (XNOR2_X1)                      0.05       2.95 f
+  U1791/Z (MUX2_X1)                        0.04       2.99 f
+  acc_reg_reg[259]/D (DFFR_X1)             0.01       3.00 f
+  data arrival time                                   3.00
+
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  acc_reg_reg[259]/CK (DFFR_X1)            0.00       3.80 r
+  library setup time                      -0.02       3.78
+  data required time                                  3.78
+  -----------------------------------------------------------
+  data required time                                  3.78
+  data arrival time                                  -3.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.78
+
+
+1

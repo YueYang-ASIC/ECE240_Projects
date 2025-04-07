@@ -1,0 +1,1 @@
+/home/c11879_csufresno/Documents/MAC_512/Innovus/MAC_512.sdc
