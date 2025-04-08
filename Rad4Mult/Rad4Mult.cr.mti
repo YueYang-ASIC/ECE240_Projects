@@ -1,0 +1,85 @@
+C:/Verilog_Projects/Rad4Mult/CLA4.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/CLA4.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CLA4
+
+Top level modules:
+	CLA4
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/CPA.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/CPA.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CPA
+
+Top level modules:
+	CPA
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/CLA256.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/CLA256.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CLA256
+
+Top level modules:
+	CLA256
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/Rad4Mult.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/Rad4Mult.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Rad4Mult
+
+Top level modules:
+	Rad4Mult
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/GPFA.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/GPFA.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module GPFA
+
+Top level modules:
+	GPFA
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/FA.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/FA.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module FA
+
+Top level modules:
+	FA
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/CLA64.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/CLA64.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CLA64
+
+Top level modules:
+	CLA64
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/CLA16.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/CLA16.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CLA16
+
+Top level modules:
+	CLA16
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/CSA.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/CSA.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CSA
+
+Top level modules:
+	CSA
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/CLA512.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/CLA512.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CLA512
+
+Top level modules:
+	CLA512
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/CLA_generator4.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/CLA_generator4.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CLA_generator4
+
+Top level modules:
+	CLA_generator4
+
+} {} {}} C:/Verilog_Projects/Rad4Mult/Rad4Mult_tb.v {1 {vlog -work work -stats=none C:/Verilog_Projects/Rad4Mult/Rad4Mult_tb.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Rad4MultTest
+
+Top level modules:
+	Rad4MultTest
+
+} {} {}}
