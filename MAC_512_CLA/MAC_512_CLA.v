@@ -1,0 +1,47 @@
+
+module MAC_512_CLA(
+    input           clk,
+    input           rst_n,       // active-low reset
+    input           en,          // enable signal
+    input   [127:0] A_in,
+    input   [127:0] B_in,
+    output  [511:0] acc_out
+);
+
+    // Internal registered signals
+    reg [127:0] A_reg, B_reg; 
+    reg [511:0] acc_reg;
+
+    //Internal wire signals
+    wire [511:0] CLA_sum;
+    wire [511:0] A_B_Quotient;
+
+
+    // Input registers
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            A_reg <= 128'd0;
+            B_reg <= 128'd0;
+        end else if (en) begin
+            A_reg <= A_in;
+            B_reg <= B_in;
+        end
+    end
+
+  assign A_B_Quotient = A_reg * B_reg;
+
+  CLA512 CLA(.A(acc_reg), .B(A_B_Quotient), .Ci(1'b0), .S(CLA_sum), .Cout());
+
+    // Multiply and accumulate
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin 
+            acc_reg <= 512'd0;
+        end else if (en) begin
+            acc_reg <= CLA_sum;          // Accumulate
+        end
+    end
+
+    // Output register
+    assign acc_out = acc_reg;
+
+endmodule 
