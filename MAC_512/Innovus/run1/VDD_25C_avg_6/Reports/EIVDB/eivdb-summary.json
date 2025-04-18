@@ -1,0 +1,33 @@
+{
+    "num_nets": "1",
+    "net_info": [
+        {
+            "die": "",
+            "net": "VDD",
+            "nominal_voltage": "0.899999976",
+            "power_or_ground": "power"
+        }
+    ],
+    "instance_voltage": [
+        {
+            "analysis_mode": "Avg",
+            "measurement_mode": "elapsed",
+            "min": "0.88911819458007812",
+            "max": "0.89642661809921265",
+            "average": "0.89084464286868048",
+            "size": "92064",
+            "die": "",
+            "net": "VDD"
+        },
+        {
+            "analysis_mode": "Worst",
+            "measurement_mode": "elapsed",
+            "min": "0.88911819458007812",
+            "max": "0.89642661809921265",
+            "average": "0.89084464286868048",
+            "size": "92064",
+            "die": "",
+            "net": "VDD"
+        }
+    ]
+}

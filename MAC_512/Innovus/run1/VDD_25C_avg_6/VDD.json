@@ -1,0 +1,39 @@
+{
+    "net_name": "VDD",
+    "smg": {
+        "config": {
+            "name": "VDD",
+            "output_path": ".\/run1\/VDD_25C_avg_6",
+            "nominal_voltage": "0.899999976"
+        },
+        "result": {
+            "DefInstData": {
+                "path": ".\/run1\/VDD_25C_avg_6\/VDD.defInstData",
+                "type": "proto::voltus.def_instdata_mgr.proto.DefInstDataManager"
+            },
+            "layerInfo": {
+                "path": ".\/run1\/VDD_25C_avg_6\/layerInfo",
+                "type": "proto.voltus.layer_manager.LayerManager"
+            },
+            "pgdb": {
+                "path": ".\/run1\/VDD_25C_avg_6"
+            },
+            "cellview": {
+                "path": ".\/run1\/VDD_25C_avg_6\/VDD.cellviews",
+                "type": "txt"
+            },
+            "pgv_table": {
+                "path": ".\/run1\/VDD_25C_avg_6\/VDD.pgv_table.rpt",
+                "type": "txt"
+            },
+            "grid_report": {
+                "path": ".\/run1\/VDD_25C_avg_6\/VDD.grid.report",
+                "type": "txt"
+            },
+            "missing_pgv": {
+                "path": ".\/run1\/VDD_25C_avg_6\/VDD.missingPGVData.protobuf",
+                "type": "protobuf.VOLTUS.SMGDATA.MissingPGV"
+            }
+        }
+    }
+}

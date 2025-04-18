@@ -1,0 +1,35 @@
+                     Cell Name |     Power-Grid View |      Number of Instances
+-------------------------------------------------------------------------------
+                       AND2_X1 |                Tech |                       67
+                      AOI21_X1 |                Tech |                      650
+                      AOI21_X2 |                Tech |                        1
+                        BUF_X1 |                Tech |                      990
+                        BUF_X2 |                Tech |                      264
+                       BUF_X32 |                Tech |                        9
+                        BUF_X4 |                Tech |                      380
+                        BUF_X8 |                Tech |                       14
+                     CLKBUF_X1 |                Tech |                     3989
+                     CLKBUF_X2 |                Tech |                       12
+                     CLKBUF_X3 |                Tech |                      824
+                       DFFR_X1 |                Tech |                      768
+                         FA_X1 |                Tech |                     8063
+                   FILLCELL_X1 |                Tech |                    41123
+                  FILLCELL_X16 |                Tech |                      431
+                  FILLCELL_X32 |                Tech |                      121
+                   FILLCELL_X4 |                Tech |                     7551
+                   FILLCELL_X8 |                Tech |                     2027
+                         HA_X1 |                Tech |                       63
+                        INV_X1 |                Tech |                     2011
+                        INV_X2 |                Tech |                       27
+                        INV_X4 |                Tech |                       32
+                       MUX2_X1 |                Tech |                      768
+                      NAND2_X1 |                Tech |                     1947
+                      NAND2_X2 |                Tech |                       12
+                      NAND2_X4 |                Tech |                        4
+                       NOR2_X1 |                Tech |                     1539
+                       NOR2_X2 |                Tech |                        1
+                      OAI21_X1 |                Tech |                      876
+                      OAI22_X1 |                Tech |                     8256
+                        OR2_X1 |                Tech |                      158
+                      XNOR2_X1 |                Tech |                     8893
+                       XOR2_X1 |                Tech |                      193

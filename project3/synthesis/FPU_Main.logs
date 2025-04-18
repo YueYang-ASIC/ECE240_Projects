@@ -1,0 +1,394 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+              Version S-2021.06-SP5-1 for linux64 - Mar 10, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+# dc-FPU_Main.tcl script 
+#
+# 2018/02/15  Added *_ANALYZE_SECTION comments to new Makefile can automatically
+#             add .v files to dc-*.tcl. Also updated some comments.
+# 2017/02/14  Reduced output_delay to 4% and input_delay to 3% of the clock 
+#             cycle time so very short critical paths are visible in timing 
+#             reports. Also changed clock_skew from 250ps to 5% of cycle time 
+#             so it will scale with clock frequency.
+# 2017/02/10  Uncommented "analyze -format verilog ./proc.v" line. It seems to
+#             be needed only the first time synthesis is run.
+# 2017/02/04  Changes for NanGate 45 nm library including new timing parameters
+# 2012/02/22  Changed:
+#               ungroup -all -flatten -simple_names
+#             to:
+#               if { [sizeof_collection [get_cells * -filter 
+#                  "is_hierarchical==true"]] > 0 } {
+#                  ungroup -all -flatten -simple_names
+#                  }
+# 2010/02/16  Updated commented path to vtvtlib25.db
+# 2009/02/12  Many parts re-written in new tcl version by Zhibin Xiao
+# 2006/01/30  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2004/02/05  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2003/05/22  Increased input_setup from 500 to 6000 (external input delay
+#             now 6ns instead of 9.5ns) so input paths don't show up at the
+#             top of timing reports so often.
+# 2003/05/15  Cleaned up a little
+# 2003/05/14  Written
+#
+# Debugging
+# list -designs
+# list -libraries
+# list -files 
+#
+# Add if you like:
+# Annotates inputs, but doesn't propagate through design to clear warnings.
+#   set_switching_activity -toggle_rate 0.25 -clock "clk" { "in31a" }
+# More power info
+#   report_power -net
+#   report_power -hier
+#   set_max_delay
+#   write -format db -output FPU_Main.db
+#
+# Doesn't work quite the way I expect
+#   NameDesign = FPU_Main    Set variable ok, but how to concatenate?
+#   write_rtl -format verilog -output FPU_Main.vg
+#===== Set: make sure you change design name elsewhere in this file
+set NameDesign "FPU_Main"
+FPU_Main
+#===== Set some timing parameters
+set CLK "clk"
+clk
+#===== All values are in units of ns for NanGate 45 nm library
+set clk_period      2.9
+2.9
+set clock_skew      [expr {$clk_period} * 0.05 ]
+0.145
+set input_setup     [expr {$clk_period} * 0.97 ]
+2.813
+set output_delay    [expr {$clk_period} * 0.04 ]
+0.116
+set input_delay     [expr {$clk_period} - {$input_setup}]
+0.087
+# It appears one "analyze" command is needed for each .v file. This works best
+# (only?) with one command line per module.
+analyze -format verilog FPU_Main.v
+Running PRESTO HDLC
+Compiling source file ./FPU_Main.v
+Presto compilation completed successfully.
+Loading db file '/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db'
+Information: Using CCS timing libraries. (TIM-024)
+Loading db file '/synopsys/Design_Compiler/libraries/syn/dw_foundation.sldb'
+1
+analyze -format verilog FloatingAddition.v
+Running PRESTO HDLC
+Compiling source file ./FloatingAddition.v
+Presto compilation completed successfully.
+1
+analyze -format verilog FloatingMultiplication.v
+Running PRESTO HDLC
+Compiling source file ./FloatingMultiplication.v
+Presto compilation completed successfully.
+1
+analyze -format verilog FloatingDivision.v
+Running PRESTO HDLC
+Compiling source file ./FloatingDivision.v
+Presto compilation completed successfully.
+1
+analyze -format verilog FloatingSqrt.v
+Running PRESTO HDLC
+Compiling source file ./FloatingSqrt.v
+Presto compilation completed successfully.
+1
+elaborate $NameDesign
+Loading db file '/usr/synopsys/syn/S-2021.06-SP5-1/libraries/syn/gtech.db'
+Loading db file '/usr/synopsys/syn/S-2021.06-SP5-1/libraries/syn/standard.sldb'
+  Loading link library 'NangateOpenCellLibrary'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Statistics for case statements in always block at line 22 in file
+	'./FPU_Main.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            25            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine FPU_Main line 22 in file
+		'./FPU_Main.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        O_reg        | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (FPU_Main)
+Elaborated 1 design.
+Current design is now 'FPU_Main'.
+Information: Building the design 'FloatingAddition'. (HDL-193)
+Error:  ./FloatingAddition.v:50: Loop exceeded maximum iteration limit. (ELAB-900)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'FloatingSqrt'. (HDL-193)
+Presto compilation completed successfully. (FloatingSqrt)
+Information: Building the design 'FloatingMultiplication'. (HDL-193)
+
+Inferred memory devices in process
+	in routine FloatingMultiplication line 15 in file
+		'./FloatingMultiplication.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     result_reg      | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (FloatingMultiplication)
+Information: Building the design 'FloatingDivision'. (HDL-193)
+Presto compilation completed successfully. (FloatingDivision)
+Warning: Design 'FPU_Main' has '3' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+current_design $NameDesign
+Current design is 'FPU_Main'.
+{FPU_Main}
+link
+
+  Linking design 'FPU_Main'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  NangateOpenCellLibrary (library) /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db
+  dw_foundation.sldb (library) /synopsys/Design_Compiler/libraries/syn/dw_foundation.sldb
+
+Information: Building the design 'FloatingAddition'. (HDL-193)
+Error:  ./FloatingAddition.v:50: Loop exceeded maximum iteration limit. (ELAB-900)
+*** Presto compilation terminated with 1 errors. ***
+Warning: Unable to resolve reference 'FloatingAddition' in 'FPU_Main'. (LINK-5)
+Warning: Unable to resolve reference 'FloatingAddition' in 'FloatingSqrt'. (LINK-5)
+Warning: Unable to resolve reference 'FloatingAddition' in 'FloatingDivision'. (LINK-5)
+0
+uniquify
+Information: Building the design 'FloatingAddition'. (HDL-193)
+Error:  ./FloatingAddition.v:50: Loop exceeded maximum iteration limit. (ELAB-900)
+*** Presto compilation terminated with 1 errors. ***
+Warning: Unable to resolve reference 'FloatingAddition' in 'FPU_Main'. (LINK-5)
+Warning: Unable to resolve reference 'FloatingAddition' in 'FloatingSqrt'. (LINK-5)
+Warning: Unable to resolve reference 'FloatingAddition' in 'FloatingDivision'. (LINK-5)
+Warning: Design 'FPU_Main' has '3' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Uniquified 35 instances of design 'FloatingMultiplication'. (OPT-1056)
+Information: Uniquified 4 instances of design 'FloatingDivision'. (OPT-1056)
+Error:  ./FloatingAddition.v:50: Loop exceeded maximum iteration limit. (ELAB-900)
+*** Presto compilation terminated with 1 errors. ***
+1
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+Warning: Design 'FPU_Main' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating graph... (UID-83)
+Warning: Design 'FPU_Main' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+set_max_area 0.0
+1
+#===== Timing and input/output load constraints
+create_clock $CLK -name $CLK -period $clk_period -waveform [list 0.0 [expr {$clk_period} / 2.0 ] ] 
+Warning: Design 'FPU_Main' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_clock_uncertainty $clock_skew $CLK
+Warning: Design 'FPU_Main' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+#set_clock_skew -plus_uncertainty $clock_skew $CLK
+#set_clock_skew -minus_uncertainty $clock_skew $CLK
+set_input_delay     $input_delay  -clock $CLK [all_inputs]
+Warning: Design 'FPU_Main' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+#remove_input_delay               -clock $CLK [all_inputs] 
+set_output_delay    $output_delay -clock $CLK [all_outputs]
+Warning: Design 'FPU_Main' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_load 1.5 [all_outputs]
+1
+compile -map_effort medium
+Warning: Design 'FPU_Main' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Setting attribute 'fix_multiple_port_nets' on design 'FPU_Main'. (UIO-59)
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | S-2021.06-DWBB_202106.5 |     *     |
+| Licensed DW Building Blocks        | S-2021.06-DWBB_202106.5 |     *     |
+============================================================================
+
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler                                           |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 1575           |
+| Number of User Hierarchies                              | 0              |
+| Sequential Cell Count                                   | 1152           |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+
+Information: There are 752 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'FPU_Main'
+Information: Building the design 'FloatingAddition'. (HDL-193)
+Error:  ./FloatingAddition.v:50: Loop exceeded maximum iteration limit. (ELAB-900)
+*** Presto compilation terminated with 1 errors. ***
+Warning: Unable to resolve reference 'FloatingAddition' in 'FPU_Main'. (LINK-5)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+#line 521
+SNPSee_4fa4e4c268cf00f79fb547392cb36d43
+SNPSee_d7a906659a0555a7c84c3c4a2733eb127f780cd4e8f32423
+SNPSee_e1f25da95939e8482dad9b6526cb3319eaa33e01825bbd12
+SNPSee_e1f25da95939e8482dad9b6526cb3319e2ed8885943572d8
+SNPSee_764322b8e115d4da72f85caffa5aa4ca
+SNPSee_6db3a3112d3e15b6e79f043c8fd3f7f2
+SNPSee_1c8ac67927dd1f3e859cafa0160cad513e901e580b544d96f9e247e1a5aa7dca
+SNPSee_1c8ac67927dd1f3e8e965d857df44c791a95b6f95dd380629aebba8585f37726
+SNPSee_9ae44b0a7645928a57bea7cbf2153b48
+SNPSee_aa02e183a7cf024d34cca063d674753beabd8a95813fcc14
+SNPSee_aa02e183a7cf024d34cca063d674753ba9f6b20733121d5df4a68669132115d31b4c8bde9d4057e8
+SNPSee_acd0528e0f608bdc0ba3dbae6b7c7f320cf507c776ac2a83
+SNPSee_fa47b8e35aa3d8271ff8cbdae717f5177c42855988e3d3bda040950093f7eeb9
+SNPSee_fa47b8e35aa3d8279331d736f90249e41aeedaf65c95ca4fc9c81af4c26a372e
+SNPSee_fa47b8e35aa3d8279331d736f90249e41117fad3c43cf3507b56f653ed2e6fdf
+SNPSee_fa47b8e35aa3d8279331d736f90249e4b0f78ce236499c50
+SNPSee_fa47b8e35aa3d8279331d736f90249e41aeedaf65c95ca4fb08bf3a72014ac4a
+SNPSee_9ad694e704a87c14f5ab6646f48124344945a710a4ec1fec4aacfbc74c8eb1c4
+SNPSee_c0e751d30aa20b458465fcf601c8a2a9
+SNPSee_f1a7bdbcb18468a93185207bba98c88b81ea241e6fd6e18e
+SNPSee_491529b53ce409253333d38c1284bc7c02bed1d340622c72280c34dc4b711545
+SNPSee_800cfa09c4312a2a658022cd459e34616900e8f99890a5ed
+SNPSee_7ea007f17721baa8c52712154029f5e48c5b42d17487296853bec6f509fb5cd7fb8e3aecaf9a59df5ceaf3227abcdf276664c5bfd5ca6b006d34e6f6d0022bb5aa6a0546020548c042f868058edbb564
+SNPSee_18ae1188a5a6482452f3b67abbc891010269f13ce0e30d67
+SNPSee_57415c5b07ec5e8b8118f96e6212a2c42c69fd3f49376c0d
+SNPSee_1ac40924fdff8310f5184d6eb67c5798036a89169a27d790
+SNPSee_a00aeeb47fd325df3eff4946e57739a1
+SNPSee_5b9e0c983f97901fa4e0af164abe7efeb24c5f4c6136879c869b2b88ca4e26329cbb10d1a609855d
+SNPSee_59511b0144537c36c6614840eb25b067
+SNPSee_dfcfd18c870f576645dec230cc55940481eea9a4962927b3b2419a5f9f3803d6e6d6151e8a6657b75c63db485ae230e97b8a0dd27c2cdfedd6e7ab8b3504080f
+SNPSee_18ae1188a5a6482452f3b67abbc891010269f13ce0e30d67
+SNPSee_57415c5b07ec5e8b8118f96e6212a2c42c69fd3f49376c0d
+SNPSee_1ac40924fdff8310f5184d6eb67c5798036a89169a27d790
+SNPSee_eb883b8643ac3618e46fbd7d90d84cd1d9cf41f1ea1de2433ad64196cf3fcc2ce0cf4135a98ecf06
+SNPSee_c9aef8ff45700e7498f09e7fe7ec58c036cd580d7ddf92c3
+SNPSee_d188ae5ca31ec51f7cba18dffac171b0221ec425774837558df4ddc3322fc732e06cbd83d58883e1
+SNPSee_3221a15a6f1a35304e1e2a6725c055e64954ed411c02b8fea588b35e0540b178b78986c80d1d5eb53d84afadfe38b7c2
+SNPSee_3221a15a6f1a3530a06e6740411df9e026698cb37d965801c2f87fce0f07c0f8
+SNPSee_76d6cca1ef29382ca84b036280d53dca
+SNPSee_a8c67c391924da59bb0a6e836c77e2d8
+main
+__libc_start_main
+SNPSee_d06eed713327be76
+
+
+The tool has just encountered a fatal error:
+
+If you encountered this fatal error when using the most recent
+Synopsys release, submit this stack trace and a test case that
+reproduces the problem to the Synopsys Support Center by using
+Enter A Call at http://solvnet.synopsys.com/EnterACall.
+
+* For information about the latest software releases, go to the Synopsys
+  SolvNet Release Library at http://solvnet.synopsys.com/ReleaseLibrary.
+
+* For information about required Operating System patches, go to
+  http://www.synopsys.com/support
+
+
+Release = 'S-2021.06-SP5-1'  Architecture = 'linux64'  Program = 'dc_shell'
+Exec = '/usr/synopsys/syn/S-2021.06-SP5-1/linux64/syn/bin/common_shell_exec'
+
+'13908634 224167793 224170202 224168925 300710614 46912570357296 138425247 224173150 133284531 133289001 133217575 133220514 128922383 128962197 128967444 59453060 59487453 59497290 59501266 59502549 59502718 59249441 59422160 59441439 53616524 52276042 222194149 222388670 310442028 310462023 310469759 222506326 222233791 222304431 222388670 310442028 310462023 222369720 222378520 47490295 47534294 47534781 47536551 13927230 12798601 46912643827029'
+
+Stack trace for crashing thread
+-------------------------------
+SNPSee_72fe6ee5e6adf88ac107a01d196ffb8ed40842348ffb0f8b+36
+SNPSee_f1ee00d2049be34bc9fa2aabd0709c661b77ea09a2cd7785+443
+SNPSee_b0111077a1564ec2f03c23d0bb102089cced107fffe7abc9+209
+SNPSee_616b6e047c741ff1baf571efe85d3536eac68d027a1be0e0030a066449e92897+186
+SNPSee_b5b74bb29e23928e271a046254d5c62e+77
+SNPSee_3da1e8e388eef22c4cad96049bb507e323902e731626b6f85a1de23e01dcfb84+988
+_L_unlock_13+52
+SNPSee_2251c9f72116309ebb5cd26dd73b386b42c01d4b85772c53+31
+SNPSee_2130a99d717c9b5f+117
+SNPSee_cbbbfc20b87366f381a61eb9ce1bd0d788d59bd3e67cd2c1+31
+SNPSee_d176b4fe4f7023390bb6b1ba1a13a371+78
+SNPSee_d296f6a868e931c8805354af1fc8449f0e97627663a0d6bf+9331
+SNPSee_9311ff424045a56551eaf55d8d90d9713083b9798fa8b0b6+1769
+SNPSee_1c8ac67927dd1f3e859cafa0160cad513e901e580b544d96f9e247e1a5aa7dca+343
+SNPSee_1c8ac67927dd1f3e8e965d857df44c791a95b6f95dd380629aebba8585f37726+162
+SNPSee_9ae44b0a7645928a57bea7cbf2153b48+2223
+SNPSee_aa02e183a7cf024d34cca063d674753beabd8a95813fcc14+3013
+SNPSee_aa02e183a7cf024d34cca063d674753ba9f6b20733121d5df4a68669132115d31b4c8bde9d4057e8+164
+SNPSee_acd0528e0f608bdc0ba3dbae6b7c7f320cf507c776ac2a83+1028
+SNPSee_fa47b8e35aa3d8271ff8cbdae717f5177c42855988e3d3bda040950093f7eeb9+461
+SNPSee_fa47b8e35aa3d8279331d736f90249e41aeedaf65c95ca4fc9c81af4c26a372e+970
+SNPSee_fa47b8e35aa3d8279331d736f90249e41117fad3c43cf3507b56f653ed2e6fdf+194
+SNPSee_fa47b8e35aa3d8279331d736f90249e4b0f78ce236499c50+197
+SNPSee_fa47b8e35aa3d8279331d736f90249e41aeedaf65c95ca4fb08bf3a72014ac4a+110
+SNPSee_9ad694e704a87c14f5ab6646f48124344945a710a4ec1fec4aacfbc74c8eb1c4+881
+SNPSee_c0e751d30aa20b458465fcf601c8a2a9+8736
+SNPSee_f1a7bdbcb18468a93185207bba98c88b81ea241e6fd6e18e+3759
+SNPSee_491529b53ce409253333d38c1284bc7c02bed1d340622c72280c34dc4b711545+30172
+SNPSee_800cfa09c4312a2a658022cd459e34616900e8f99890a5ed+2554
+SNPSee_7ea007f17721baa8c52712154029f5e48c5b42d17487296853bec6f509fb5cd7fb8e3aecaf9a59df5ceaf3227abcdf276664c5bfd5ca6b006d34e6f6d0022bb5aa6a0546020548c042f868058edbb564+117
+SNPSee_18ae1188a5a6482452f3b67abbc891010269f13ce0e30d67+3230
+SNPSee_57415c5b07ec5e8b8118f96e6212a2c42c69fd3f49376c0d+124
+SNPSee_1ac40924fdff8310f5184d6eb67c5798036a89169a27d790+71
+SNPSee_a00aeeb47fd325df3eff4946e57739a1+1439
+SNPSee_5b9e0c983f97901fa4e0af164abe7efeb24c5f4c6136879c869b2b88ca4e26329cbb10d1a609855d+326
+SNPSee_59511b0144537c36c6614840eb25b067+1295
+SNPSee_dfcfd18c870f576645dec230cc55940481eea9a4962927b3b2419a5f9f3803d6e6d6151e8a6657b75c63db485ae230e97b8a0dd27c2cdfedd6e7ab8b3504080f+1119
+SNPSee_18ae1188a5a6482452f3b67abbc891010269f13ce0e30d67+3230
+SNPSee_57415c5b07ec5e8b8118f96e6212a2c42c69fd3f49376c0d+124
+SNPSee_1ac40924fdff8310f5184d6eb67c5798036a89169a27d790+71
+SNPSee_eb883b8643ac3618e46fbd7d90d84cd1d9cf41f1ea1de2433ad64196cf3fcc2ce0cf4135a98ecf06+1304
+SNPSee_c9aef8ff45700e7498f09e7fe7ec58c036cd580d7ddf92c3+168
+SNPSee_d188ae5ca31ec51f7cba18dffac171b0221ec425774837558df4ddc3322fc732e06cbd83d58883e1+295
+SNPSee_3221a15a6f1a35304e1e2a6725c055e64954ed411c02b8fea588b35e0540b178b78986c80d1d5eb53d84afadfe38b7c2+582
+SNPSee_3221a15a6f1a3530a06e6740411df9e026698cb37d965801c2f87fce0f07c0f8+349
+SNPSee_76d6cca1ef29382ca84b036280d53dca+71
+SNPSee_a8c67c391924da59bb0a6e836c77e2d8+5390
+main+9
+__libc_start_main+245
+SNPSee_d06eed713327be76+41
+
+A detailed stack trace has been captured in /home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/project3/synthesis/Synopsys_stack_trace_31614.txt.
+
+A snapshot of runtime data has been captured in /home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/project3/synthesis/crte_000031614.txt

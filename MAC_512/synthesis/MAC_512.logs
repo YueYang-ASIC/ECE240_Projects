@@ -81,16 +81,16 @@ MAC_512
 set CLK "clk"
 clk
 #===== All values are in units of ns for NanGate 45 nm library
-set clk_period      4
-4
+set clk_period      2.9
+2.9
 set clock_skew      [expr {$clk_period} * 0.05 ]
-0.2
+0.145
 set input_setup     [expr {$clk_period} * 0.97 ]
-3.88
+2.813
 set output_delay    [expr {$clk_period} * 0.04 ]
-0.16
+0.116
 set input_delay     [expr {$clk_period} - {$input_setup}]
-0.12
+0.087
 # It appears one "analyze" command is needed for each .v file. This works best
 # (only?) with one command line per module.
 analyze -format verilog MAC_512.v
@@ -219,20 +219,20 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:56  133301.1      0.00       0.0     169.9                          
-    0:00:56  133301.1      0.00       0.0     169.9                          
-    0:00:56  133301.1      0.00       0.0     169.9                          
-    0:00:56  133301.1      0.00       0.0     169.9                          
-    0:00:56  133301.1      0.00       0.0     169.9                          
-    0:01:05   75224.3      0.00       0.0       0.0                          
-    0:01:08   74610.1      0.00       0.0       0.0                          
-    0:01:09   74610.1      0.00       0.0       0.0                          
-    0:01:09   74610.1      0.00       0.0       0.0                          
-    0:01:09   74610.1      0.00       0.0       0.0                          
-    0:01:09   74610.1      0.00       0.0       0.0                          
-    0:01:09   74610.1      0.00       0.0       0.0                          
-    0:01:09   74610.1      0.00       0.0       0.0                          
-    0:01:09   74610.1      0.00       0.0       0.0                          
+    0:01:35  111772.1      0.00       0.0     149.9                          
+    0:01:35  111772.1      0.00       0.0     149.9                          
+    0:01:35  111772.1      0.00       0.0     149.9                          
+    0:01:35  111772.1      0.00       0.0     149.9                          
+    0:01:35  111772.1      0.00       0.0     149.9                          
+    0:01:44   74915.2      0.00       0.0       0.0                          
+    0:01:47   74313.5      0.00       0.0       0.0                          
+    0:01:48   74313.5      0.00       0.0       0.0                          
+    0:01:48   74313.5      0.00       0.0       0.0                          
+    0:01:48   74313.5      0.00       0.0       0.0                          
+    0:01:48   74313.5      0.00       0.0       0.0                          
+    0:01:48   74313.5      0.00       0.0       0.0                          
+    0:01:48   74313.5      0.00       0.0       0.0                          
+    0:01:48   74313.5      0.00       0.0       0.0                          
 
 
 
@@ -243,9 +243,9 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:01:09   74610.1      0.00       0.0       0.0                          
-    0:01:09   74610.1      0.00       0.0       0.0                          
-    0:01:09   74610.1      0.00       0.0       0.0                          
+    0:01:48   74313.5      0.00       0.0       0.0                          
+    0:01:48   74313.5      0.00       0.0       0.0                          
+    0:01:48   74313.0      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (max_area 0)
@@ -255,42 +255,44 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:01:09   74610.1      0.00       0.0       0.0                          
-    0:01:09   74610.1      0.00       0.0       0.0                          
-    0:01:12   74234.5      0.00       0.0       0.0                          
-    0:01:13   74042.7      0.00       0.0       0.0                          
-    0:01:13   74014.5      0.00       0.0       0.0                          
-    0:01:14   74008.9      0.00       0.0       0.0                          
-    0:01:14   74008.9      0.00       0.0       0.0                          
-    0:01:14   74008.9      0.00       0.0       0.0                          
-    0:01:14   74008.9      0.00       0.0       0.0                          
-    0:01:15   73557.2      0.00       0.0       0.0                          
-    0:01:15   73557.2      0.00       0.0       0.0                          
-    0:01:15   73557.2      0.00       0.0       0.0                          
-    0:01:15   73557.2      0.00       0.0       0.0                          
-    0:01:15   73557.2      0.00       0.0       0.0                          
-    0:01:15   73557.2      0.00       0.0       0.0                          
-    0:01:16   73400.8      0.00       0.0       0.0                          
-    0:01:16   73324.2      0.00       0.0       0.0                          
-    0:01:18   73245.2      0.00       0.0       0.0                          
-    0:01:18   73167.8      0.00       0.0       0.0                          
-    0:01:19   73091.2      0.00       0.0       0.0                          
-    0:01:20   73013.0      0.00       0.0       0.0                          
-    0:01:20   72957.9      0.00       0.0       0.0                          
-    0:01:20   72900.5      0.00       0.0       0.0                          
-    0:01:21   72842.2      0.00       0.0       0.0                          
-    0:01:21   72781.6      0.00       0.0       0.0                          
-    0:01:21   72730.5      0.00       0.0       0.0                          
-    0:01:22   72657.9      0.00       0.0       0.0                          
-    0:01:22   72602.8      0.00       0.0       0.0                          
-    0:01:23   72578.9      0.00       0.0       0.0                          
-    0:01:26   72569.3      0.00       0.0       0.0                          
-    0:01:26   72569.3      0.00       0.0       0.0                          
-    0:01:26   72569.3      0.00       0.0       0.0                          
-    0:01:26   72569.3      0.00       0.0       0.0                          
-    0:01:26   72569.3      0.00       0.0       0.0                          
-    0:01:26   72569.3      0.00       0.0       0.0                          
-    0:01:26   72569.3      0.00       0.0       0.0                          
+    0:01:48   74313.0      0.00       0.0       0.0                          
+    0:01:48   74313.0      0.00       0.0       0.0                          
+    0:01:51   73936.6      0.00       0.0       0.0                          
+    0:01:52   73745.0      0.00       0.0       0.0                          
+    0:01:53   73718.4      0.00       0.0       0.0                          
+    0:01:53   73712.1      0.00       0.0       0.0                          
+    0:01:53   73712.1      0.00       0.0       0.0                          
+    0:01:53   73712.1      0.00       0.0       0.0                          
+    0:01:53   73712.1      0.00       0.0       0.0                          
+    0:01:54   73558.6      0.00       0.0       0.0                          
+    0:01:54   73558.6      0.00       0.0       0.0                          
+    0:01:54   73558.6      0.00       0.0       0.0                          
+    0:01:54   73558.6      0.00       0.0       0.0                          
+    0:01:54   73558.6      0.00       0.0       0.0                          
+    0:01:54   73558.6      0.00       0.0       0.0                          
+    0:01:55   73401.4      0.00       0.0       0.0                          
+    0:01:56   73324.0      0.00       0.0       0.0                          
+    0:01:56   73245.0      0.00       0.0       0.0                          
+    0:01:57   73166.0      0.00       0.0       0.0                          
+    0:01:58   73095.7      0.00       0.0       0.0                          
+    0:01:59   73015.1      0.00       0.0       0.0                          
+    0:01:59   72956.1      0.00       0.0       0.0                          
+    0:01:59   72901.8      0.00       0.0       0.0                          
+    0:01:59   72842.8      0.00       0.0       0.0                          
+    0:02:00   72796.5      0.00       0.0       0.0                          
+    0:02:01   72721.5      0.00       0.0       0.0                          
+    0:02:01   72651.3      0.00       0.0       0.0                          
+    0:02:02   72601.8      0.00       0.0       0.0                          
+    0:02:02   72592.2      0.00       0.0       0.0                          
+    0:02:02   72580.2      0.00       0.0       0.0                          
+    0:02:04   72579.4      0.00       0.0       0.0                          
+    0:02:05   72579.4      0.00       0.0       0.0                          
+    0:02:06   72579.4      0.00       0.0       0.0                          
+    0:02:06   72579.4      0.00       0.0       0.0                          
+    0:02:06   72579.4      0.00       0.0       0.0                          
+    0:02:06   72579.4      0.00       0.0       0.0                          
+    0:02:06   72579.4      0.00       0.0       0.0                          
+    0:02:06   72579.4      0.00       0.0       0.0                          
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -310,13 +312,13 @@ Information: Added key list 'DesignWare' to design 'MAC_512'. (DDB-72)
 # compile -map_effort medium    # May help, or maybe not
 #===== Reports
 write -format verilog -output MAC_512.vg -hierarchy $NameDesign
-Writing verilog file '/home/c11879_csufresno/Documents/MAC_512/MAC_512.vg'.
+Writing verilog file '/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/MAC_512/synthesis/MAC_512.vg'.
 1
 write_sdc	MAC_512.sdc
 1
 write_sdf	MAC_512.sdf
 Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
-Information: Writing timing information to file '/home/c11879_csufresno/Documents/MAC_512/MAC_512.sdf'. (WT-3)
+Information: Writing timing information to file '/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/MAC_512/synthesis/MAC_512.sdf'. (WT-3)
 Information: Updating design information... (UID-85)
 1
 report_area               > MAC_512.area
@@ -346,7 +348,7 @@ check_design
 ****************************************
 check_design summary:
 Version:     S-2021.06-SP5-1
-Date:        Wed Apr  2 16:18:03 2025
+Date:        Tue Apr  8 20:37:36 2025
 ****************************************
 
                    Name                                            Total
@@ -355,14 +357,14 @@ Nets                                                                2
     Unloaded nets (LINT-2)                                          2
 --------------------------------------------------------------------------------
 
-Warning: In design 'MAC_512', net 'n2307' driven by pin 'U2308/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'MAC_512', net 'n2306' driven by pin 'U2307/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'MAC_512', net 'n2308' driven by pin 'U2308/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'MAC_512', net 'n2307' driven by pin 'U2307/**logic_0**' has no loads. (LINT-2)
 1
 exit
 
 Memory usage for this session 702 Mbytes.
 Memory usage for this session including child processes 702 Mbytes.
-CPU usage for this session 96 seconds ( 0.03 hours ).
-Elapsed time for this session 101 seconds ( 0.03 hours ).
+CPU usage for this session 135 seconds ( 0.04 hours ).
+Elapsed time for this session 139 seconds ( 0.04 hours ).
 
 Thank you...

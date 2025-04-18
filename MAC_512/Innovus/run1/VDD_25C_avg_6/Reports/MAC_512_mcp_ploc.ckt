@@ -1,0 +1,23 @@
+.SUBCKT dummy
++ VDDvsrc1
++ VDDvsrc2
+
+*Header information for model connection protocol
+*[MCP Begin]
+*[MCP Version] 1.1
+*[Structure Type] DIE
+*[MCP Source] voltus_rail64 Version v20.10-p006_1 (04/14/2020 13:12:28)
+
+*[Coordinate Unit] um
+*[Connection] MAC_512 dummy 2
+*[Connection Type] PKG
+*[REM]
+*[REM] List of pins for power nets
+*[REM]
+*[Power Nets]
+*VDDvsrc1 VDDvsrc1 VDD 339.205 245.215
+*VDDvsrc2 VDDvsrc2 VDD 4.05 208.785
+*[MCP End]
+*End of header information for model connection protocol
+
+.ENDS dummy

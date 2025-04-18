@@ -1,0 +1,72 @@
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*  Voltus Scheduler (RC extraction scheduler)
+*  Copyright 2013 Cadence Design Systems, Inc.
+*  Version: v20.10-p006_1 (04/14/2020 13:12:28)
+*  Excecutable: /usr/local/cadence/installs/INNOVUS201/tools.lnx86/ssvtools/bin/64bit/voltus_scheduler
+*  Command Line: -nt 1 -usecellid -session_file ./work/sfe.session -prev_session_file ./work/sfe.session.prev -cmd ./work/voltus_scheduler.cmd 
+*  Run by c11879_csufresno on Wed Apr 16 00:12:46 2025
+*  Hostname: nc-csuaf4-l01.apporto.com
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+Started Voltus Scheduler at 00:12:45 04/16/2025
+
+Extraction option setup as:
+setenv gray_data NONE
+setenv enable_cluster_overhang_via false
+setenv enable_dfm_mask_conflict_shape false
+Begin Preparing Data for Parasitic Extraction
+ * Begin Load cell library
+ * Ended Load cell library: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=7.50MB/4512.11MB/2865.02MB) TimeFromStart: 1.51s Mem: 7.39MB
+
+ * Begin Pre-parse DEF and build hierachy
+ * Ended Pre-parse DEF and build hierachy: (cpu=0:00:01, real=0:00:01, mem(process/total/peak)=49.66MB/4552.11MB/2865.02MB) TimeFromStart: 3.25s Mem: 49.64MB
+
+ * Begin Flatten, partition and dump design
+ * Begin Create cell name DB
+ * Ended Create cell name DB: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=569.02MB/5322.54MB/2865.02MB) TimeFromStart: 3.43s Mem: 568.96MB
+
+ * Begin Write cell name DB
+ * Ended Write cell name DB: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=569.02MB/5322.54MB/2865.02MB) TimeFromStart: 3.44s Mem: 569.02MB
+
+ * Ended Flatten, partition and dump design: (cpu=0:00:00, real=0:00:01, mem(process/total/peak)=569.32MB/5322.54MB/2865.02MB) TimeFromStart: 4.68s Mem: 569.16MB
+
+Extracting following DFM effects:
+MetalFill        : n/a
+WEE Effects      : n/a
+Erosion Effects  : n/a
+T/B Enlargements : n/a
+R(w) Effects     : n/a
+R(w,s) Effects   : n/a
+R(sw,st) Effects : n/a
+TC(w) Effects    : n/a
+Some effects indicate n/a because of non-availability of relevant input data (or) requested to be off.
+Ended Preparing Data for Parasitic Extraction: (cpu=0:00:03, real=0:00:03, mem(process/total/peak)=31.00MB/5322.49MB/2865.02MB)
+
+Finished Voltus Scheduler at 00:12:49 04/16/2025 (cpu=0:00:03, real=0:00:04, peak mem=2862.29MB)
+Current Innovus resource usage: (total cpu=0:28:03, real=0:28:24, mem=2323.97MB)
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*  Voltus Scheduler (RC extraction scheduler)
+*  Copyright 2013 Cadence Design Systems, Inc.
+*  Version: v20.10-p006_1 (04/14/2020 13:12:28)
+*  Excecutable: /usr/local/cadence/installs/INNOVUS201/tools.lnx86/ssvtools/bin/64bit/voltus_scheduler
+*  Command Line: -skip_prep -nt 1 -usecellid -session_file ./work/sfe.session -prev_session_file ./work/sfe.session.prev -cmd ./work/voltus_scheduler.cmd -zx /usr/local/cadence/installs/INNOVUS201/tools.lnx86/ssvtools/bin/64bit/voltus_extractor 
+*  Run by c11879_csufresno on Wed Apr 16 00:12:49 2025
+*  Hostname: nc-csuaf4-l01.apporto.com
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+Started Voltus Scheduler at 00:12:48 04/16/2025
+
+Extraction option setup as:
+setenv gray_data NONE
+setenv enable_cluster_overhang_via false
+setenv enable_dfm_mask_conflict_shape false
+Begin Parasitic Extraction
+Extracting Progress:
+    0% at 00:12:49 04/16/2025
+Extraction command for partition 0: /usr/local/cadence/installs/INNOVUS201/tools.lnx86/ssvtools/bin/64bit/voltus_extractor -vstorm -partition 0 -partition_bbox 0 -2147483648 3435200 2147483647 -sfedb ./work/SFEDB -cachedir /tmp/innovus_temp_25740_nc-csuaf4-l01.apporto.com_c11879_csufresno_tM809d/zx_tmp_nc-csuaf4-l01.apporto.com_6022/KUbnox -cmd ./work/VDD.cmd
+  100% at 00:13:06 04/16/2025
+Ended Parasitic Extraction: (cpu=0:00:09, real=0:00:16, mem(process/total/peak)=9.02MB/4503.07MB/2865.02MB)
+
+Finished Voltus Scheduler at 00:13:06 04/16/2025 (cpu=0:00:09, real=0:00:18, peak mem=2603.09MB)
+Current Innovus resource usage: (total cpu=0:28:03, real=0:28:41, mem=2302.14MB)

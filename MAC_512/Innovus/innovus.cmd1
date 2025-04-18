@@ -1,7 +1,7 @@
 #######################################################
 #                                                     
 #  Innovus Command Logging File                     
-#  Created on Sun Apr  6 15:53:47 2025                
+#  Created on Tue Apr 15 22:25:35 2025                
 #                                                     
 #######################################################
 
@@ -13,6 +13,18 @@
 #@(#)CDS: CPE v20.10-p006
 #@(#)CDS: IQuantus/TQuantus 19.1.3-s155 (64bit) Sun Nov 3 18:26:52 PST 2019 (Linux 2.6.32-431.11.2.el6.x86_64)
 
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+win
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+win
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+win
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+win
 set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
 suppressMessage ENCEXT-2799
 win
@@ -32,9 +44,21 @@ set enc_enable_print_mode_command_reset_options 1
 set init_design_settop 0
 get_message -id GLOBAL-100 -suppress
 get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
 set latch_time_borrow_mode max_borrow
 set pegDefaultResScaleFactor 1
 set pegDetailResScaleFactor 1
+get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
+get_message -id GLOBAL-100 -suppress
 get_message -id GLOBAL-100 -suppress
 get_message -id GLOBAL-100 -suppress
 set report_inactive_arcs_format {from to when arc_type sense reason}
@@ -44,671 +68,325 @@ unsuppressMessage -silent GLOBAL-100
 get_message -id GLOBAL-100 -suppress
 suppressMessage -silent GLOBAL-100
 unsuppressMessage -silent GLOBAL-100
-set timing_enable_default_delay_arc 1
-init_design
-loadFPlan MAC_512.fp
-setDesignMode -process 45
-getPlaceMode -place_hierarchical_flow -quiet
-report_message -start_cmd
-getRouteMode -maxRouteLayer -quiet
-getRouteMode -user -maxRouteLayer
-getPlaceMode -user -maxRouteLayer
-getPlaceMode -quiet -adaptiveFlowMode
-getPlaceMode -timingDriven -quiet
-getPlaceMode -adaptive -quiet
-getPlaceMode -relaxSoftBlockageMode -quiet
-getPlaceMode -user -relaxSoftBlockageMode
-getPlaceMode -ignoreScan -quiet
-getPlaceMode -user -ignoreScan
-getPlaceMode -repairPlace -quiet
-getPlaceMode -user -repairPlace
-getPlaceMode -inPlaceOptMode -quiet
-getPlaceMode -quiet -bypassFlowEffortHighChecking
-getDesignMode -quiet -siPrevention
-getPlaceMode -exp_slack_driven -quiet
-um::push_snapshot_stack
-getDesignMode -quiet -flowEffort
-getDesignMode -highSpeedCore -quiet
-getPlaceMode -quiet -adaptive
-set spgFlowInInitialPlace 1
-getPlaceMode -sdpAlignment -quiet
-getPlaceMode -softGuide -quiet
-getPlaceMode -useSdpGroup -quiet
-getPlaceMode -sdpAlignment -quiet
-getPlaceMode -enableDbSaveAreaPadding -quiet
-getPlaceMode -quiet -wireLenOptEffort
-getPlaceMode -sdpPlace -quiet
-getPlaceMode -exp_slack_driven -quiet
-getPlaceMode -sdpPlace -quiet
-getPlaceMode -groupHighLevelClkGate -quiet
-setvar spgRptErrorForScanConnection 0
-getPlaceMode -place_global_exp_allow_missing_scan_chain -quiet
-getPlaceMode -place_check_library -quiet
-getPlaceMode -trimView -quiet
-getPlaceMode -expTrimOptBeforeTDGP -quiet
-getPlaceMode -quiet -useNonTimingDeleteBufferTree
-getPlaceMode -congEffort -quiet
-getPlaceMode -relaxSoftBlockageMode -quiet
-getPlaceMode -user -relaxSoftBlockageMode
-getPlaceMode -ignoreScan -quiet
-getPlaceMode -user -ignoreScan
-getPlaceMode -repairPlace -quiet
-getPlaceMode -user -repairPlace
-getPlaceMode -congEffort -quiet
-getPlaceMode -fp -quiet
-getPlaceMode -timingDriven -quiet
-getPlaceMode -user -timingDriven
-getPlaceMode -fastFp -quiet
-getPlaceMode -clusterMode -quiet
-get_proto_model -type_match {flex_module flex_instgroup} -committed -name -tcl
-getPlaceMode -inPlaceOptMode -quiet
-getPlaceMode -quiet -bypassFlowEffortHighChecking
-getPlaceMode -ultraCongEffortFlow -quiet
-getPlaceMode -forceTiming -quiet
-getPlaceMode -fp -quiet
-getPlaceMode -fastfp -quiet
-getPlaceMode -timingDriven -quiet
-getPlaceMode -fp -quiet
-getPlaceMode -fastfp -quiet
-getPlaceMode -powerDriven -quiet
-getExtractRCMode -quiet -engine
-getAnalysisMode -quiet -clkSrcPath
-getAnalysisMode -quiet -clockPropagation
-getAnalysisMode -quiet -cppr
-setExtractRCMode -engine preRoute
-setAnalysisMode -clkSrcPath false -clockPropagation forcedIdeal
-getPlaceMode -exp_slack_driven -quiet
-isAnalysisModeSetup
-getPlaceMode -quiet -place_global_exp_solve_unbalance_path
-getPlaceMode -quiet -NMPsuppressInfo
-getPlaceMode -quiet -place_global_exp_wns_focus_v2
-getPlaceMode -enableDistPlace -quiet
-getPlaceMode -quiet -clusterMode
-getPlaceMode -wl_budget_mode -quiet
-setPlaceMode -reset -place_global_exp_balance_buffer_chain
-getPlaceMode -wl_budget_mode -quiet
-setPlaceMode -reset -place_global_exp_balance_pipeline
-getPlaceMode -place_global_exp_balance_buffer_chain -quiet
-getPlaceMode -place_global_exp_balance_pipeline -quiet
-getPlaceMode -tdgpMemFlow -quiet
-getPlaceMode -user -resetCombineRFLevel
-getPlaceMode -quiet -resetCombineRFLevel
-setPlaceMode -resetCombineRFLevel 1000
-setvar spgSpeedupBuildVSM 1
-getPlaceMode -tdgpResetCteTG -quiet
-getPlaceMode -macroPlaceMode -quiet
-getPlaceMode -enableDistPlace -quiet
-getPlaceMode -exp_slack_driven -quiet
-getPlaceMode -place_global_ignore_spare -quiet
-getPlaceMode -enableDistPlace -quiet
-getPlaceMode -quiet -expNewFastMode
-setPlaceMode -expHiddenFastMode 1
-setPlaceMode -reset -ignoreScan
-getPlaceMode -quiet -place_global_exp_auto_finish_floorplan
-colorizeGeometry
-getPlaceMode -quiet -IOSlackAdjust
-getPlaceMode -tdgpCteZeroDelayModeDelBuf -quiet
-set_global timing_enable_zero_delay_analysis_mode true
-getPlaceMode -quiet -useNonTimingDeleteBufferTree
-getPlaceMode -quiet -prePlaceOptSimplifyNetlist
-getPlaceMode -quiet -enablePrePlaceOptimizations
-getPlaceMode -quiet -prePlaceOptDecloneInv
-deleteBufferTree -decloneInv
-getPlaceMode -tdgpCteZeroDelayModeDelBuf -quiet
-set_global timing_enable_zero_delay_analysis_mode false
-getAnalysisMode -quiet -honorClockDomains
-getPlaceMode -honorUserPathGroup -quiet
-getAnalysisMode -quiet -honorClockDomains
-set delaycal_use_default_delay_limit 101
-set delaycal_default_net_delay 0
-set delaycal_default_net_load 0
-set delaycal_default_net_load_ignore_for_ilm 0
-getAnalysisMode -clkSrcPath -quiet
-getAnalysisMode -clockPropagation -quiet
-getAnalysisMode -checkType -quiet
-buildTimingGraph
-getDelayCalMode -ignoreNetLoad -quiet
-getDelayCalMode -ignoreNetLoad -quiet
-setDelayCalMode -ignoreNetLoad true -quiet
-get_global timing_enable_path_group_priority
-get_global timing_constraint_enable_group_path_resetting
-set_global timing_enable_path_group_priority false
-set_global timing_constraint_enable_group_path_resetting false
-getOptMode -allowPreCTSClkSrcPaths -quiet
-set_global _is_ipo_interactive_path_groups 1
-group_path -name in2reg_tmp.3141 -from {0x508 0x50b} -to 0x50c -ignore_source_of_trigger_arc
-getOptMode -allowPreCTSClkSrcPaths -quiet
-set_global _is_ipo_interactive_path_groups 1
-group_path -name in2out_tmp.3141 -from {0x50f 0x512} -to 0x513 -ignore_source_of_trigger_arc
-set_global _is_ipo_interactive_path_groups 1
-group_path -name reg2reg_tmp.3141 -from 0x515 -to 0x516
-set_global _is_ipo_interactive_path_groups 1
-group_path -name reg2out_tmp.3141 -from 0x519 -to 0x51a
-setPathGroupOptions reg2reg_tmp.3141 -effortLevel high
-reset_path_group -name reg2out_tmp.3141
-set_global _is_ipo_interactive_path_groups 0
-reset_path_group -name in2reg_tmp.3141
-set_global _is_ipo_interactive_path_groups 0
-reset_path_group -name in2out_tmp.3141
-set_global _is_ipo_interactive_path_groups 0
-reset_path_group -name reg2reg_tmp.3141
-set_global _is_ipo_interactive_path_groups 0
-setDelayCalMode -ignoreNetLoad false
-set delaycal_use_default_delay_limit 1000
-set delaycal_default_net_delay 1000ps
-set delaycal_default_net_load 0.5pf
-set delaycal_default_net_load_ignore_for_ilm 0
-all_setup_analysis_views
-getPlaceMode -place_global_exp_ignore_low_effort_path_groups -quiet
-getPlaceMode -exp_slack_driven -quiet
-getAnalysisMode -quiet -honorClockDomains
-getPlaceMode -ignoreUnproperPowerInit -quiet
-getPlaceMode -quiet -expSkipGP
-setDelayCalMode -engine feDc
-createBasicPathGroups -quiet
-psp::embedded_egr_init_
-psp::embedded_egr_term_
-psp::embedded_egr_init_
-psp::embedded_egr_term_
-psp::embedded_egr_init_
-psp::embedded_egr_term_
-reset_path_group
-set_global _is_ipo_interactive_path_groups 0
-scanReorder
-setDelayCalMode -engine aae
-all_setup_analysis_views
-getPlaceMode -exp_slack_driven -quiet
-set_global timing_enable_path_group_priority $gpsPrivate::optSave_ctePGPriority
-set_global timing_constraint_enable_group_path_resetting $gpsPrivate::optSave_ctePGResetting
-getPlaceMode -quiet -tdgpAdjustNetWeightBySlack
-get_ccopt_clock_trees *
-getPlaceMode -exp_insert_guidance_clock_tree -quiet
-getPlaceMode -exp_cluster_based_high_fanout_buffering -quiet
-getPlaceMode -place_global_exp_incr_skp_preserve_mode_v2 -quiet
-getPlaceMode -quiet -place_global_exp_netlist_balance_flow
-getPlaceMode -quiet -timingEffort
-getAnalysisMode -quiet -honorClockDomains
-getPlaceMode -honorUserPathGroup -quiet
-getAnalysisMode -quiet -honorClockDomains
-set delaycal_use_default_delay_limit 101
-set delaycal_default_net_delay 0
-set delaycal_default_net_load 0
-set delaycal_default_net_load_ignore_for_ilm 0
-getAnalysisMode -clkSrcPath -quiet
-getAnalysisMode -clockPropagation -quiet
-getAnalysisMode -checkType -quiet
-buildTimingGraph
-getDelayCalMode -ignoreNetLoad -quiet
-getDelayCalMode -ignoreNetLoad -quiet
-setDelayCalMode -ignoreNetLoad true -quiet
-get_global timing_enable_path_group_priority
-get_global timing_constraint_enable_group_path_resetting
-set_global timing_enable_path_group_priority false
-set_global timing_constraint_enable_group_path_resetting false
-getOptMode -allowPreCTSClkSrcPaths -quiet
-set_global _is_ipo_interactive_path_groups 1
-group_path -name in2reg_tmp.3141 -from {0x524 0x527} -to 0x528 -ignore_source_of_trigger_arc
-getOptMode -allowPreCTSClkSrcPaths -quiet
-set_global _is_ipo_interactive_path_groups 1
-group_path -name in2out_tmp.3141 -from {0x52b 0x52e} -to 0x52f -ignore_source_of_trigger_arc
-set_global _is_ipo_interactive_path_groups 1
-group_path -name reg2reg_tmp.3141 -from 0x531 -to 0x532
-set_global _is_ipo_interactive_path_groups 1
-group_path -name reg2out_tmp.3141 -from 0x535 -to 0x536
-setPathGroupOptions reg2reg_tmp.3141 -effortLevel high
-reset_path_group -name reg2out_tmp.3141
-set_global _is_ipo_interactive_path_groups 0
-reset_path_group -name in2reg_tmp.3141
-set_global _is_ipo_interactive_path_groups 0
-reset_path_group -name in2out_tmp.3141
-set_global _is_ipo_interactive_path_groups 0
-reset_path_group -name reg2reg_tmp.3141
-set_global _is_ipo_interactive_path_groups 0
-setDelayCalMode -ignoreNetLoad false
-set delaycal_use_default_delay_limit 1000
-set delaycal_default_net_delay 1000ps
-set delaycal_default_net_load 0.5pf
-set delaycal_default_net_load_ignore_for_ilm 0
-all_setup_analysis_views
-getPlaceMode -place_global_exp_ignore_low_effort_path_groups -quiet
-getPlaceMode -exp_slack_driven -quiet
-getPlaceMode -quiet -cong_repair_commit_clock_net_route_attr
-getPlaceMode -enableDbSaveAreaPadding -quiet
-getPlaceMode -quiet -wireLenOptEffort
-setPlaceMode -reset -improveWithPsp
-getPlaceMode -quiet -debugGlobalPlace
-getPlaceMode -congRepair -quiet
-getPlaceMode -fp -quiet
-getPlaceMode -user -rplaceIncrNPClkGateAwareMode
-getPlaceMode -user -congRepairMaxIter
-getPlaceMode -quiet -congRepairPDClkGateMode4
-setPlaceMode -rplaceIncrNPClkGateAwareMode 4
-getPlaceMode -quiet -expCongRepairPDOneLoop
-setPlaceMode -congRepairMaxIter 1
-getPlaceMode -quickCTS -quiet
-get_proto_model -type_match {flex_module flex_instgroup} -committed -name -tcl
-getPlaceMode -congRepairForceTrialRoute -quiet
-getPlaceMode -user -congRepairForceTrialRoute
-setPlaceMode -congRepairForceTrialRoute true
-::goMC::is_advanced_metrics_collection_enabled
-congRepair
-::goMC::is_advanced_metrics_collection_enabled
-::goMC::is_advanced_metrics_collection_enabled
-::goMC::is_advanced_metrics_collection_enabled
-setPlaceMode -reset -congRepairForceTrialRoute
-getPlaceMode -quiet -congRepairPDClkGateMode4
-setPlaceMode -reset -rplaceIncrNPClkGateAwareMode
-setPlaceMode -reset -congRepairMaxIter
-getPlaceMode -congRepairCleanupPadding -quiet
-getPlaceMode -quiet -wireLenOptEffort
-all_setup_analysis_views
-getPlaceMode -exp_slack_driven -quiet
-set_global timing_enable_path_group_priority $gpsPrivate::optSave_ctePGPriority
-set_global timing_constraint_enable_group_path_resetting $gpsPrivate::optSave_ctePGResetting
-getPlaceMode -place_global_exp_incr_skp_preserve_mode_v2 -quiet
-getPlaceMode -quiet -place_global_exp_netlist_balance_flow
-getPlaceMode -quiet -timingEffort
-getPlaceMode -tdgpDumpStageTiming -quiet
-getPlaceMode -quiet -tdgpAdjustNetWeightBySlack
-getPlaceMode -trimView -quiet
-getOptMode -quiet -viewOptPolishing
-getOptMode -quiet -fastViewOpt
-spInternalUse deleteViewOptManager
-spInternalUse tdgp clearSkpData
-setAnalysisMode -clkSrcPath true -clockPropagation sdcControl
-getPlaceMode -exp_slack_driven -quiet
-setExtractRCMode -engine preRoute
-setPlaceMode -reset -relaxSoftBlockageMode
-setPlaceMode -reset -ignoreScan
-setPlaceMode -reset -repairPlace
-getPlaceMode -quiet -NMPsuppressInfo
-setvar spgSpeedupBuildVSM 0
-getPlaceMode -macroPlaceMode -quiet
-getPlaceMode -exp_slack_driven -quiet
-getPlaceMode -enableDistPlace -quiet
-getPlaceMode -place_global_ignore_spare -quiet
-getPlaceMode -tdgpMemFlow -quiet
-setPlaceMode -reset -resetCombineRFLevel
-getPlaceMode -enableDistPlace -quiet
-getPlaceMode -quiet -clusterMode
-getPlaceMode -quiet -place_global_exp_solve_unbalance_path
-getPlaceMode -enableDistPlace -quiet
-setPlaceMode -reset -expHiddenFastMode
-getPlaceMode -tcg2Pass -quiet
-getPlaceMode -quiet -wireLenOptEffort
-getPlaceMode -fp -quiet
-getPlaceMode -fastfp -quiet
-getPlaceMode -doRPlace -quiet
-getPlaceMode -RTCPlaceDesignFlow -quiet
-getPlaceMode -quickCTS -quiet
-set spgFlowInInitialPlace 0
-getPlaceMode -user -maxRouteLayer
-spInternalUse TDGP resetIgnoreNetLoad
-getPlaceMode -place_global_exp_balance_pipeline -quiet
-getDesignMode -quiet -flowEffort
-report_message -end_cmd
-um::create_snapshot -name final -auto min
-um::pop_snapshot_stack
-um::create_snapshot -name place_design
-getPlaceMode -exp_slack_driven -quiet
-fit
-zoomBox -114.69250 97.61300 372.33300 293.28000
-zoomBox -83.34300 113.96600 330.62900 280.28300
-zoomBox -29.55400 136.53650 269.54100 256.70100
-zoomBox -8.54800 145.35150 245.68350 247.49150
-zoomBox 65.59500 176.46300 161.47950 214.98550
-zoomBox 90.56900 186.94300 133.11550 204.03650
-zoomBox 96.21250 188.85900 126.95250 201.20900
-zoomBox 100.28950 190.24300 122.49950 199.16600
-zoomBox 101.89150 190.78700 120.77000 198.37150
-zoomBox 97.11400 188.83750 123.24350 199.33550
-zoomBox 86.24850 184.32800 128.79650 201.42200
-zoomBox 76.13650 180.06300 135.02650 203.72250
-zoomBox 69.70600 177.35050 138.98850 205.18550
-zoomBox 62.14050 174.15950 143.64950 206.90650
-fit
-zoomBox -227.56400 3.48200 565.47500 322.09300
-zoomBox -171.40050 21.27300 502.68300 292.09250
-zoomBox -123.66100 36.39550 449.31000 266.59200
-zoomBox -48.59100 60.17550 365.38100 226.49250
-zoomBox 5.64700 77.35600 304.74200 197.52050
-zoomBox 26.82850 84.06600 281.06000 186.20600
-zoomBox 44.83300 89.76950 260.93000 176.58850
-zoomBox 73.14500 98.73800 229.27550 161.46500
-zoomBox 84.20250 102.24050 216.91350 155.55850
-zoomBox 93.60150 105.21800 206.40550 150.53800
-zoomBox 101.59050 107.74850 197.47400 146.27050
-zoomBox 114.15250 111.72750 183.42900 139.56000
-zoomBox 123.22850 114.60250 173.28200 134.71200
-zoomBox 134.52400 118.18050 160.65300 128.67800
-zoomBox 139.28300 119.68800 155.33100 126.13550
-zoomBox 141.38550 120.35400 152.98050 125.01250
-zoomBox 143.49750 121.02300 150.61850 123.88400
-zoomBox 144.43000 121.31800 149.57550 123.38550
-zoomBox 144.79350 121.43350 149.16800 123.19100
-zoomBox 145.10300 121.53150 148.82150 123.02550
-zoomBox 145.36600 121.61500 148.52700 122.88500
-zoomBox 145.58950 121.68600 148.27650 122.76550
-zoomBox 145.10200 121.53100 148.82150 123.02550
-fit
-zoomBox -69.30350 43.49000 503.66750 273.68650
-zoomBox 71.60900 79.36600 423.48550 220.73550
-fit
-zoomBox -119.34700 37.62750 554.73550 308.44650
-zoomBox 7.36900 77.12350 494.39450 272.79050
-zoomBox 212.26600 140.35400 395.94950 214.15050
-zoomBox 233.13900 146.41400 389.27000 209.14100
-zoomBox 252.40900 157.25600 365.21400 202.57650
-zoomBox 259.52100 161.17600 355.40550 199.69850
-fit
-zoomBox -249.72550 37.81900 543.31300 356.43000
-zoomBox -177.66150 123.45400 395.31050 353.65100
-zoomBox -125.28400 181.11650 288.68900 347.43400
-zoomBox -102.40000 203.08950 249.47700 344.45950
-zoomBox -65.09450 237.07000 189.13700 339.21000
-zoomBox -22.90100 271.01700 133.22950 333.74400
-zoomBox -4.26650 286.00950 108.53850 331.33000
-zoomBox 6.90200 296.53600 88.40400 329.28000
-zoomBox -4.26650 286.00950 108.53850 331.33000
-zoomBox -19.72600 271.44000 136.40700 334.16800
-zoomBox -41.12200 251.27500 174.97850 338.09550
-zoomBox -54.72850 238.45150 199.50750 340.59300
-zoomBox -92.04500 207.45250 259.83850 348.82500
-zoomBox -145.68350 165.17550 341.35350 360.84750
-zoomBox -179.87900 138.29050 393.10700 368.49300
-zoomBox -220.10750 106.66100 453.99350 377.48750
-zoomBox -267.43500 69.45000 525.62500 388.06950
-zoomBox -2.23250 99.90300 411.75000 266.22450
-zoomBox 87.24300 128.85200 341.48100 230.99450
-zoomBox 141.61700 146.20950 297.75150 208.93800
-zoomBox 182.76150 158.61100 264.26600 191.35600
-zoomBox 141.97900 146.93800 298.11750 209.66800
-fit
-setDrawView fplan
-setDrawView ameba
-setDrawView place
-ui_view_box
-ui_view_box
-dbquery -area {-294.733 -17.038 638.253 357.798} -objType inst
-dbquery -area {-294.733 -17.038 638.253 357.798} -objType regular
-dbquery -area {-294.733 -17.038 638.253 357.798} -objType special
-setDrawView place
-ui_view_box
-ui_view_box
-dbquery -area {-294.733 -17.038 638.253 357.798} -objType inst
-dbquery -area {-294.733 -17.038 638.253 357.798} -objType regular
-dbquery -area {-294.733 -17.038 638.253 357.798} -objType special
-setLayerPreference node_gird -isVisible 1
-setLayerPreference node_gird -isVisible 0
-setLayerPreference node_gird -isVisible 1
-setLayerPreference node_gird -isVisible 0
-setLayerPreference allLayers -isVisible 0
-setLayerPreference allLayers -isVisible 1
-setLayerPreference allLayers -isSelectable 0
-setLayerPreference allLayers -isSelectable 1
-setLayerPreference allLayers -isVisible 0
-setLayerPreference allLayers -isVisible 1
-setLayerPreference allLayers -isVisible 0
-setLayerPreference violation -isVisible 1
-setLayerPreference violation -isVisible 0
-setLayerPreference allLayers -isVisible 1
-setLayerPreference allLayers -isVisible 0
-setLayerPreference node_module -isVisible 1
-setLayerPreference node_module -isVisible 0
-setLayerPreference node_inst -isVisible 1
-zoomBox 51.51100 64.75550 538.53550 260.42200
-zoomBox 127.47400 87.61000 479.35000 228.97950
-zoomBox 237.49750 120.71300 393.62700 183.43950
-zoomBox 261.84950 128.04000 374.65350 173.36000
-zoomBox 286.31450 135.40100 355.59100 163.23350
-zoomBox 292.15550 137.15850 351.04050 160.81600
-zoomBox 301.33950 139.92150 343.88500 157.01450
-zoomBox 304.92600 141.00050 341.09050 155.53000
-zoomBox 307.97500 141.91800 338.71500 154.26800
-zoomBox 310.57550 142.68900 336.70450 153.18650
-zoomBox 301.31500 139.94450 343.86300 157.03850
-zoomBox 279.34000 133.43200 360.84900 166.17900
-zoomBox 250.45350 124.87100 383.17700 178.19400
-zoomBox 181.90450 104.55600 436.16250 206.70650
-zoomBox 126.82350 88.23200 478.73750 229.61700
-zoomBox 91.79500 77.85100 505.81250 244.18650
-zoomBox 50.58600 65.63800 537.66550 261.32700
-zoomBox 2.10400 51.27000 575.13950 281.49250
-fit
-setLayerPreference node_inst -isVisible 0
-setLayerPreference node_cell -isVisible 1
-setLayerPreference node_cell -isVisible 0
-setLayerPreference node_blockage -isVisible 1
-setLayerPreference node_blockage -isVisible 0
-setLayerPreference node_row -isVisible 1
-setLayerPreference node_row -isVisible 0
-setLayerPreference node_floorplan -isVisible 1
-setLayerPreference node_floorplan -isVisible 0
-setLayerPreference node_partition -isVisible 1
-setLayerPreference node_partition -isVisible 0
-setLayerPreference node_power -isVisible 1
-setLayerPreference node_power -isVisible 0
-setLayerPreference node_overlay -isVisible 1
-setLayerPreference congestH -color {#000066 #0000c9 #0053ff #00fcfa #00a953 #53a900 #f9fc00 #ff5300 #ff5858 #ffffff}
-setLayerPreference congestV -color {#000066 #0000c9 #0053ff #00fcfa #00a953 #53a900 #f9fc00 #ff5300 #ff5858 #ffffff}
-fit
-setLayerPreference node_overlay -isVisible 0
-setLayerPreference node_track -isVisible 1
-setLayerPreference node_track -isVisible 0
-setLayerPreference node_net -isVisible 1
-setLayerPreference node_net -isVisible 0
-setLayerPreference node_route -isVisible 1
-setLayerPreference node_route -isVisible 0
-setLayerPreference node_layer -isVisible 1
-setLayerPreference node_layer -isVisible 0
-setLayerPreference node_bump -isVisible 1
-setLayerPreference node_misc -isVisible 1
-setLayerPreference node_misc -isVisible 0
-setLayerPreference violation -isVisible 1
-setLayerPreference node_inst -isVisible 1
-setLayerPreference node_module -isVisible 1
-setLayerPreference node_cell -isVisible 1
-setLayerPreference node_blockage -isVisible 1
-setLayerPreference node_row -isVisible 1
-setLayerPreference node_floorplan -isVisible 1
-setLayerPreference node_partition -isVisible 1
-setLayerPreference node_power -isVisible 1
-setLayerPreference node_overlay -isVisible 1
-fit
-setLayerPreference node_track -isVisible 1
-setLayerPreference node_net -isVisible 1
-setLayerPreference node_route -isVisible 1
-setLayerPreference node_layer -isVisible 1
-setLayerPreference node_gird -isVisible 1
-setLayerPreference node_gird -isVisible 0
-zoomBox -3.18750 27.90450 569.78250 258.10050
-zoomBox 138.60300 77.14900 437.69750 197.31300
-zoomBox 179.41250 88.58850 395.50850 175.40700
-zoomBox 195.31850 93.05600 379.00050 166.85200
-zoomBox 230.09950 102.54850 342.90350 147.86850
-zoomBox 179.41100 88.71500 395.50950 175.53450
-zoomBox 138.68150 77.59950 437.78000 197.76500
-zoomBox 46.45950 52.43100 533.49200 248.10100
-setLayerPreference node_overlay -isVisible 0
-zoomBox -189.56100 10.85050 603.49050 329.46650
-setLayerPreference node_layer -isVisible 0
-setLayerPreference node_layer -isVisible 1
-zoomBox 49.35100 55.26900 401.23350 196.64100
-zoomBox 5.40350 47.07450 419.38300 213.39450
-zoomBox -46.29950 37.43350 440.73550 233.10450
-zoomBox -262.87750 -2.95100 530.17900 315.66700
-zoomBox -361.92400 -21.41950 571.08350 353.42500
-zoomBox -262.87750 -2.95100 530.17900 315.66700
-zoomBox -178.68800 12.74700 495.41000 283.57250
-zoomBox -107.12800 26.09050 465.85650 256.29250
-zoomBox -46.30150 37.43250 440.73600 233.10450
-zoomBox 49.34900 55.26800 401.23400 196.64100
-zoomBox 86.70450 62.23300 385.80700 182.40050
-zoomBox 145.44550 73.18600 361.54800 160.00700
-zoomBox 168.38650 77.46350 352.07350 151.26150
-zoomBox 187.88600 81.09950 344.02050 143.82800
-zoomBox 204.46050 84.19000 337.17550 137.50950
-zoomBox 218.54950 86.81700 331.35700 132.13850
-zoomBox 240.70350 90.94800 322.20750 123.69300
-zoomBox 249.35600 92.56150 318.63400 120.39450
-zoomBox 256.71050 93.93300 315.59650 117.59100
-zoomBox 262.96150 95.09850 313.01500 115.20800
-zoomBox 268.27500 96.08950 310.82050 113.18250
-zoomBox 272.79150 96.93150 308.95550 111.46050
-zoomBox 276.63050 97.64700 307.37000 109.99700
-zoomBox 282.66700 98.77250 304.87700 107.69550
-zoomBox 285.02500 99.21200 303.90350 106.79650
-zoomBox 290.18050 100.17300 301.77450 104.83100
-zoomBox 294.10250 100.90450 300.15500 103.33600
-zoomBox 294.74500 101.02400 299.88950 103.09100
-zoomBox 295.29050 101.12600 299.66400 102.88300
-zoomBox 295.75450 101.21250 299.47200 102.70600
-zoomBox 296.14900 101.28600 299.30900 102.55550
-zoomBox 297.01150 101.44650 298.95300 102.22650
-zoomBox 297.21750 101.48500 298.86800 102.14800
-zoomBox 297.39250 101.51750 298.79550 102.08100
-zoomBox 297.66750 101.56850 298.68200 101.97600
-zoomBox 297.82500 101.60300 298.55800 101.89750
-zoomBox 297.93850 101.62800 298.46850 101.84100
-zoomBox 298.05150 101.65250 298.37900 101.78400
-zoomBox 298.07850 101.65850 298.35750 101.77050
-zoomBox 298.10150 101.66350 298.33900 101.75900
-zoomBox 298.12150 101.66800 298.32350 101.74900
-zoomBox 298.15200 101.67450 298.29900 101.73350
-zoomBox 298.16400 101.67700 298.28950 101.72750
-zoomBox 298.17450 101.67950 298.28150 101.72250
-zoomBox 298.18350 101.68150 298.27450 101.71800
-zoomBox 298.20750 101.68650 298.25600 101.70600
-zoomBox 298.21950 101.68900 298.24600 101.69950
-zoomBox 298.22150 101.68950 298.24450 101.69850
-fit
-zoomBox -68.48300 40.50550 418.54200 236.17250
-zoomBox 0.08200 57.94450 351.95800 199.31400
-zoomBox 26.85950 64.70350 325.95400 184.86750
-zoomBox 85.41250 79.48250 269.09400 153.27850
-zoomBox 99.38950 83.01050 255.52000 145.73750
-zoomBox 121.37000 88.55850 234.17500 133.87900
-zoomBox 129.95400 90.72500 225.83850 129.24750
-zoomBox 148.72450 95.46300 207.61050 119.12100
-zoomBox 153.20550 96.59400 203.25900 116.70350
-zoomBox 163.00350 99.06700 193.74350 111.41700
-zoomBox 170.45750 100.94850 186.50450 107.39550
-zoomBox 173.58650 101.72300 183.44200 105.68250
-zoomBox 175.50400 102.19850 181.55750 104.63050
-zoomBox 176.35050 102.40850 180.72500 104.16600
-zoomBox 174.96400 102.06450 182.08700 104.92600
-zoomBox 172.70600 101.50400 184.30500 106.16400
-zoomBox 165.37000 99.68350 191.51250 110.18650
-zoomBox 153.29550 96.68800 203.37650 116.80850
-zoomBox 143.59200 94.28100 212.90950 122.13000
-zoomBox 111.57600 86.33850 244.36700 139.68850
-zoomBox 85.85000 79.95650 269.64450 153.79750
-zoomBox 27.59900 65.50650 326.87900 185.74500
-zoomBox -110.63050 31.21700 462.69650 261.55650
-zoomBox -221.70200 3.66400 571.83100 322.47350
-zoomBox -292.33600 -13.85750 641.23250 361.21250
-zoomBox -221.70250 3.66400 571.83100 322.47350
-setLayerPreference node_inst -isVisible 0
-setLayerPreference node_inst -isVisible 1
-setLayerPreference node_inst -isVisible 0
-setLayerPreference node_module -isVisible 0
-setLayerPreference node_module -isVisible 1
-setLayerPreference node_module -isVisible 0
-setLayerPreference node_cell -isVisible 0
-setLayerPreference node_cell -isVisible 1
-setLayerPreference node_cell -isVisible 0
-setLayerPreference node_blockage -isVisible 0
-setLayerPreference node_blockage -isVisible 1
-setLayerPreference node_blockage -isVisible 0
-setLayerPreference node_row -isVisible 0
-zoomBox -133.39050 17.85900 541.11350 288.84750
-zoomBox -222.28550 3.43100 571.24900 322.24100
-zoomBox -326.31950 -15.18550 607.25050 359.88500
-setLayerPreference node_row -isVisible 1
-setLayerPreference node_row -isVisible 0
-setLayerPreference node_floorplan -isVisible 0
-setLayerPreference node_floorplan -isVisible 1
-setLayerPreference node_floorplan -isVisible 0
-setLayerPreference node_partition -isVisible 0
-setLayerPreference node_power -isVisible 0
-setLayerPreference node_track -isVisible 0
-setLayerPreference node_track -isVisible 1
-setLayerPreference node_track -isVisible 0
-setLayerPreference node_net -isVisible 0
-setLayerPreference node_net -isVisible 1
-setLayerPreference node_net -isVisible 0
-setLayerPreference node_net -isVisible 1
-setLayerPreference node_route -isVisible 0
-setLayerPreference node_route -isVisible 1
-setLayerPreference node_route -isVisible 0
-setLayerPreference node_route -isVisible 1
-setLayerPreference wire -isVisible 0
-setLayerPreference wire -isVisible 1
-setLayerPreference node_layer -isVisible 0
-setLayerPreference node_layer -isVisible 1
-setLayerPreference node_bump -isVisible 0
-setLayerPreference node_bump -isVisible 1
-setLayerPreference node_bump -isVisible 0
-setLayerPreference node_misc -isVisible 1
-setLayerPreference node_misc -isVisible 0
-setLayerPreference node_misc -isVisible 1
-fit
-fit
-checkDesign -io -netlist -physicalLibrary -powerGround -tieHilo -timingLibrary -spef -floorplan -place -outdir checkDesign
-fit
-freeDesign
-zoomBox -643.73400 -110.44000 1181.55000 927.17000
-init_design
-set init_verilog MAC_512.vg
-set init_top_cell MAC_512
-set init_mmmc_file MAC_512.view
-set init_gnd_net VSS
-set init_pwr_net VDD
-set init_lef_file /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/lef/NangateOpenCellLibrary.lef
-set ::TimeLib::tsgMarkCellLatchConstructFlag 1
-set conf_qxconf_file NULL
-set conf_qxlib_file NULL
-set defHierChar /
-set distributed_client_message_echo 1
-set distributed_mmmc_disable_reports_auto_redirection 0
-set enc_enable_print_mode_command_reset_options 1
-set init_design_settop 0
-get_message -id GLOBAL-100 -suppress
-get_message -id GLOBAL-100 -suppress
-set latch_time_borrow_mode max_borrow
-set pegDefaultResScaleFactor 1
-set pegDetailResScaleFactor 1
-get_message -id GLOBAL-100 -suppress
-get_message -id GLOBAL-100 -suppress
-set report_inactive_arcs_format {from to when arc_type sense reason}
 get_message -id GLOBAL-100 -suppress
 suppressMessage -silent GLOBAL-100
+unsuppressMessage -silent GLOBAL-100
 get_message -id GLOBAL-100 -suppress
 suppressMessage -silent GLOBAL-100
+unsuppressMessage -silent GLOBAL-100
+get_message -id GLOBAL-100 -suppress
+suppressMessage -silent GLOBAL-100
+unsuppressMessage -silent GLOBAL-100
+get_message -id GLOBAL-100 -suppress
+suppressMessage -silent GLOBAL-100
+unsuppressMessage -silent GLOBAL-100
+get_message -id GLOBAL-100 -suppress
+suppressMessage -silent GLOBAL-100
+unsuppressMessage -silent GLOBAL-100
+get_message -id GLOBAL-100 -suppress
+suppressMessage -silent GLOBAL-100
+unsuppressMessage -silent GLOBAL-100
 set timing_enable_default_delay_arc 1
 init_design
-loadFPlan MAC_512.fp
+getIoFlowFlag
+setIoFlowFlag 0
+floorPlan -coreMarginsBy die -site FreePDK45_38x28_10R_NP_162NW_34O -r 1 0.7 10.0 10 10 10
+uiSetTool select
+getIoFlowFlag
+fit
+loadIoFile MAC_512.save.io
+fit
+clearGlobalNets
+globalNetConnect VSS -type pgpin -pin VSS -instanceBasename *
+globalNetConnect VSS -type tielo -pin VSS -instanceBasename *
+globalNetConnect VDD -type tiehi -pin VDD -instanceBasename *
+globalNetConnect VDD -type pgpin -pin VDD -instanceBasename *
+fit
+set sprCreateIeRingOffset 1.0
+set sprCreateIeRingThreshold 1.0
+set sprCreateIeRingJogDistance 1.0
+set sprCreateIeRingLayers {}
+set sprCreateIeRingOffset 1.0
+set sprCreateIeRingThreshold 1.0
+set sprCreateIeRingJogDistance 1.0
+set sprCreateIeRingLayers {}
+set sprCreateIeStripeWidth 10.0
+set sprCreateIeStripeThreshold 1.0
+set sprCreateIeStripeWidth 10.0
+set sprCreateIeStripeThreshold 1.0
+set sprCreateIeRingOffset 1.0
+set sprCreateIeRingThreshold 1.0
+set sprCreateIeRingJogDistance 1.0
+set sprCreateIeRingLayers {}
+set sprCreateIeStripeWidth 10.0
+set sprCreateIeStripeThreshold 1.0
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer metal10 -stacked_via_bottom_layer metal1 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type core_rings -follow core -layer {top metal9 bottom metal9 left metal10 right metal10} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.5 bottom 1.5 left 1.5 right 1.5} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+set sprCreateIeRingOffset 1.0
+set sprCreateIeRingThreshold 1.0
+set sprCreateIeRingJogDistance 1.0
+set sprCreateIeRingLayers {}
+set sprCreateIeRingOffset 1.0
+set sprCreateIeRingThreshold 1.0
+set sprCreateIeRingJogDistance 1.0
+set sprCreateIeRingLayers {}
+set sprCreateIeStripeWidth 10.0
+set sprCreateIeStripeThreshold 1.0
+set sprCreateIeStripeWidth 10.0
+set sprCreateIeStripeThreshold 1.0
+set sprCreateIeRingOffset 1.0
+set sprCreateIeRingThreshold 1.0
+set sprCreateIeRingJogDistance 1.0
+set sprCreateIeRingLayers {}
+set sprCreateIeStripeWidth 10.0
+set sprCreateIeStripeThreshold 1.0
+setAddStripeMode -ignore_block_check false -break_at none -route_over_rows_only false -rows_without_stripes_only false -extend_to_closest_target none -stop_at_last_wire_for_area false -partial_set_thru_domain false -ignore_nondefault_domains false -trim_antenna_back_to_shape none -spacing_type edge_to_edge -spacing_from_block 0 -stripe_min_length stripe_width -stacked_via_top_layer metal10 -stacked_via_bottom_layer metal1 -via_using_exact_crossover_size false -split_vias false -orthogonal_only true -allow_jog { padcore_ring  block_ring } -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape   }
+addStripe -nets {VDD VSS} -layer metal10 -direction vertical -width 1.8 -spacing 1.5 -number_of_sets 10 -start_from left -start_offset 1 -stop_offset 0 -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit metal10 -padcore_ring_bottom_layer_limit metal1 -block_ring_top_layer_limit metal10 -block_ring_bottom_layer_limit metal1 -use_wire_group 0 -snap_wire_center_to_grid None
+setSrouteMode -viaConnectToShape { noshape }
+sroute -connect { corePin } -layerChangeRange { metal1(1) metal10(10) } -blockPinTarget { nearestTarget } -corePinTarget { firstAfterRowEnd } -allowJogging 1 -crossoverViaLayerRange { metal1(1) metal10(10) } -nets { VDD VSS } -allowLayerChange 1 -targetViaLayerRange { metal1(1) metal10(10) }
+undo
+setSrouteMode -viaConnectToShape { stripe }
+sroute -connect { corePin } -layerChangeRange { metal1(1) metal10(10) } -blockPinTarget { nearestTarget } -corePinTarget { firstAfterRowEnd } -allowJogging 1 -crossoverViaLayerRange { metal1(1) metal10(10) } -nets { VDD VSS } -allowLayerChange 1 -targetViaLayerRange { metal1(1) metal10(10) }
+fit
+fit
+saveFPlan MAC_512.fp
 setDesignMode -process 45
+timeDesign -prePlace
 place_opt_design
 fit
-getDrawView
-setDrawView fplan
-win
-dumpToGIF Snapshot/ss_opt_design_res_rca_MAC512.fplan.gif
-getDrawView
-setDrawView amoeba
-win
-dumpToGIF Snapshot/ss_opt_design_res_rca_MAC512.amoeba.gif
-getDrawView
-setDrawView place
-win
-dumpToGIF Snapshot/ss_opt_design_res_rca_MAC512.place.gif
-checkPlace checkplace.ss.rpt
-dumpToGIF Snapshot/ss_opt_design_res_rca_MAC512.place
-dumpToGIF Snapshot/ss_opt_design_res_rca_MAC512.place.png
+timeDesign -preCTS
+set_ccopt_property buffer_cells {BUF_X1 BUF_X2 BUF_X4 BUF_X8 BUF_X16 BUF_X32 CLKBUF_X1 CLKBUF_X2 CLKBUF_X3}
+set_ccopt_property inverter_cells {INV_X1 INV_X2 INV_X4 INV_X8 INV_X16 INV_X32}
+create_ccopt_clock_tree_spec
+ctd_win -side none -id ctd_window
+ccopt_design
 fit
-checkDesign -io -netlist -physicalLibrary -powerGround -tieHilo -timingLibrary -spef -floorplan -place -noHtml -outfile checkDesign_opt_design_pre_cts.rpt
-redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
-timeDesign -preCTS -pathReports -drvReports -slackReports -numPaths 50 -prefix MAC_512_preCTS -outDir timingReports
+ctd_win -side none -id ctd_window
+timeDesign -postCTS
+report_ccopt_clock_trees
+timeDesign -postCTS -hold
+report_ccopt_clock_tree_structure
+optDesign -postCTS -hold
+optDesign -postCTS -hold
+zoomBox -617.01300 -92.68250 668.06450 426.12200
+fit
+ctd_win -side none -id ctd_window
+get_ccopt_skew_groups
+get_ccopt_delay_corner
+all_delay_corners
+get_ccopt_skew_groups
+report_ccopt_clock_trees
+setNanoRouteMode -quiet -timingEngine {}
+setNanoRouteMode -quiet -routeWithTimingDriven 1
+setNanoRouteMode -quiet -routeWithSiDriven 1
+setNanoRouteMode -quiet -routeTopRoutingLayer default
+setNanoRouteMode -quiet -routeBottomRoutingLayer default
+setNanoRouteMode -quiet -drouteEndIteration default
+setNanoRouteMode -quiet -routeWithTimingDriven true
+setNanoRouteMode -quiet -routeWithSiDriven true
+routeDesign -globalDetail
+fit
+reset_parasitics
+extractRC
+rcOut -spef MAC_512.spef
+extractRC -help
+timeDesign -postRoute
+setAnalysisMode -analysisType onChipVariation
+setAnalysisMode -analysisType onChipVariation -cppr both
+timeDesign -postRoute
+timeDesign -postRoute -hold
+setOptMode -fixCap true -fixTran true -fixFanoutLoad true
+setDelayCalMode -engine default -siAware true
+optDesign -postRoute -hold
+timeDesign -postRoute -hold
+setOptMode -fixCap true -fixTran true -fixFanoutLoad true
+setDelayCalMode -engine default -siAware true
+optDesign -postRoute -hold
+setOptMode -fixCap true -fixTran true -fixFanoutLoad true
+setDelayCalMode -engine default -siAware true
+optDesign -postRoute -hold
+fit
 setOptMode -fixCap true -fixTran true -fixFanoutLoad false
-optDesign -preCTS
+setDelayCalMode -engine default -siAware true
+optDesign -postRoute -hold
+setOptMode -fixCap true -fixTran true -fixFanoutLoad true
+setDelayCalMode -engine default -siAware true
+optDesign -postRoute -hold
+fit
+getMultiCpuUsage -localCpu
+get_verify_drc_mode -disable_rules -quiet
+get_verify_drc_mode -quiet -area
+get_verify_drc_mode -quiet -layer_range
+get_verify_drc_mode -check_ndr_spacing -quiet
+get_verify_drc_mode -check_only -quiet
+get_verify_drc_mode -check_same_via_cell -quiet
+get_verify_drc_mode -exclude_pg_net -quiet
+get_verify_drc_mode -ignore_trial_route -quiet
+get_verify_drc_mode -max_wrong_way_halo -quiet
+get_verify_drc_mode -use_min_spacing_on_block_obs -quiet
+get_verify_drc_mode -limit -quiet
+set_verify_drc_mode -disable_rules {} -check_ndr_spacing auto -check_only default -check_same_via_cell false -exclude_pg_net false -ignore_trial_route false -ignore_cell_blockage false -use_min_spacing_on_block_obs auto -report MAC_512.drc.rpt -limit 1000
+verify_drc
+set_verify_drc_mode -area {0 0 0 0}
+verifyConnectivity -type all -error 1000 -warning 50
+fit
+getFillerMode -quiet
+addFiller -cell FILLCELL_X4 FILLCELL_X8 FILLCELL_X32 FILLCELL_X2 FILLCELL_X16 FILLCELL_X1 -prefix FILLER
+ecoRoute -target
+fit
+verify_drc
+verify_connectivity
+set_power_analysis_mode -reset
+set_power_analysis_mode -method static -analysis_view worst -corner max -create_binary_db true -write_static_currents true -honor_negative_energy true -ignore_control_signals true
+set_power_output_dir -reset
+set_power_output_dir ./run1
+set_default_switching_activity -reset
+set_default_switching_activity -input_activity 0.2 -period 10.0
+read_activity_file -reset
+set_power -reset
+set_powerup_analysis -reset
+set_dynamic_power_simulation -reset
+report_power -rail_analysis_format VS -outfile ./run1/MAC_512.rpt
+set_rail_analysis_mode -method era_static -power_switch_eco false -generate_movies false -save_voltage_waveforms false -accuracy xd -analysis_view worst -process_techgen_em_rules false -enable_rlrp_analysis false -extraction_tech_file QRC_Tech/gpdk045.tch -vsrc_search_distance 50 -ignore_shorts false -enable_manufacturing_effects false -report_via_current_direction false
+setDrawView place
+zoomBox -258.07000 12.23750 534.96800 330.84800
+zoomBox -208.37700 62.36050 364.59300 292.55650
+zoomBox -141.71600 128.75450 157.37850 248.91850
+zoomBox -108.47200 156.43850 75.20950 230.23450
+zoomBox -87.78800 164.92250 68.34150 227.64900
+zoomBox -59.97950 177.12300 52.82450 222.44300
+zoomBox -49.27850 181.77050 46.60600 220.29300
+zoomBox -32.45100 189.07900 36.82700 216.91200
+::uiSetTool getLocation ::Rda_Power::EditPadLoc::setCoord
+uiSetTool select
+zoomBox -74.83200 182.37950 57.88450 235.69950
+zoomBox -108.86450 177.04750 74.82600 250.84700
+zoomBox -226.78850 154.09700 125.10800 295.47500
+zoomBox -381.76100 124.05350 191.24650 354.26450
+zoomBox -188.16450 5.26050 604.87350 323.87100
+zoomBox -25.31900 64.41800 547.65200 294.61450
+zoomBox 130.93850 118.54350 482.81450 259.91300
+zoomBox 188.30400 150.62250 442.53450 252.76200
+zoomBox 232.15900 176.43100 415.84050 250.22700
+zoomBox 249.31400 186.61150 405.44450 249.33850
+::uiSetTool getLocation ::Rda_Power::EditPadLoc::setCoord
+uiSetTool select
+create_power_pads -net VDD -vsrc_file MAC_512.pp
+create_power_pads -clear
+create_power_pads -display -vsrc_file MAC_512.pp
+setDrawView place
+set_pg_nets -net VDD -voltage 0.9 -threshold 0.81
+set_power_data -reset
+set_power_data -format current -scale 1 run1/static_VDD.ptiavg
+set_power_pads -reset
+set_power_pads -net VDD -format xy -file MAC_512.pp
+set_package -reset
+set_package -spice {} -mapping {}
+set_net_group -reset
+set_advanced_rail_options -reset
+analyze_rail -type net -results_directory ./run1 VDD
+set_pg_nets -net VDD -voltage 0.9 -threshold 0.81
+set_power_data -reset
+set_power_data -format current -scale 1 run1/static_VDD.ptiavg
+set_power_pads -reset
+set_power_pads -net VDD -format xy -file MAC_512.pp
+set_package -reset
+set_package -spice {} -mapping {}
+set_net_group -reset
+set_advanced_rail_options -reset
+analyze_rail -type net -results_directory ./run1 VDD
+set_pg_nets -net VDD -voltage 0.9 -threshold 0.81
+set_power_data -reset
+set_power_data -format current -scale 1 run1/static_VDD.ptiavg
+set_power_pads -reset
+set_power_pads -net VDD -format xy -file MAC_512.pp
+set_package -reset
+set_package -spice {} -mapping {}
+set_net_group -reset
+set_advanced_rail_options -reset
+analyze_rail -type net -results_directory ./run1 VDD
+zoomBox -327.72650 -40.69650 769.90450 400.28700
+setLayerPreference powerNet -color {#0000FF #0010DE #0020BD #00319C #00417B #00525A #006239 #007318 #088300 #299400 #4AA400 #6AB400 #8BC500 #ACD500 #CDE600 #EEF600 #FFF900 #FFED00 #FFE200 #FFD600 #FFCB00 #FFBF00 #FFB400 #FFA800 #FF9500 #FF8000 #FF6A00 #FF5500 #FF4000 #FF2A00 #FF1500 #FF0000}
+set_power_rail_display -plot none
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+set_power_rail_display -enable_voltage_sources 0
+set_power_rail_display -enable_percentage_range 0
+fit
+set_power_rail_display -plot none
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+::read_power_rail_results -power_db run1/power.db -rail_directory run1/VDD_25C_avg_1 -instance_voltage_window { timing  whole  } -instance_voltage_method {  worst  best  avg  worstavg }
+::read_power_rail_results -power_db run1/power.db -rail_directory run1/VDD_25C_avg_1 -instance_voltage_window { timing  whole  } -instance_voltage_method {  worst  best  avg  worstavg }
+set_power_rail_display -plot ir
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+::read_power_rail_results -power_db run1/power.db -rail_directory run1/VDD_25C_avg_1 -instance_voltage_window { timing  whole  } -instance_voltage_method {  worst  best  avg  worstavg }
+zoomBox -143.37850 112.07000 343.64600 307.73650
+zoomBox -78.52450 157.80900 175.70600 259.94850
+zoomBox -67.90100 165.30150 148.19600 252.12050
+zoomBox -44.67000 181.68550 88.04050 235.00300
+zoomBox -34.41050 188.92100 61.47300 227.44300
+zoomBox -26.99800 194.14850 42.27850 221.98100
+zoomBox -21.64300 197.92550 28.41050 218.03500
+zoomBox -44.67250 181.68350 88.04300 235.00300
+zoomBox -91.02850 148.99050 208.07850 269.15950
+zoomBox -195.50250 75.30850 478.61050 346.14000
+zoomBox -367.47150 -45.97500 923.91800 472.85300
+zoomBox -696.91000 -278.31500 1776.98700 715.59650
+zoomBox -284.20100 -119.27100 1503.18950 598.83000
+zoomBox -106.14650 68.75700 567.93700 339.57650
+zoomBox -34.88400 100.28650 538.08800 330.48350
+zoomBox 24.59700 126.58250 511.62350 322.25000
+zoomBox 74.94150 148.64850 488.91450 314.96600
+::read_power_rail_results -power_db run1/power.db -rail_directory run1/VDD_25C_avg_2 -instance_voltage_window { timing  whole  } -instance_voltage_method {  worst  best  avg  worstavg }
+::read_power_rail_results -power_db run1/power.db -rail_directory run1/VDD_25C_avg_2 -instance_voltage_window { timing  whole  } -instance_voltage_method {  worst  best  avg  worstavg }
+::read_power_rail_results -power_db run1/power.db -rail_directory run1/VDD_25C_avg_2 -instance_voltage_window { timing  whole  } -instance_voltage_method {  worst  best  avg  worstavg }
+set_power_rail_display -range_min 0 -range_max 10.8818 -advance_mode false
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+set_power_rail_display -plot ivdn
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+set_power_rail_display -plot tc
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+set_power_rail_display -plot rc
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+set_power_rail_display -plot unc
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+set_power_rail_display -plot rc
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+set_power_rail_display -plot ir
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+set sprCreateIeRingOffset 1.0
+set sprCreateIeRingThreshold 1.0
+set sprCreateIeRingJogDistance 1.0
+set sprCreateIeRingLayers {}
+set sprCreateIeRingOffset 1.0
+set sprCreateIeRingThreshold 1.0
+set sprCreateIeRingJogDistance 1.0
+set sprCreateIeRingLayers {}
+set sprCreateIeStripeWidth 10.0
+set sprCreateIeStripeThreshold 1.0
+set sprCreateIeStripeWidth 10.0
+set sprCreateIeStripeThreshold 1.0
+set sprCreateIeRingOffset 1.0
+set sprCreateIeRingThreshold 1.0
+set sprCreateIeRingJogDistance 1.0
+set sprCreateIeRingLayers {}
+set sprCreateIeStripeWidth 10.0
+set sprCreateIeStripeThreshold 1.0
+timeDesign -postRoute
+timeDesign -postRoute -hold
+set_power_rail_display -plot none
+setLayerPreference powerNet -color {#0000ff #0010de #0020bd #00319c #00417b #00525a #006239 #007318 #088300 #299400 #4aa400 #6ab400 #8bc500 #acd500 #cde600 #eef600 #fff900 #ffed00 #ffe200 #ffd600 #ffcb00 #ffbf00 #ffb400 #ffa800 #ff9500 #ff8000 #ff6a00 #ff5500 #ff4000 #ff2a00 #ff1500 #ff0000}
+setOptMode -fixCap true -fixTran true -fixFanoutLoad true
+setDelayCalMode -engine default -siAware true
+optDesign -postRoute -hold
+getAnalysisMode -checkType
+getAnalysisMode -checkType
+get_time_unit
+report_timing -machine_readable -max_paths 10000 -max_slack 0.75 -path_exceptions all -early > top.mtarpt
+load_timing_debug_report -name default_report top.mtarpt
+get_power_analysis_mode -leakage_power_view -quiet
+get_power_analysis_mode -analysis_view -quiet
+get_power_analysis_mode -state_dependent_leakage -quiet
+get_power_analysis_mode -dynamic_power_view -quiet
+get_power_analysis_mode -analysis_view -quiet
+fit

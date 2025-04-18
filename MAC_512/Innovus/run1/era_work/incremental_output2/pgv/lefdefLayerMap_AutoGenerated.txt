@@ -1,0 +1,32 @@
+#This is an auto-generated file.
+#This file contains the mapping between technology layers and lefdef layers.
+
+#TECH layers.
+
+#CSUBSTRATE N_SOURCE_DRAIN P_SOURCE_DRAIN POLYCIDE CONT METAL_1 VIA_1 METAL_2 VIA_2 METAL_3 VIA_3 METAL_4 VIA_4 METAL_5 VIA_5 METAL_6 VIA_6 METAL_7 VIA_7 METAL_8 VIA_8 METAL_9 VIA_9 METAL_10 VIA_10 METAL_11 
+
+#LEF layers.
+
+#poly active metal1 via1 metal2 via2 metal3 via3 metal4 via4 metal5 via5 metal6 via6 metal7 via7 metal8 via8 metal9 via9 metal10 OVERLAP 
+
+#layer type   tech layer name    lefdef layer name
+
+metal	METAL_1	lefdef	 metal1
+via	VIA_1	lefdef	 via1
+metal	METAL_2	lefdef	 metal2
+via	VIA_2	lefdef	 via2
+metal	METAL_3	lefdef	 metal3
+via	VIA_3	lefdef	 via3
+metal	METAL_4	lefdef	 metal4
+via	VIA_4	lefdef	 via4
+metal	METAL_5	lefdef	 metal5
+via	VIA_5	lefdef	 via5
+metal	METAL_6	lefdef	 metal6
+via	VIA_6	lefdef	 via6
+metal	METAL_7	lefdef	 metal7
+via	VIA_7	lefdef	 via7
+metal	METAL_8	lefdef	 metal8
+via	VIA_8	lefdef	 via8
+metal	METAL_9	lefdef	 metal9
+via	VIA_9	lefdef	 via9
+metal	METAL_10	lefdef	 metal10

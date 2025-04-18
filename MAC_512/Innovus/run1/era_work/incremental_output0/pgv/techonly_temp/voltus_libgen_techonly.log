@@ -1,0 +1,62 @@
+
+*** Command file: /tmp/innovus_temp_4843_nc-csuaf4-l01.apporto.com_c11879_csufresno_DCW45V/voltus_libgen_4843.cmd ***
+input_type pr_techonly
+setvar process_sub_conducting_layers true
+setvar output_directory_path ./run1/era_work/incremental_output0/pgv
+setvar generate_port_powerview true
+setvar library_name techonly
+setvar tech_file /home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/MAC_512/Innovus/QRC_Tech/gpdk045.tch
+setvar generate_lef_layermap true
+setvar default_power_voltage 0.9
+cell_list {*}
+detailed_powerview_cell_list {*}
+setvar default_frequency 200e+06
+lef_file_list {/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/lef/NangateOpenCellLibrary.lef}
+
+***End of command file.***
+Started PGV Library Generator at 23:11:05 04/15/2025
+
+** INFO:  (VOLTUS_LGEN-3599): Library generation settings: 
+	Mode: TECH 
+	Capacitance: area_cap 
+	Current Distribution: estimation 
+	Grid Port Definition: LEF 
+	Grid Current Sinks: LEF pin 
+	Power Gate: no
+
+** INFO:  (VOLTUS_LGEN-3598): Processing LEF files: 
+/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/lef/NangateOpenCellLibrary.lef
+
+** INFO:  (VOLTUS_LGEN-3611): No lef leyarmap specified. Tool has
+internally generated the mapping between technology layers and lef layers
+using information in technology file and technology lef. To specify your
+own layer mapping, use set_pg_library_mode -lef_layermap.
+
+  TECH-LAYER    LEF-LAYER
+  METAL_1    metal1
+  VIA_1    via1
+  METAL_2    metal2
+  VIA_2    via2
+  METAL_3    metal3
+  VIA_3    via3
+  METAL_4    metal4
+  VIA_4    via4
+  METAL_5    metal5
+  VIA_5    via5
+  METAL_6    metal6
+  VIA_6    via6
+  METAL_7    metal7
+  VIA_7    via7
+  METAL_8    metal8
+  VIA_8    via8
+  METAL_9    metal9
+  VIA_9    via9
+  METAL_10    metal10
+
+
+** INFO:  (VOLTUS_LGEN-3606): 
+Power Grid View Generation Statistics:
+        # Total number of cells: 134 
+        # TECH view created: 134 (100%)
+Finished PGV Library Generator at 23:11:12 04/15/2025 (cpu=0:00:01, real=0:00:07, peak mem=1732.47MB)
+Current Innovus resource usage: (total cpu=0:28:06, real=0:45:53, mem=1732.47MB)

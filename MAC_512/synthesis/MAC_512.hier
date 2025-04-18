@@ -3,7 +3,7 @@
 Report : hierarchy
 Design : MAC_512
 Version: S-2021.06-SP5-1
-Date   : Wed Apr  2 16:17:58 2025
+Date   : Tue Apr  8 20:37:31 2025
 ****************************************
 
 Attributes:
@@ -20,6 +20,7 @@ MAC_512            r
     INV_X1            NangateOpenCellLibrary
     MUX2_X1           NangateOpenCellLibrary
     NAND2_X1          NangateOpenCellLibrary
+    NAND3_X1          NangateOpenCellLibrary
     NOR2_X1           NangateOpenCellLibrary
     OAI21_X1          NangateOpenCellLibrary
     OAI22_X1          NangateOpenCellLibrary

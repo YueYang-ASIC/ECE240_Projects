@@ -1,0 +1,39 @@
+
+Begin Preparing Data for Parasitic Extraction
+...
+Ended Preparing Data for Parasitic Extraction: (cpu=0:00:09, real=0:00:09, mem(process/total/peak)=299.45MB/4957.64MB/2865.02MB)
+
+Begin Parasitic Extraction
+
+Nets to Extract:
+VDD
+
+   0% at 00:13:06 04/16/2025 
+
+  11% at 00:13:06 04/16/2025
+
+  22% at 00:13:06 04/16/2025
+
+  33% at 00:13:06 04/16/2025
+
+  44% at 00:13:06 04/16/2025
+
+  55% at 00:13:06 04/16/2025
+
+  66% at 00:13:06 04/16/2025
+
+  77% at 00:13:06 04/16/2025
+
+  88% at 00:13:06 04/16/2025
+
+ 100% at 00:13:06 04/16/2025 
+
+Ended Parasitic Extraction: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=300.80MB/4957.72MB/2865.02MB)
+
+Hostname nc-csuaf4-l01.apporto.com
+
+Wall clock 16.711631
+
+CPU time 9.410369
+
+Peak memory (process): 476651520

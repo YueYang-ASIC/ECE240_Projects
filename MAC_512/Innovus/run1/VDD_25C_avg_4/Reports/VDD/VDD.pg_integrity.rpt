@@ -1,0 +1,38 @@
+* Missing Cell Power-Grid Views
+
+Cell Name
+------------------------------------------------------------------
+
+
+* Physically Disconnected Instances
+
+
+
+* Instances with Floating Power Pins
+
+
+* Disconnected Wire Segments
+
+
+
+* Weakly Connected Metal Segments
+
+Layer      | Location (um)
+------------------------------------------------------------------
+METAL_10   | (258.72, 333.38)
+METAL_10   | (293.97, 333.38)
+METAL_10   | (329.22, 333.38)
+METAL_10   | (152.97, 333.38)
+METAL_10   | (188.22, 333.38)
+METAL_10   | (223.47, 333.38)
+METAL_10   | (117.72, 333.38)
+METAL_10   | (11.97, 333.38)
+METAL_10   | (47.22, 333.38)
+METAL_10   | (82.47, 333.38)
+
+Found 10 weakly connected metal segments
+
+
+
+* Dropped Voltage Sources
+

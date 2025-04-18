@@ -1,0 +1,12 @@
+# List files here that are used for *synthesis*. An "analyze" command will be 
+# automatically added in the dc-*.tcl file for each file listed here.
+# Only file names that contain ".v" will be automatically added. Others will
+# need to be added manually, if they exist (best to put all in .v files).
+MAC_512_CLA.v 
+CLA16.v
+CLA64.v
+CLA256.v
+CLA_generator4.v
+CLA4.v
+GPFA.v              
+CLA512.v
