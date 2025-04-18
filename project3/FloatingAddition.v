@@ -1,5 +1,3 @@
-
-
 module FloatingAddition #(parameter XLEN=32)
                         (input [XLEN-1:0]A,
                          input [XLEN-1:0]B,
@@ -10,13 +8,10 @@ reg [23:0] A_Mantissa,B_Mantissa;
 reg [23:0] Temp_Mantissa;
 reg [22:0] Mantissa;
 reg [7:0] Exponent;
-reg Sign;
-wire MSB;
-reg [7:0] A_Exponent,B_Exponent,Temp_Exponent,diff_Exponent;
-reg A_sign,B_sign,Temp_sign;
-reg [32:0] Temp;
+reg Sign; 
+reg [7:0] A_Exponent,B_Exponent,diff_Exponent;
+reg A_sign,B_sign;
 reg carry;
-reg [2:0] one_hot;
 reg comp;
 reg [7:0] exp_adjust;
 always @(posedge clk)
@@ -40,15 +35,19 @@ if(carry)
     begin
         Temp_Mantissa = Temp_Mantissa>>1;
         exp_adjust = exp_adjust+1'b1;
-    end
-else
-    begin
-    while(!Temp_Mantissa[23])
-        begin
-           Temp_Mantissa = Temp_Mantissa<<1;
-           exp_adjust =  exp_adjust-1'b1;
+    end 
+else begin
+    integer i;
+    for (i = 0; i < 24; i = i + 1) begin
+        if (!Temp_Mantissa[23]) begin
+            Temp_Mantissa = Temp_Mantissa << 1;
+            exp_adjust = exp_adjust - 1;
+        end else begin
+            break;
         end
     end
+end
+
 Sign = A_sign;
 Mantissa = Temp_Mantissa[22:0];
 Exponent = exp_adjust;

@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version S-2021.06-SP5-1 for linux64 -- Mar 10, 2022
-#@ # Date:   Wed Apr 16 00:00:38 2025
+#@ # Date:   Fri Apr 18 02:44:23 2025
 #@ # Run by: c11879_csufresno@nc-csuaf4-l01.apporto.com
 #@ 
 
@@ -8689,3 +8689,27 @@ source -echo -verbose /home/c11879_csufresno/Documents/ECE240_Git/ECE240_Project
 #@ set_load 1.5 [all_outputs]
 #@ 
 #@ compile -map_effort medium
+#@ 
+#@ # Comment "ungroup" line to maybe see some submodules
+#@ if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+#@    ungroup -all -flatten -simple_names
+#@    }
+#@ # compile -map_effort medium    # May help, or maybe not
+#@ 
+#@ #===== Reports
+#@ write -format verilog -output FPU_Main.vg -hierarchy $NameDesign
+#@ write_sdc	FPU_Main.sdc
+#@ write_sdf	FPU_Main.sdf
+#@ 
+#@ 
+#@ report_area               > FPU_Main.area
+#@ report_cell               > FPU_Main.cell
+#@ report_hierarchy          > FPU_Main.hier
+#@ report_net                > FPU_Main.net
+#@ report_power              > FPU_Main.pow
+#@ report_timing -nworst 10  > FPU_Main.tim
+#@ 
+#@ check_timing
+#@ check_design
+#@ 
+#@ exit
