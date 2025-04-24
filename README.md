@@ -23,4 +23,17 @@ Include all refrences and your code. Follow the format of the "ECE lab report gu
 
 This is a group assignment.
 
- 
+Project #3
+Due on 04/25/2025
+
+Use Synopsys DC Compiler and Cadence Innovus to complete the physical design layout and complete the Clock Tree Synthesis and Timing analysis post & Pre-Routing. 
+FPU_Main.v file is top module file and remaining modules are getting called in top module. So Follow the Steps mentioned in Tutorial document’s.
+
+Using Tutorial document available on canvas complete the synthesis on Synopsys DC Compiler, once synthesis completed Netlist file be generated with extension of .vg. Use the Innovus tutorial File to complete physical design layout. 
+
+Note: Please go through tutorial files step by step and don’t miss any step mainly Innovus Tutorial File.
+Write a report to discuss the objectives, background, process, result and analysis. Include all references. Follow the format of the “ECE lab report guidance”.
+
+This is a group assignment.
+
+

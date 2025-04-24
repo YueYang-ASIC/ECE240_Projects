@@ -3,7 +3,7 @@
 Report : hierarchy
 Design : FPU_Main
 Version: S-2021.06-SP5-1
-Date   : Fri Apr 18 02:51:23 2025
+Date   : Tue Apr 22 18:01:43 2025
 ****************************************
 
 Attributes:
@@ -17,17 +17,12 @@ FPU_Main           r
     AND4_X1           NangateOpenCellLibrary
     AOI21_X1          NangateOpenCellLibrary
     AOI22_X1          NangateOpenCellLibrary
-    AOI22_X2          NangateOpenCellLibrary
-    AOI211_X1         NangateOpenCellLibrary
     AOI221_X1         NangateOpenCellLibrary
-    AOI221_X4         NangateOpenCellLibrary
     AOI222_X1         NangateOpenCellLibrary
     AOI222_X4         NangateOpenCellLibrary
     BUF_X1            NangateOpenCellLibrary
     BUF_X2            NangateOpenCellLibrary
-    BUF_X4            NangateOpenCellLibrary
     CLKBUF_X1         NangateOpenCellLibrary
-    CLKBUF_X2         NangateOpenCellLibrary
     CLKBUF_X3         NangateOpenCellLibrary
     DFF_X1            NangateOpenCellLibrary
     DFF_X2            NangateOpenCellLibrary
@@ -35,9 +30,7 @@ FPU_Main           r
     HA_X1             NangateOpenCellLibrary
     INV_X1            NangateOpenCellLibrary
     INV_X2            NangateOpenCellLibrary
-    INV_X4            NangateOpenCellLibrary
     MUX2_X1           NangateOpenCellLibrary
-    MUX2_X2           NangateOpenCellLibrary
     NAND2_X1          NangateOpenCellLibrary
     NAND2_X2          NangateOpenCellLibrary
     NAND3_X1          NangateOpenCellLibrary
@@ -47,14 +40,11 @@ FPU_Main           r
     NOR2_X2           NangateOpenCellLibrary
     NOR2_X4           NangateOpenCellLibrary
     NOR3_X1           NangateOpenCellLibrary
+    NOR3_X2           NangateOpenCellLibrary
     NOR4_X1           NangateOpenCellLibrary
     OAI21_X1          NangateOpenCellLibrary
     OAI22_X1          NangateOpenCellLibrary
-    OAI22_X2          NangateOpenCellLibrary
-    OAI33_X1          NangateOpenCellLibrary
-    OAI211_X1         NangateOpenCellLibrary
     OAI221_X1         NangateOpenCellLibrary
-    OAI221_X4         NangateOpenCellLibrary
     OAI222_X1         NangateOpenCellLibrary
     OAI222_X4         NangateOpenCellLibrary
     OR2_X1            NangateOpenCellLibrary
@@ -62,10 +52,10 @@ FPU_Main           r
     OR2_X4            NangateOpenCellLibrary
     OR3_X1            NangateOpenCellLibrary
     OR3_X2            NangateOpenCellLibrary
-    OR3_X4            NangateOpenCellLibrary
+    OR4_X1            NangateOpenCellLibrary
+    OR4_X2            NangateOpenCellLibrary
     SDFF_X1           NangateOpenCellLibrary
     SDFF_X2           NangateOpenCellLibrary
     XNOR2_X1          NangateOpenCellLibrary
-    XNOR2_X2          NangateOpenCellLibrary
     XOR2_X1           NangateOpenCellLibrary
 1

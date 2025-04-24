@@ -8,7 +8,7 @@ Report : power
         -analysis_effort low
 Design : FPU_Main
 Version: S-2021.06-SP5-1
-Date   : Fri Apr 18 02:51:28 2025
+Date   : Tue Apr 22 18:01:47 2025
 ****************************************
 
 
@@ -34,12 +34,12 @@ Power-specific unit information :
     Leakage Power Units = 1nW
 
 
-  Cell Internal Power  =  33.1722 mW   (51%)
-  Net Switching Power  =  31.5448 mW   (49%)
+  Cell Internal Power  =  20.0362 mW   (52%)
+  Net Switching Power  =  18.3445 mW   (48%)
                          ---------
-Total Dynamic Power    =  64.7169 mW  (100%)
+Total Dynamic Power    =  38.3807 mW  (100%)
 
-Cell Leakage Power     =   6.9102 mW
+Cell Leakage Power     =   6.3053 mW
 
 
                  Internal         Switching           Leakage            Total
@@ -49,9 +49,9 @@ io_pad             0.0000            0.0000            0.0000            0.0000 
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register       6.4529e+03        3.9918e+03        5.3800e+05        1.0983e+04  (  15.33%)
+register       4.1435e+03        2.6548e+03        5.7644e+05        7.3747e+03  (  16.50%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational  2.6720e+04        2.7553e+04        6.3722e+06        6.0645e+04  (  84.67%)
+combinational  1.5893e+04        1.5690e+04        5.7289e+06        3.7312e+04  (  83.50%)
 --------------------------------------------------------------------------------------------------
-Total          3.3172e+04 uW     3.1545e+04 uW     6.9102e+06 nW     7.1627e+04 uW
+Total          2.0036e+04 uW     1.8345e+04 uW     6.3053e+06 nW     4.4686e+04 uW
 1
