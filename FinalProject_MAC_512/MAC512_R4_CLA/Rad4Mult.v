@@ -54,17 +54,11 @@ always @(posedge clk or negedge rst_n) begin
     FF <= carryAdderCout; 
     product <= {1'b0, (product[1] & a[(DIGITS*2-1)]), CSA2Sum[(DIGITS*2)-1:2], carryAdderSum, product[(DIGITS*2)-1:2]};
     carry_pp <= {1'b0, (CSA1Carry[(DIGITS*2)-1] | CSA2Carry[(DIGITS*2)-1]), CSA2Carry[(DIGITS*2-2):1]};
+    choose_a <= product[0] ? a : {(DIGITS*2){1'b0}};
+    choose_2a <= product[1] ? (a << 1) : {(DIGITS*2){1'b0}};
   end //else
 
 end //always
-
-
-always @(negedge clk) begin
-    if(en) begin
-      choose_a <= product[0] ? a : {(DIGITS*2){1'b0}};
-      choose_2a <= product[1] ? (a << 1) : {(DIGITS*2){1'b0}};
-    end
-end
 
 assign out = outReg;
 

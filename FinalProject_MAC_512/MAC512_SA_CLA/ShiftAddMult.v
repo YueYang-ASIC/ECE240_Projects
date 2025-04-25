@@ -29,15 +29,11 @@ always @(posedge clk or negedge rst_n) begin
     partial_prod <= {256'b0,B};
   end //if
 
-  else if(en)
-    mux_out <= partial_prod[0] ? multiplicand : 256'b0;
-
+  else if(en) begin
+   mux_out <= partial_prod[0] ? multiplicand : 256'b0;
+   partial_prod <= {adder_cout, adder_out, partial_prod[255:1]};
+  end //else
 end //posedge clk
-
-always @(negedge clk) begin
-  if(en)
-    partial_prod <= {adder_cout, adder_out, partial_prod[255:1]};
-end //negedge clk
 
 assign out = partial_prod;
 
