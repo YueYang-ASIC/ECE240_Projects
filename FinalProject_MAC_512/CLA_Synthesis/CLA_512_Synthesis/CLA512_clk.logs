@@ -1,0 +1,1430 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+              Version S-2021.06-SP5-1 for linux64 - Mar 10, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+# dc-CLA512_clk.tcl script 
+#
+# 2018/02/15  Added *_ANALYZE_SECTION comments to new Makefile can automatically
+#             add .v files to dc-*.tcl. Also updated some comments.
+# 2017/02/14  Reduced output_delay to 4% and input_delay to 3% of the clock 
+#             cycle time so very short critical paths are visible in timing 
+#             reports. Also changed clock_skew from 250ps to 5% of cycle time 
+#             so it will scale with clock frequency.
+# 2017/02/10  Uncommented "analyze -format verilog ./proc.v" line. It seems to
+#             be needed only the first time synthesis is run.
+# 2017/02/04  Changes for NanGate 45 nm library including new timing parameters
+# 2012/02/22  Changed:
+#               ungroup -all -flatten -simple_names
+#             to:
+#               if { [sizeof_collection [get_cells * -filter 
+#                  "is_hierarchical==true"]] > 0 } {
+#                  ungroup -all -flatten -simple_names
+#                  }
+# 2010/02/16  Updated commented path to vtvtlib25.db
+# 2009/02/12  Many parts re-written in new tcl version by Zhibin Xiao
+# 2006/01/30  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2004/02/05  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2003/05/22  Increased input_setup from 500 to 6000 (external input delay
+#             now 6ns instead of 9.5ns) so input paths don't show up at the
+#             top of timing reports so often.
+# 2003/05/15  Cleaned up a little
+# 2003/05/14  Written
+#
+# Debugging
+# list -designs
+# list -libraries
+# list -files 
+#
+# Add if you like:
+# Annotates inputs, but doesn't propagate through design to clear warnings.
+#   set_switching_activity -toggle_rate 0.25 -clock "clk" { "in31a" }
+# More power info
+#   report_power -net
+#   report_power -hier
+#   set_max_delay
+#   write -format db -output CLA512_clk.db
+#
+# Doesn't work quite the way I expect
+#   NameDesign = CLA512_clk    Set variable ok, but how to concatenate?
+#   write_rtl -format verilog -output CLA512_clk.vg
+#===== Set: make sure you change design name elsewhere in this file
+set NameDesign "CLA512_clk"
+CLA512_clk
+#===== Set some timing parameters
+set CLK "clk"
+clk
+#===== All values are in units of ns for NanGate 45 nm library
+set clk_period      9.66
+9.66
+set clock_skew      [expr {$clk_period} * 0.05 ]
+0.483
+set input_setup     [expr {$clk_period} * 0.97 ]
+9.3702
+set output_delay    [expr {$clk_period} * 0.04 ]
+0.3864
+set input_delay     [expr {$clk_period} - {$input_setup}]
+0.2898
+# It appears one "analyze" command is needed for each .v file. This works best
+# (only?) with one command line per module.
+analyze -format verilog CLA512_clk.v
+Running PRESTO HDLC
+Compiling source file ./CLA512_clk.v
+Presto compilation completed successfully.
+Loading db file '/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db'
+Information: Using CCS timing libraries. (TIM-024)
+Loading db file '/synopsys/Design_Compiler/libraries/syn/dw_foundation.sldb'
+1
+analyze -format verilog CLA512.v
+Running PRESTO HDLC
+Compiling source file ./CLA512.v
+Presto compilation completed successfully.
+1
+analyze -format verilog CLA16.v
+Running PRESTO HDLC
+Compiling source file ./CLA16.v
+Presto compilation completed successfully.
+1
+analyze -format verilog CLA64.v
+Running PRESTO HDLC
+Compiling source file ./CLA64.v
+Presto compilation completed successfully.
+1
+analyze -format verilog CLA256.v
+Running PRESTO HDLC
+Compiling source file ./CLA256.v
+Presto compilation completed successfully.
+1
+analyze -format verilog CLA_generator4.v
+Running PRESTO HDLC
+Compiling source file ./CLA_generator4.v
+Presto compilation completed successfully.
+1
+analyze -format verilog CLA4.v
+Running PRESTO HDLC
+Compiling source file ./CLA4.v
+Presto compilation completed successfully.
+1
+analyze -format verilog GPFA.v
+Running PRESTO HDLC
+Compiling source file ./GPFA.v
+Presto compilation completed successfully.
+1
+elaborate $NameDesign
+Loading db file '/usr/synopsys/syn/S-2021.06-SP5-1/libraries/syn/gtech.db'
+Loading db file '/usr/synopsys/syn/S-2021.06-SP5-1/libraries/syn/standard.sldb'
+  Loading link library 'NangateOpenCellLibrary'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+	in routine CLA512_clk line 20 in file
+		'./CLA512_clk.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      B_reg_reg      | Flip-flop |  512  |  Y  | N  | Y  | N  | N  | N  | N  |
+|      A_reg_reg      | Flip-flop |  512  |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine CLA512_clk line 33 in file
+		'./CLA512_clk.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     res_reg_reg     | Flip-flop |  512  |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (CLA512_clk)
+Elaborated 1 design.
+Current design is now 'CLA512_clk'.
+Information: Building the design 'CLA512'. (HDL-193)
+Presto compilation completed successfully. (CLA512)
+Information: Building the design 'CLA256'. (HDL-193)
+Presto compilation completed successfully. (CLA256)
+Information: Building the design 'CLA64'. (HDL-193)
+Presto compilation completed successfully. (CLA64)
+Information: Building the design 'CLA_generator4'. (HDL-193)
+Presto compilation completed successfully. (CLA_generator4)
+Information: Building the design 'CLA16'. (HDL-193)
+Presto compilation completed successfully. (CLA16)
+Information: Building the design 'CLA4'. (HDL-193)
+Presto compilation completed successfully. (CLA4)
+Information: Building the design 'GPFA'. (HDL-193)
+Presto compilation completed successfully. (GPFA)
+1
+current_design $NameDesign
+Current design is 'CLA512_clk'.
+{CLA512_clk}
+link
+
+  Linking design 'CLA512_clk'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  NangateOpenCellLibrary (library) /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db
+  dw_foundation.sldb (library) /synopsys/Design_Compiler/libraries/syn/dw_foundation.sldb
+
+1
+uniquify
+Information: Uniquified 2 instances of design 'CLA256'. (OPT-1056)
+Information: Uniquified 8 instances of design 'CLA64'. (OPT-1056)
+Information: Uniquified 170 instances of design 'CLA_generator4'. (OPT-1056)
+Information: Uniquified 32 instances of design 'CLA16'. (OPT-1056)
+Information: Uniquified 128 instances of design 'CLA4'. (OPT-1056)
+Information: Uniquified 512 instances of design 'GPFA'. (OPT-1056)
+1
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+Information: Updating graph... (UID-83)
+Warning: Design 'CLA512_clk' contains 4 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+set_max_area 0.0
+1
+#===== Timing and input/output load constraints
+create_clock $CLK -name $CLK -period $clk_period -waveform [list 0.0 [expr {$clk_period} / 2.0 ] ] 
+1
+set_clock_uncertainty $clock_skew $CLK
+1
+#set_clock_skew -plus_uncertainty $clock_skew $CLK
+#set_clock_skew -minus_uncertainty $clock_skew $CLK
+set_input_delay     $input_delay  -clock $CLK [all_inputs]
+1
+#remove_input_delay               -clock $CLK [all_inputs] 
+set_output_delay    $output_delay -clock $CLK [all_outputs]
+1
+set_load 1.5 [all_outputs]
+1
+compile -map_effort medium
+Warning: Setting attribute 'fix_multiple_port_nets' on design 'CLA512_clk'. (UIO-59)
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | S-2021.06-DWBB_202106.5 |     *     |
+| Licensed DW Building Blocks        | S-2021.06-DWBB_202106.5 |     *     |
+============================================================================
+
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler                                           |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 8180           |
+| Number of User Hierarchies                              | 0              |
+| Sequential Cell Count                                   | 1536           |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+
+Information: There are 171 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'CLA512_clk'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_511_512'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_510_511'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_509_510'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_508_509'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_507_508'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_506_507'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_505_506'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_504_505'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_503_504'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_502_503'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_501_502'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_500_501'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_499_500'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_498_499'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_497_498'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_496_497'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_495_496'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_494_495'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_493_494'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_492_493'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_491_492'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_490_491'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_489_490'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_488_489'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_487_488'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_486_487'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_485_486'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_484_485'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_483_484'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_482_483'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_481_482'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_480_481'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_479_480'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_478_479'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_477_478'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_476_477'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_475_476'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_474_475'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_473_474'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_472_473'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_471_472'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_470_471'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_469_470'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_468_469'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_467_468'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_466_467'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_465_466'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_464_465'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_463_464'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_462_463'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_461_462'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_460_461'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_459_460'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_458_459'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_457_458'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_456_457'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_455_456'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_454_455'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_453_454'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_452_453'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_451_452'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_450_451'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_449_450'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_448_449'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_447_448'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_446_447'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_445_446'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_444_445'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_443_444'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_442_443'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_441_442'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_440_441'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_439_440'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_438_439'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_437_438'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_436_437'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_435_436'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_434_435'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_433_434'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_432_433'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_431_432'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_430_431'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_429_430'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_428_429'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_427_428'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_426_427'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_425_426'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_424_425'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_423_424'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_422_423'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_421_422'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_420_421'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_419_420'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_418_419'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_417_418'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_416_417'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_415_416'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_414_415'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_413_414'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_412_413'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_411_412'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_410_411'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_409_410'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_408_409'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_407_408'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_406_407'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_405_406'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_404_405'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_403_404'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_402_403'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_401_402'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_400_401'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_399_400'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_398_399'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_397_398'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_396_397'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_395_396'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_394_395'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_393_394'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_392_393'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_391_392'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_390_391'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_389_390'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_388_389'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_387_388'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_386_387'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_385_386'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_384_385'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_383_384'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_382_383'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_381_382'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_380_381'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_379_380'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_378_379'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_377_378'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_376_377'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_375_376'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_374_375'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_373_374'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_372_373'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_371_372'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_370_371'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_369_370'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_368_369'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_367_368'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_366_367'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_365_366'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_364_365'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_363_364'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_362_363'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_361_362'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_360_361'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_359_360'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_358_359'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_357_358'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_356_357'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_355_356'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_354_355'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_353_354'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_352_353'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_351_352'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_350_351'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_349_350'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_348_349'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_347_348'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_346_347'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_345_346'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_344_345'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_343_344'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_342_343'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_341_342'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_340_341'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_339_340'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_338_339'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_337_338'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_336_337'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_335_336'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_334_335'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_333_334'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_332_333'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_331_332'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_330_331'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_329_330'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_328_329'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_327_328'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_326_327'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_325_326'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_324_325'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_323_324'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_322_323'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_321_322'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_320_321'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_319_320'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_318_319'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_317_318'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_316_317'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_315_316'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_314_315'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_313_314'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_312_313'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_311_312'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_310_311'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_309_310'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_308_309'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_307_308'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_306_307'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_305_306'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_304_305'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_303_304'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_302_303'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_301_302'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_300_301'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_299_300'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_298_299'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_297_298'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_296_297'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_295_296'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_294_295'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_293_294'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_292_293'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_291_292'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_290_291'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_289_290'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_288_289'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_287_288'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_286_287'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_285_286'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_284_285'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_283_284'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_282_283'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_281_282'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_280_281'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_279_280'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_278_279'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_277_278'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_276_277'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_275_276'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_274_275'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_273_274'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_272_273'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_271_272'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_270_271'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_269_270'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_268_269'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_267_268'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_266_267'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_265_266'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_264_265'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_263_264'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_262_263'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_261_262'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_260_261'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_259_260'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_258_259'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_257_258'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_256_257'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_255_256'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_254_255'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_253_254'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_252_253'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_251_252'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_250_251'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_249_250'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_248_249'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_247_248'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_246_247'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_245_246'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_244_245'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_243_244'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_242_243'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_241_242'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_240_241'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_239_240'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_238_239'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_237_238'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_236_237'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_235_236'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_234_235'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_233_234'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_232_233'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_231_232'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_230_231'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_229_230'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_228_229'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_227_228'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_226_227'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_225_226'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_224_225'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_223_224'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_222_223'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_221_222'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_220_221'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_219_220'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_218_219'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_217_218'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_216_217'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_215_216'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_214_215'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_213_214'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_212_213'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_211_212'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_210_211'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_209_210'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_208_209'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_207_208'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_206_207'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_205_206'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_204_205'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_203_204'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_202_203'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_201_202'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_200_201'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_199_200'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_198_199'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_197_198'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_196_197'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_195_196'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_194_195'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_193_194'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_192_193'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_191_192'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_190_191'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_189_190'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_188_189'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_187_188'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_186_187'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_185_186'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_184_185'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_183_184'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_182_183'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_181_182'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_180_181'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_179_180'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_178_179'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_177_178'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_176_177'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_175_176'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_174_175'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_173_174'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_172_173'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_171_172'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_170_171'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_169_170'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_168_169'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_167_168'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_166_167'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_165_166'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_164_165'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_163_164'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_162_163'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_161_162'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_160_161'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_159_160'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_158_159'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_157_158'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_156_157'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_155_156'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_154_155'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_153_154'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_152_153'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_151_152'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_150_151'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_149_150'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_148_149'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_147_148'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_146_147'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_145_146'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_144_145'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_143_144'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_142_143'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_141_142'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_140_141'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_139_140'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_138_139'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_137_138'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_136_137'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_135_136'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_134_135'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_133_134'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_132_133'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_131_132'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_130_131'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_129_130'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_128_129'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_127_128'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_126_127'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_125_126'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_124_125'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_123_124'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_122_123'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_121_122'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_120_121'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_119_120'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_118_119'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_117_118'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_116_117'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_115_116'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_114_115'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_113_114'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_112_113'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_111_112'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_110_111'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_109_110'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_108_109'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_107_108'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_106_107'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_105_106'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_104_105'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_103_104'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_102_103'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_101_102'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_100_101'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_99_100'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_98_99'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_97_98'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_96_97'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_95_96'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_94_95'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_93_94'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_92_93'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_91_92'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_90_91'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_89_90'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_88_89'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_87_88'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_86_87'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_85_86'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_84_85'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_83_84'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_82_83'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_81_82'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_80_81'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_79_80'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_78_79'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_77_78'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_76_77'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_75_76'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_74_75'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_73_74'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_72_73'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_71_72'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_70_71'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_69_70'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_68_69'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_67_68'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_66_67'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_65_66'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_64_65'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_63_64'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_62_63'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_61_62'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_60_61'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_59_60'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_58_59'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_57_58'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_56_57'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_55_56'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_54_55'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_53_54'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_52_53'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_51_52'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_50_51'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_49_50'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_48_49'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_47_48'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_46_47'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_45_46'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_44_45'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_43_44'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_42_43'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_41_42'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_40_41'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_39_40'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_38_39'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_37_38'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_36_37'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_35_36'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_34_35'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_33_34'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_32_33'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_31_32'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_30_31'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_29_30'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_28_29'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_27_28'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_26_27'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_25_26'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_24_25'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_23_24'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_22_23'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_21_22'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_20_21'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_19_20'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_18_19'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_17_18'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_16_17'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_15_16'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_14_15'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_13_14'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_12_13'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_11_12'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_10_11'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_9_10'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_8_9'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_7_8'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_6_7'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_5_6'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_4_5'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_3_4'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_2_3'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_1_2'. (DDB-72)
+  Mapping 'DW_mult_uns'
+Information: Added key list 'DesignWare' to design 'dp_cluster_0_1'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'CLA512_clk'. (DDB-72)
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:21   18517.1      0.00       0.0     184.8                          
+    0:00:21   18517.1      0.00       0.0     184.8                          
+    0:00:21   18517.1      0.00       0.0     184.8                          
+    0:00:21   18517.1      0.00       0.0     184.8                          
+    0:00:21   18517.1      0.00       0.0     184.8                          
+    0:00:22   15355.6      0.00       0.0       0.0                          
+    0:00:22   15351.9      0.00       0.0       0.0                          
+    0:00:22   15351.9      0.00       0.0       0.0                          
+    0:00:23   15351.9      0.00       0.0       0.0                          
+    0:00:23   15351.9      0.00       0.0       0.0                          
+    0:00:23   15351.9      0.00       0.0       0.0                          
+    0:00:23   15351.9      0.00       0.0       0.0                          
+    0:00:23   15351.9      0.00       0.0       0.0                          
+    0:00:23   15351.9      0.00       0.0       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:23   15351.9      0.00       0.0       0.0                          
+    0:00:23   15351.9      0.00       0.0       0.0                          
+    0:00:26   14808.2      0.00       0.0       0.0                          
+
+
+  Beginning Area-Recovery Phase  (max_area 0)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:26   14808.2      0.00       0.0       0.0                          
+    0:00:26   14808.2      0.00       0.0       0.0                          
+    0:00:26   14796.5      0.00       0.0       0.0                          
+    0:00:27   14796.0      0.00       0.0       0.0                          
+    0:00:27   14795.5      0.00       0.0       0.0                          
+    0:00:27   14794.9      0.00       0.0       0.0                          
+    0:00:27   14794.4      0.00       0.0       0.0                          
+    0:00:27   14793.9      0.00       0.0       0.0                          
+    0:00:27   14793.3      0.00       0.0       0.0                          
+    0:00:27   14792.8      0.00       0.0       0.0                          
+    0:00:27   14792.3      0.00       0.0       0.0                          
+    0:00:27   14791.7      0.00       0.0       0.0                          
+    0:00:27   14791.2      0.00       0.0       0.0                          
+    0:00:28   14790.7      0.00       0.0       0.0                          
+    0:00:28   14790.1      0.00       0.0       0.0                          
+    0:00:28   14789.6      0.00       0.0       0.0                          
+    0:00:28   14789.1      0.00       0.0       0.0                          
+    0:00:28   14787.7      0.00       0.0       0.0                          
+    0:00:28   14787.7      0.00       0.0       0.0                          
+    0:00:28   14787.7      0.00       0.0       0.0                          
+    0:00:28   14782.2      0.00       0.0       0.0                          
+    0:00:28   14782.2      0.00       0.0       0.0                          
+    0:00:28   14782.2      0.00       0.0       0.0                          
+    0:00:28   14782.2      0.00       0.0       0.0                          
+    0:00:28   14782.2      0.00       0.0       0.0                          
+    0:00:28   14782.2      0.00       0.0       0.0                          
+    0:00:30   14651.8      0.00       0.0       0.0                          
+    0:00:31   14544.9      0.00       0.0       0.0                          
+    0:00:31   14542.2      0.00       0.0       0.0                          
+    0:00:31   14540.6      0.00       0.0       0.0                          
+    0:00:31   14540.6      0.00       0.0       0.0                          
+    0:00:31   14540.6      0.00       0.0       0.0                          
+    0:00:31   14540.6      0.00       0.0       0.0                          
+    0:00:31   14540.6      0.00       0.0       0.0                          
+    0:00:31   14540.6      0.00       0.0       0.0                          
+    0:00:31   14540.6      0.00       0.0       0.0                          
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'CLA512_clk' contains 3 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'clk': 1536 load(s), 1 driver(s)
+     Net 'rst_n': 1536 load(s), 1 driver(s)
+     Net 'en': 2573 load(s), 1 driver(s)
+1
+# Comment "ungroup" line to maybe see some submodules
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+# compile -map_effort medium    # May help, or maybe not
+#===== Reports
+write -format verilog -output CLA512_clk.vg -hierarchy $NameDesign
+Writing verilog file '/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/FinalProject_MAC_512/CLA_Synthesis/CLA_512_Synthesis/CLA512_clk.vg'.
+1
+write_sdc	CLA512_clk.sdc
+1
+write_sdf	CLA512_clk.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/FinalProject_MAC_512/CLA_Synthesis/CLA_512_Synthesis/CLA512_clk.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+Warning: Design 'CLA512_clk' contains 3 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+report_area               > CLA512_clk.area
+report_cell               > CLA512_clk.cell
+report_hierarchy          > CLA512_clk.hier
+report_net                > CLA512_clk.net
+report_power              > CLA512_clk.pow
+report_timing -nworst 10  > CLA512_clk.tim
+check_timing
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+
+Information: Checking unconstrained_endpoints...
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1
+check_design
+1
+exit
+
+Memory usage for this session 173 Mbytes.
+Memory usage for this session including child processes 173 Mbytes.
+CPU usage for this session 32 seconds ( 0.01 hours ).
+Elapsed time for this session 41 seconds ( 0.01 hours ).
+
+Thank you...

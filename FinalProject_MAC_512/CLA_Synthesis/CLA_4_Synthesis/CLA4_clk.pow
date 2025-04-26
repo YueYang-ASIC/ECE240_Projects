@@ -1,0 +1,57 @@
+Loading db file '/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : CLA4_clk
+Version: S-2021.06-SP5-1
+Date   : Fri Apr 25 06:31:43 2025
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db)
+
+
+Operating Conditions: fast   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+CLA4_clk               5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 1.25 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  = 380.7558 uW   (93%)
+  Net Switching Power  =  28.5168 uW    (7%)
+                         ---------
+Total Dynamic Power    = 409.2726 uW  (100%)
+
+Cell Leakage Power     =   6.5651 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register         357.8580           10.2709        3.4370e+03          371.5659  (  89.35%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational     22.8978           18.2458        3.1280e+03           44.2717  (  10.65%)
+--------------------------------------------------------------------------------------------------
+Total            380.7558 uW        28.5168 uW     6.5651e+03 nW       415.8376 uW
+1

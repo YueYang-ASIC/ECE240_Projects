@@ -1,0 +1,38 @@
+ 
+****************************************
+Report : hierarchy
+Design : CLA512_clk
+Version: S-2021.06-SP5-1
+Date   : Fri Apr 25 04:41:25 2025
+****************************************
+
+Attributes:
+    r - licensed design
+
+CLA512_clk         r
+    AND2_X1           NangateOpenCellLibrary
+    AND3_X1           NangateOpenCellLibrary
+    AND4_X1           NangateOpenCellLibrary
+    AOI21_X1          NangateOpenCellLibrary
+    AOI22_X1          NangateOpenCellLibrary
+    AOI211_X1         NangateOpenCellLibrary
+    AOI221_X1         NangateOpenCellLibrary
+    CLKBUF_X1         NangateOpenCellLibrary
+    DFFR_X1           NangateOpenCellLibrary
+    INV_X1            NangateOpenCellLibrary
+    NAND2_X1          NangateOpenCellLibrary
+    NAND3_X1          NangateOpenCellLibrary
+    NAND4_X1          NangateOpenCellLibrary
+    NOR2_X1           NangateOpenCellLibrary
+    NOR3_X1           NangateOpenCellLibrary
+    NOR4_X1           NangateOpenCellLibrary
+    OAI21_X1          NangateOpenCellLibrary
+    OAI22_X1          NangateOpenCellLibrary
+    OAI211_X1         NangateOpenCellLibrary
+    OAI221_X1         NangateOpenCellLibrary
+    OR2_X1            NangateOpenCellLibrary
+    OR3_X1            NangateOpenCellLibrary
+    OR4_X1            NangateOpenCellLibrary
+    XNOR2_X1          NangateOpenCellLibrary
+    XOR2_X1           NangateOpenCellLibrary
+1

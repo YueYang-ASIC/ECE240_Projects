@@ -1,0 +1,208 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Verilog_Projects/CLA
+vCLA16
+Z0 !s110 1744073096
+!i10b 1
+!s100 h?:nXINTIiDQ==1EbI=BO2
+IT01LRi<5JmK<M@e]G5<`E0
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Verilog_Projects/MAC_512_CLA
+w1744071447
+8C:/Verilog_Projects/MAC_512_CLA/CLA16.v
+FC:/Verilog_Projects/MAC_512_CLA/CLA16.v
+L0 2
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1744073096.000000
+!s107 C:/Verilog_Projects/MAC_512_CLA/CLA16.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Verilog_Projects/MAC_512_CLA/CLA16.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+n@c@l@a16
+vCLA256
+R0
+!i10b 1
+!s100 6WTRA`[CXhO:k3;EG^^QL2
+I^aeAE9]GRm7NYIU]NR0bc3
+R1
+R2
+w1744071499
+8C:/Verilog_Projects/MAC_512_CLA/CLA256.v
+FC:/Verilog_Projects/MAC_512_CLA/CLA256.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Verilog_Projects/MAC_512_CLA/CLA256.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Verilog_Projects/MAC_512_CLA/CLA256.v|
+!i113 1
+R5
+R6
+n@c@l@a256
+vCLA4
+R0
+!i10b 1
+!s100 <40eV2XgHTlR43bl09li40
+IjYKEo3zz>LL6`]X>;n2EX0
+R1
+R2
+w1744071562
+8C:/Verilog_Projects/MAC_512_CLA/CLA4.v
+FC:/Verilog_Projects/MAC_512_CLA/CLA4.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Verilog_Projects/MAC_512_CLA/CLA4.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Verilog_Projects/MAC_512_CLA/CLA4.v|
+!i113 1
+R5
+R6
+n@c@l@a4
+vCLA512
+R0
+!i10b 1
+!s100 WZXb<[PUKaPO>NkAC2Kci3
+IBSJDYH@d27mR5aQKF>oKo0
+R1
+R2
+w1744071512
+8C:/Verilog_Projects/MAC_512_CLA/CLA512.v
+FC:/Verilog_Projects/MAC_512_CLA/CLA512.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Verilog_Projects/MAC_512_CLA/CLA512.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Verilog_Projects/MAC_512_CLA/CLA512.v|
+!i113 1
+R5
+R6
+n@c@l@a512
+vCLA64
+R0
+!i10b 1
+!s100 85c:CUCoAhRMG?lnJh]h@3
+I_2KFDVBe@San^On9TQYbF1
+R1
+R2
+w1744071481
+8C:/Verilog_Projects/MAC_512_CLA/CLA64.v
+FC:/Verilog_Projects/MAC_512_CLA/CLA64.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Verilog_Projects/MAC_512_CLA/CLA64.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Verilog_Projects/MAC_512_CLA/CLA64.v|
+!i113 1
+R5
+R6
+n@c@l@a64
+vCLA_generator4
+R0
+!i10b 1
+!s100 cf_fn=jY3>HTSc31kC<S^1
+I`S_26ddf_Dk5_o;bP?Q_g2
+R1
+R2
+w1744071027
+8C:/Verilog_Projects/MAC_512_CLA/CLA_generator4.v
+FC:/Verilog_Projects/MAC_512_CLA/CLA_generator4.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Verilog_Projects/MAC_512_CLA/CLA_generator4.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Verilog_Projects/MAC_512_CLA/CLA_generator4.v|
+!i113 1
+R5
+R6
+n@c@l@a_generator4
+vGPFA
+R0
+!i10b 1
+!s100 L:P>3^;j=c;kJ>Pd>LS7?2
+IiN`I]7f?cdGV]k4BLTOFO2
+R1
+R2
+w1744069336
+8C:/Verilog_Projects/MAC_512_CLA/GPFA.v
+FC:/Verilog_Projects/MAC_512_CLA/GPFA.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Verilog_Projects/MAC_512_CLA/GPFA.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Verilog_Projects/MAC_512_CLA/GPFA.v|
+!i113 1
+R5
+R6
+n@g@p@f@a
+vMAC_512_CLA
+R0
+!i10b 1
+!s100 foIB4TQC_JBT[Ghj3H]Do1
+I;[VNh0JmoPY:I=`XLUQ1z2
+R1
+R2
+w1744073093
+8C:/Verilog_Projects/MAC_512_CLA/MAC_512_CLA.v
+FC:/Verilog_Projects/MAC_512_CLA/MAC_512_CLA.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Verilog_Projects/MAC_512_CLA/MAC_512_CLA.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Verilog_Projects/MAC_512_CLA/MAC_512_CLA.v|
+!i113 1
+R5
+R6
+n@m@a@c_512_@c@l@a
+vMAC_512_CLA_tb
+R0
+!i10b 1
+!s100 GSG54dFh^;_X5QCUQGei@3
+IOE@gk2XC78`]j9I[UVj[W3
+R1
+R2
+w1744072930
+8C:/Verilog_Projects/MAC_512_CLA/MAC_512_CLA_tb.v
+FC:/Verilog_Projects/MAC_512_CLA/MAC_512_CLA_tb.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Verilog_Projects/MAC_512_CLA/MAC_512_CLA_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Verilog_Projects/MAC_512_CLA/MAC_512_CLA_tb.v|
+!i113 1
+R5
+R6
+n@m@a@c_512_@c@l@a_tb

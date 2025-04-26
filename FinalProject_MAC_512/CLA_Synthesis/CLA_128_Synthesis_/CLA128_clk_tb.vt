@@ -1,0 +1,41 @@
+
+
+
+module CLA128_clk_tb;
+
+    reg           clk;
+    reg           rst_n;       // active-low reset
+    reg           en;          // enable signal
+    reg   [127:0] A_in;
+    reg   [127:0] B_in;
+    wire  [127:0] res ;
+
+
+CLA128_clk uut (.clk(clk), .rst_n(rst_n), .en(en), .A_in(A_in), .B_in(B_in), .res(res));
+
+integer i;
+initial begin  
+clk =0;
+rst_n = 0;
+en = 0;
+
+#5; 
+en = 1;
+rst_n = 1;
+
+
+        for (i = 0; i < 10; i = i + 1) begin
+            A_in = $random % 1000;
+            B_in = $random % 1000;
+            #20;
+        end
+
+$stop;
+
+end
+
+always begin
+#5 clk = ~clk;
+end
+
+endmodule 

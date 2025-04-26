@@ -1,0 +1,806 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+              Version S-2021.06-SP5-1 for linux64 - Mar 10, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+# dc-MAC512_SA_RCA.tcl script 
+#
+# 2018/02/15  Added *_ANALYZE_SECTION comments to new Makefile can automatically
+#             add .v files to dc-*.tcl. Also updated some comments.
+# 2017/02/14  Reduced output_delay to 4% and input_delay to 3% of the clock 
+#             cycle time so very short critical paths are visible in timing 
+#             reports. Also changed clock_skew from 250ps to 5% of cycle time 
+#             so it will scale with clock frequency.
+# 2017/02/10  Uncommented "analyze -format verilog ./proc.v" line. It seems to
+#             be needed only the first time synthesis is run.
+# 2017/02/04  Changes for NanGate 45 nm library including new timing parameters
+# 2012/02/22  Changed:
+#               ungroup -all -flatten -simple_names
+#             to:
+#               if { [sizeof_collection [get_cells * -filter 
+#                  "is_hierarchical==true"]] > 0 } {
+#                  ungroup -all -flatten -simple_names
+#                  }
+# 2010/02/16  Updated commented path to vtvtlib25.db
+# 2009/02/12  Many parts re-written in new tcl version by Zhibin Xiao
+# 2006/01/30  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2004/02/05  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2003/05/22  Increased input_setup from 500 to 6000 (external input delay
+#             now 6ns instead of 9.5ns) so input paths don't show up at the
+#             top of timing reports so often.
+# 2003/05/15  Cleaned up a little
+# 2003/05/14  Written
+#
+# Debugging
+# list -designs
+# list -libraries
+# list -files 
+#
+# Add if you like:
+# Annotates inputs, but doesn't propagate through design to clear warnings.
+#   set_switching_activity -toggle_rate 0.25 -clock "clk" { "in31a" }
+# More power info
+#   report_power -net
+#   report_power -hier
+#   set_max_delay
+#   write -format db -output MAC512_SA_RCA.db
+#
+# Doesn't work quite the way I expect
+#   NameDesign = MAC512_SA_RCA    Set variable ok, but how to concatenate?
+#   write_rtl -format verilog -output MAC512_SA_RCA.vg
+#===== Set: make sure you change design name elsewhere in this file
+set NameDesign "MAC512_SA_RCA"
+MAC512_SA_RCA
+#===== Set some timing parameters
+set CLK "clk"
+clk
+#===== All values are in units of ns for NanGate 45 nm library
+set clk_period      2.9
+2.9
+set clock_skew      [expr {$clk_period} * 0.05 ]
+0.145
+set input_setup     [expr {$clk_period} * 0.97 ]
+2.813
+set output_delay    [expr {$clk_period} * 0.04 ]
+0.116
+set input_delay     [expr {$clk_period} - {$input_setup}]
+0.087
+# It appears one "analyze" command is needed for each .v file. This works best
+# (only?) with one command line per module.
+analyze -format verilog MAC512_SA_RCA.v
+Running PRESTO HDLC
+Compiling source file ./MAC512_SA_RCA.v
+Presto compilation completed successfully.
+Loading db file '/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db'
+Information: Using CCS timing libraries. (TIM-024)
+Loading db file '/synopsys/Design_Compiler/libraries/syn/dw_foundation.sldb'
+1
+analyze -format verilog CLA64.v
+Running PRESTO HDLC
+Compiling source file ./CLA64.v
+Presto compilation completed successfully.
+1
+analyze -format verilog CLA_generator4.v
+Running PRESTO HDLC
+Compiling source file ./CLA_generator4.v
+Presto compilation completed successfully.
+1
+analyze -format verilog RCA.v
+Running PRESTO HDLC
+Compiling source file ./RCA.v
+Presto compilation completed successfully.
+1
+analyze -format verilog CLA16.v
+Running PRESTO HDLC
+Compiling source file ./CLA16.v
+Presto compilation completed successfully.
+1
+analyze -format verilog ShiftAddMult.v
+Running PRESTO HDLC
+Compiling source file ./ShiftAddMult.v
+Presto compilation completed successfully.
+1
+analyze -format verilog CLA256.v
+Running PRESTO HDLC
+Compiling source file ./CLA256.v
+Presto compilation completed successfully.
+1
+analyze -format verilog FA.v
+Running PRESTO HDLC
+Compiling source file ./FA.v
+Presto compilation completed successfully.
+1
+analyze -format verilog CLA4.v
+Running PRESTO HDLC
+Compiling source file ./CLA4.v
+Presto compilation completed successfully.
+1
+analyze -format verilog GPFA.v
+Running PRESTO HDLC
+Compiling source file ./GPFA.v
+Presto compilation completed successfully.
+1
+elaborate $NameDesign
+Loading db file '/usr/synopsys/syn/S-2021.06-SP5-1/libraries/syn/gtech.db'
+Loading db file '/usr/synopsys/syn/S-2021.06-SP5-1/libraries/syn/standard.sldb'
+  Loading link library 'NangateOpenCellLibrary'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Statistics for case statements in always block at line 28 in file
+	'./MAC512_SA_RCA.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            40            |    auto/auto     |
+===============================================
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[511] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[510] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[509] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[508] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[507] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[506] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[505] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[504] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[503] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[502] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[501] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[500] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[499] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[498] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[497] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[496] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[495] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[494] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[493] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[492] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[491] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[490] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[489] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[488] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[487] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[486] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[485] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[484] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[483] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[482] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[481] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[480] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[479] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[478] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[477] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[476] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[475] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[474] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[473] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[472] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[471] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[470] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[469] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[468] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[467] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[466] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[465] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[464] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[463] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[462] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[461] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[460] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[459] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[458] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[457] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[456] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[455] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[454] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[453] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[452] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[451] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[450] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[449] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[448] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[447] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[446] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[445] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[444] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[443] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[442] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[441] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[440] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[439] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[438] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[437] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[436] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[435] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[434] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[433] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[432] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[431] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[430] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[429] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[428] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[427] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[426] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[425] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[424] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[423] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[422] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[421] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[420] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[419] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[418] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[417] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[416] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[415] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[414] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[413] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[412] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[411] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[410] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[409] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[408] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[407] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[406] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[405] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[404] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[403] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[402] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[401] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[400] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[399] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[398] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[397] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[396] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[395] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[394] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[393] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[392] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[391] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[390] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[389] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[388] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[387] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[386] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[385] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[384] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[383] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[382] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[381] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[380] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[379] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[378] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[377] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[376] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[375] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[374] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[373] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[372] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[371] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[370] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[369] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[368] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[367] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[366] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[365] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[364] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[363] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[362] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[361] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[360] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[359] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[358] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[357] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[356] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[355] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[354] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[353] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[352] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[351] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[350] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[349] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[348] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[347] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[346] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[345] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[344] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[343] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[342] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[341] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[340] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[339] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[338] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[337] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[336] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[335] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[334] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[333] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[332] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[331] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[330] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[329] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[328] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[327] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[326] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[325] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[324] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[323] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[322] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[321] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[320] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[319] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[318] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[317] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[316] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[315] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[314] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[313] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[312] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[311] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[310] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[309] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[308] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[307] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[306] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[305] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[304] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[303] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[302] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[301] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[300] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[299] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[298] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[297] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[296] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[295] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[294] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[293] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[292] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[291] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[290] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[289] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[288] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[287] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[286] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[285] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[284] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[283] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[282] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[281] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[280] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[279] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[278] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[277] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[276] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[275] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[274] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[273] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[272] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[271] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[270] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[269] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[268] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[267] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[266] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[265] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[264] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[263] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[262] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[261] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[260] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[259] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[258] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[257] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[256] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[255] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[254] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[253] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[252] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[251] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[250] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[249] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[248] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[247] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[246] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[245] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[244] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[243] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[242] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[241] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[240] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[239] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[238] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[237] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[236] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[235] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[234] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[233] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[232] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[231] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[230] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[229] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[228] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[227] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[226] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[225] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[224] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[223] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[222] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[221] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[220] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[219] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[218] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[217] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[216] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[215] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[214] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[213] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[212] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[211] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[210] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[209] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[208] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[207] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[206] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[205] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[204] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[203] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[202] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[201] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[200] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[199] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[198] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[197] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[196] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[195] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[194] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[193] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[192] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[191] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[190] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[189] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[188] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[187] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[186] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[185] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[184] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[183] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[182] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[181] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[180] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[179] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[178] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[177] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[176] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[175] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[174] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[173] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[172] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[171] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[170] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[169] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[168] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[167] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[166] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[165] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[164] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[163] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[162] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[161] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[160] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[159] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[158] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[157] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[156] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[155] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[154] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[153] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[152] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[151] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[150] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[149] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[148] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[147] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[146] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[145] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[144] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[143] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[142] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[141] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[140] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[139] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[138] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[137] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[136] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[135] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[134] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[133] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[132] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[131] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[130] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[129] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[128] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[127] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[126] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[125] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[124] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[123] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[122] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[121] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[120] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[119] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[118] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[117] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[116] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[115] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[114] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[113] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[112] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[111] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[110] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[109] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[108] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[107] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[106] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[105] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[104] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[103] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[102] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[101] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[100] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[99] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[98] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[97] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[96] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[95] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[94] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[93] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[92] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[91] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[90] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[89] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[88] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[87] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[86] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[85] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[84] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[83] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[82] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[81] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[80] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[79] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[78] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[77] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[76] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[75] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[74] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[73] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[72] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[71] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[70] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[69] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[68] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[67] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[66] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[65] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[64] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[63] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[62] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[61] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[60] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[59] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[58] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[57] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[56] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[55] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[54] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[53] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[52] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[51] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[50] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[49] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[48] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[47] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[46] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[45] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[44] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[43] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[42] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[41] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[40] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[39] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[38] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[37] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[36] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[35] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[34] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[33] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[32] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[31] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[30] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[29] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[28] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[27] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[26] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[25] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[24] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[23] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[22] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[21] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[20] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[19] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[18] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[17] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[16] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[15] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[14] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[13] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[12] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[11] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[10] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[9] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[8] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[7] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[6] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[5] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[4] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[3] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[2] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[1] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net partial_reg[0] or a directly connected net may be driven by more than one process or block. (ELAB-405)
+Warning:  ./MAC512_SA_RCA.v:63: Net mul_rst_n or a directly connected net may be driven by more than one process or block. (ELAB-405)
+
+Inferred memory devices in process
+	in routine MAC512_SA_RCA line 28 in file
+		'./MAC512_SA_RCA.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  adder_in_reg_reg   | Flip-flop |  512  |  Y  | N  | Y  | N  | N  | N  | N  |
+|   counter_reg_reg   | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   partial_reg_reg   |   Latch   |  512  |  Y  | N  | Y  | N  | -  | -  | -  |
+|      B_reg_reg      | Flip-flop |  256  |  Y  | N  | N  | N  | N  | N  | N  |
+|      state_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    mul_rst_n_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|      A_reg_reg      | Flip-flop |  256  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine MAC512_SA_RCA line 63 in file
+		'./MAC512_SA_RCA.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  partial_reg_reg2   | Flip-flop |  512  |  Y  | N  | N  | N  | N  | N  | N  |
+|   mul_rst_n_reg2    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[511]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[510]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[509]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[508]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[507]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[506]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[505]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[504]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[503]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[502]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[501]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[500]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[499]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[498]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[497]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[496]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[495]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[494]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+Error:  ./MAC512_SA_RCA.v:63: Net 'partial_reg[493]' or a directly connected net is driven by more than one source, and not all drivers are three-state. (ELAB-366)
+*** Presto compilation terminated with 19 errors. ***
+0
+current_design $NameDesign
+Error: Can't find design 'MAC512_SA_RCA'. (UID-109)
+Error: Current design is not defined. (UID-4)
+link
+Error: Current design is not defined. (UID-4)
+0
+uniquify
+Error: Current design is not defined. (UID-4)
+0
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+set_max_area 0.0
+Error: Current design is not defined. (UID-4)
+0
+#===== Timing and input/output load constraints
+create_clock $CLK -name $CLK -period $clk_period -waveform [list 0.0 [expr {$clk_period} / 2.0 ] ] 
+Error: Current design is not defined. (UID-4)
+Error: Can't find object 'clk'. (UID-109)
+Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
+0
+set_clock_uncertainty $clock_skew $CLK
+Error: Current design is not defined. (UID-4)
+Error: Can't find object 'clk'. (UID-109)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+0
+#set_clock_skew -plus_uncertainty $clock_skew $CLK
+#set_clock_skew -minus_uncertainty $clock_skew $CLK
+set_input_delay     $input_delay  -clock $CLK [all_inputs]
+Error: Current design is not defined. (UID-4)
+Error: Current design is not defined. (UID-4)
+Error: Can't find clock 'clk'. (UID-109)
+Error: Value for list '-clock' must have 1 elements. (CMD-036)
+Error: Value for list 'port_pin_list' must have 1 elements. (CMD-036)
+0
+#remove_input_delay               -clock $CLK [all_inputs] 
+set_output_delay    $output_delay -clock $CLK [all_outputs]
+Error: Current design is not defined. (UID-4)
+Error: Current design is not defined. (UID-4)
+Error: Can't find clock 'clk'. (UID-109)
+Error: Value for list '-clock' must have 1 elements. (CMD-036)
+Error: Value for list 'port_pin_list' must have 1 elements. (CMD-036)
+0
+set_load 1.5 [all_outputs]
+Error: Current design is not defined. (UID-4)
+Error: Value for list 'objects' must have 1 elements. (CMD-036)
+0
+compile -map_effort medium
+Error: Current design is not defined. (UID-4)
+0
+# Comment "ungroup" line to maybe see some submodules
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+# compile -map_effort medium    # May help, or maybe not
+#===== Reports
+write -format verilog -output MAC512_SA_RCA.vg -hierarchy $NameDesign
+Error: No files or designs were specified. (UID-22)
+0
+write_sdc	MAC512_SA_RCA.sdc
+Error: Current design is not defined. (UID-4)
+0
+write_sdf	MAC512_SA_RCA.sdf
+Error: Current design is not defined. (UID-4)
+0
+report_area               > MAC512_SA_RCA.area
+report_cell               > MAC512_SA_RCA.cell
+report_hierarchy          > MAC512_SA_RCA.hier
+report_net                > MAC512_SA_RCA.net
+report_power              > MAC512_SA_RCA.pow
+report_timing -nworst 10  > MAC512_SA_RCA.tim
+check_timing
+Error: Current design is not defined. (UID-4)
+0
+check_design
+Error: Current design is not defined. (UID-4)
+0
+exit
+
+Memory usage for this session 139 Mbytes.
+Memory usage for this session including child processes 139 Mbytes.
+CPU usage for this session 2 seconds ( 0.00 hours ).
+Elapsed time for this session 5 seconds ( 0.00 hours ).
+
+Thank you...
