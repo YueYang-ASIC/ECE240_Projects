@@ -52,7 +52,7 @@ set NameDesign "CLA256_clk"
 set CLK "clk"
 
 #===== All values are in units of ns for NanGate 45 nm library
-set clk_period      4.8
+set clk_period      2.3
 
 set clock_skew      [expr {$clk_period} * 0.05 ]
 set input_setup     [expr {$clk_period} * 0.97 ]
@@ -62,11 +62,12 @@ set input_delay     [expr {$clk_period} - {$input_setup}]
 # It appears one "analyze" command is needed for each .v file. This works best
 # (only?) with one command line per module.
 analyze -format verilog CLA256_clk.v
-analyze -format verilog CLA256.v
-analyze -format verilog CLA64.v
+analyze -format verilog CLA512.v
 analyze -format verilog CLA16.v
-analyze -format verilog CLA4.v
+analyze -format verilog CLA64.v
+analyze -format verilog CLA256.v
 analyze -format verilog CLA_generator4.v
+analyze -format verilog CLA4.v
 analyze -format verilog GPFA.v
 
 elaborate $NameDesign
@@ -88,10 +89,26 @@ set_clock_uncertainty $clock_skew $CLK
 set_input_delay     $input_delay  -clock $CLK [all_inputs]
 #remove_input_delay               -clock $CLK [all_inputs] 
 set_output_delay    $output_delay -clock $CLK [all_outputs]
-
+ 
 set_load 1.5 [all_outputs]
 
-compile -map_effort medium
+#compile -map_effort medium
+# Force Tool to Work Harder
+set_optimization_effort high
+set_max_area 0  ;# (if you want to push timing more, sacrifice area)
+ 
+# Prioritize timing
+set_max_delay 1.2 -from [all_inputs] -to [all_outputs]
+set_area_only false
+
+# Allow Low-Vt cells if available
+set_use_low_vt_cells true
+
+# Control fanout to force better buffering
+set_max_fanout 5 [current_design]
+
+# More aggressive compile
+compile_ultra -retime -gate_clock -timing_high_effort_script
 
 # Comment "ungroup" line to maybe see some submodules
 if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
@@ -102,7 +119,13 @@ if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
 #===== Reports
 write -format verilog -output CLA256_clk.vg -hierarchy $NameDesign
 write_sdc	CLA256_clk.sdc
+write_sdf	CLA256_clk.sdf
+
+
 report_area               > CLA256_clk.area
+report_cell               > CLA256_clk.cell
+report_hierarchy          > CLA256_clk.hier
+report_net                > CLA256_clk.net
 report_power              > CLA256_clk.pow
 report_timing -nworst 10  > CLA256_clk.tim
 
@@ -111,3 +134,10 @@ check_design
 
 exit
 
+analyze -format verilog CLA256_clk.v
+analyze -format verilog CLA256.v
+analyze -format verilog CLA64.v
+analyze -format verilog CLA16.v
+analyze -format verilog CLA4.v
+analyze -format verilog CLA_generator4.v
+analyze -format verilog GPFA.v

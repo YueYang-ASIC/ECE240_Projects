@@ -1,14 +1,12 @@
-Loading db file '/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db'
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 Warning: Design has unannotated primary inputs. (PWR-414)
-Warning: Design has unannotated sequential cell outputs. (PWR-415)
  
 ****************************************
 Report : power
         -analysis_effort low
 Design : CLA256_clk
 Version: S-2021.06-SP5-1
-Date   : Fri Apr 25 23:47:46 2025
+Date   : Sun Apr 27 21:13:12 2025
 ****************************************
 
 
@@ -34,12 +32,12 @@ Power-specific unit information :
     Leakage Power Units = 1nW
 
 
-  Cell Internal Power  =   1.7279 mW   (90%)
-  Net Switching Power  = 182.8379 uW   (10%)
+  Cell Internal Power  =   2.3519 mW   (74%)
+  Net Switching Power  = 824.9389 uW   (26%)
                          ---------
-Total Dynamic Power    =   1.9107 mW  (100%)
+Total Dynamic Power    =   3.1769 mW  (100%)
 
-Cell Leakage Power     = 484.4113 uW
+Cell Leakage Power     = 387.0105 uW
 
 
                  Internal         Switching           Leakage            Total
@@ -48,10 +46,10 @@ Power Group      Power            Power               Power              Power  
 io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
-clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register       1.5872e+03           50.5836        2.1978e+05        1.8576e+03  (  77.56%)
+clock_network     15.1819          548.6667          208.5478          564.0573  (  15.83%)
+register       2.1729e+03           67.5177        2.2569e+05        2.4661e+03  (  69.20%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational    140.6421          132.2543        2.6463e+05          537.5240  (  22.44%)
+combinational    163.8001          208.7545        1.6111e+05          533.6663  (  14.97%)
 --------------------------------------------------------------------------------------------------
-Total          1.7279e+03 uW       182.8379 uW     4.8441e+05 nW     2.3951e+03 uW
+Total          2.3519e+03 uW       824.9389 uW     3.8701e+05 nW     3.5639e+03 uW
 1

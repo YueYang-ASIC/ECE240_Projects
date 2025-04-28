@@ -7,7 +7,7 @@ Report : timing
         -max_paths 10
 Design : CLA512_clk
 Version: S-2021.06-SP5-1
-Date   : Fri Apr 25 04:41:26 2025
+Date   : Mon Apr 28 20:13:29 2025
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.

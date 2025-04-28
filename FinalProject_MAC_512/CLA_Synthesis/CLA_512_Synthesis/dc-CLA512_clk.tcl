@@ -91,7 +91,7 @@ set_input_delay     $input_delay  -clock $CLK [all_inputs]
 set_output_delay    $output_delay -clock $CLK [all_outputs]
 
 set_load 1.5 [all_outputs]
-
+set_flatten false
 compile -map_effort medium
 
 # Comment "ungroup" line to maybe see some submodules

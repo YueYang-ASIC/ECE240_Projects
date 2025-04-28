@@ -1,0 +1,32 @@
+ 
+****************************************
+Report : area
+Design : RCA_clk
+Version: S-2021.06-SP5-1
+Date   : Mon Apr 28 18:55:23 2025
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'RCA_clk' contains 3 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db)
+
+Number of ports:                         1539
+Number of nets:                         10110
+Number of cells:                         7802
+Number of combinational cells:           6266
+Number of sequential cells:              1536
+Number of macros/black boxes:               0
+Number of buf/inv:                        596
+Number of references:                      18
+
+Combinational area:               6786.990061
+Buf/Inv area:                      333.564001
+Noncombinational area:            8171.520264
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                 14958.510324
+Total area:                 undefined
+1

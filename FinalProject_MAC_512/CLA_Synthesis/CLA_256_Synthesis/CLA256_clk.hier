@@ -1,0 +1,28 @@
+ 
+****************************************
+Report : hierarchy
+Design : CLA256_clk
+Version: S-2021.06-SP5-1
+Date   : Sun Apr 27 21:13:12 2025
+****************************************
+
+Attributes:
+    r - licensed design
+
+CLA256_clk         r
+    AND2_X1                                 NangateOpenCellLibrary
+    AOI21_X1                                NangateOpenCellLibrary
+    CLKBUF_X1                               NangateOpenCellLibrary
+    DFFR_X1                                 NangateOpenCellLibrary
+    DFFS_X1                                 NangateOpenCellLibrary
+    FA_X1                                   NangateOpenCellLibrary
+    INV_X1                                  NangateOpenCellLibrary
+    NAND2_X1                                NangateOpenCellLibrary
+    NOR2_X1                                 NangateOpenCellLibrary
+    OAI21_X1                                NangateOpenCellLibrary
+    OR2_X1                                  NangateOpenCellLibrary
+    SNPS_CLOCK_GATE_HIGH_CLA256_clk
+        CLKGATETST_X1                       NangateOpenCellLibrary
+    XNOR2_X1                                NangateOpenCellLibrary
+    XOR2_X1                                 NangateOpenCellLibrary
+1

@@ -1,0 +1,27 @@
+/////////////////////////////////////////////////////////////
+// Created by: Synopsys DC Expert(TM) in wire load mode
+// Version   : S-2021.06-SP5-1
+// Date      : Mon Apr 28 18:50:51 2025
+/////////////////////////////////////////////////////////////
+
+
+module RCA_clk ( clk, rst_n, en, A_in, B_in, res );
+  input [0:0] A_in;
+  input [0:0] B_in;
+  output [0:0] res;
+  input clk, rst_n, en;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10;
+
+  DFFR_X1 \A_reg_reg[0]  ( .D(n10), .CK(clk), .RN(rst_n), .QN(n6) );
+  DFFR_X1 \B_reg_reg[0]  ( .D(n9), .CK(clk), .RN(rst_n), .QN(n5) );
+  DFFR_X1 \res_reg_reg[0]  ( .D(n8), .CK(clk), .RN(rst_n), .Q(res[0]), .QN(n7)
+         );
+  OAI22_X1 U2 ( .A1(en), .A2(n7), .B1(n1), .B2(n2), .ZN(n8) );
+  INV_X1 U3 ( .A(en), .ZN(n2) );
+  XNOR2_X1 U4 ( .A(n6), .B(n5), .ZN(n1) );
+  OAI21_X1 U5 ( .B1(n5), .B2(en), .A(n3), .ZN(n9) );
+  NAND2_X1 U6 ( .A1(B_in[0]), .A2(en), .ZN(n3) );
+  OAI21_X1 U7 ( .B1(n6), .B2(en), .A(n4), .ZN(n10) );
+  NAND2_X1 U8 ( .A1(A_in[0]), .A2(en), .ZN(n4) );
+endmodule
+

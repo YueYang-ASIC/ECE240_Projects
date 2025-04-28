@@ -1,0 +1,378 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+              Version S-2021.06-SP5-1 for linux64 - Mar 10, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+# dc-RCA_clk.tcl script 
+#
+# 2018/02/15  Added *_ANALYZE_SECTION comments to new Makefile can automatically
+#             add .v files to dc-*.tcl. Also updated some comments.
+# 2017/02/14  Reduced output_delay to 4% and input_delay to 3% of the clock 
+#             cycle time so very short critical paths are visible in timing 
+#             reports. Also changed clock_skew from 250ps to 5% of cycle time 
+#             so it will scale with clock frequency.
+# 2017/02/10  Uncommented "analyze -format verilog ./proc.v" line. It seems to
+#             be needed only the first time synthesis is run.
+# 2017/02/04  Changes for NanGate 45 nm library including new timing parameters
+# 2012/02/22  Changed:
+#               ungroup -all -flatten -simple_names
+#             to:
+#               if { [sizeof_collection [get_cells * -filter 
+#                  "is_hierarchical==true"]] > 0 } {
+#                  ungroup -all -flatten -simple_names
+#                  }
+# 2010/02/16  Updated commented path to vtvtlib25.db
+# 2009/02/12  Many parts re-written in new tcl version by Zhibin Xiao
+# 2006/01/30  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2004/02/05  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2003/05/22  Increased input_setup from 500 to 6000 (external input delay
+#             now 6ns instead of 9.5ns) so input paths don't show up at the
+#             top of timing reports so often.
+# 2003/05/15  Cleaned up a little
+# 2003/05/14  Written
+#
+# Debugging
+# list -designs
+# list -libraries
+# list -files 
+#
+# Add if you like:
+# Annotates inputs, but doesn't propagate through design to clear warnings.
+#   set_switching_activity -toggle_rate 0.25 -clock "clk" { "in31a" }
+# More power info
+#   report_power -net
+#   report_power -hier
+#   set_max_delay
+#   write -format db -output RCA_clk.db
+#
+# Doesn't work quite the way I expect
+#   NameDesign = RCA_clk    Set variable ok, but how to concatenate?
+#   write_rtl -format verilog -output RCA_clk.vg
+#===== Set: make sure you change design name elsewhere in this file
+set NameDesign "RCA_clk"
+RCA_clk
+#===== Set some timing parameters
+set CLK "clk"
+clk
+#===== All values are in units of ns for NanGate 45 nm library
+set clk_period      60
+60
+set clock_skew      [expr {$clk_period} * 0.05 ] 
+3.0
+set input_setup     [expr {$clk_period} * 0.97 ]
+58.2
+set output_delay    [expr {$clk_period} * 0.04 ]
+2.4
+set input_delay     [expr {$clk_period} - {$input_setup}]
+1.8
+# It appears one "analyze" command is needed for each .v file. This works best
+# (only?) with one command line per module.
+analyze -format verilog RCA_clk.v
+Running PRESTO HDLC
+Compiling source file ./RCA_clk.v
+Presto compilation completed successfully.
+Loading db file '/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db'
+Information: Using CCS timing libraries. (TIM-024)
+Loading db file '/synopsys/Design_Compiler/libraries/syn/dw_foundation.sldb'
+1
+analyze -format verilog FA.v
+Running PRESTO HDLC
+Compiling source file ./FA.v
+Presto compilation completed successfully.
+1
+analyze -format verilog RCA.v
+Running PRESTO HDLC
+Compiling source file ./RCA.v
+Presto compilation completed successfully.
+1
+elaborate $NameDesign
+Loading db file '/usr/synopsys/syn/S-2021.06-SP5-1/libraries/syn/gtech.db'
+Loading db file '/usr/synopsys/syn/S-2021.06-SP5-1/libraries/syn/standard.sldb'
+  Loading link library 'NangateOpenCellLibrary'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+	in routine RCA_clk line 17 in file
+		'./RCA_clk.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      A_reg_reg      | Flip-flop |  512  |  Y  | N  | Y  | N  | N  | N  | N  |
+|      B_reg_reg      | Flip-flop |  512  |  Y  | N  | Y  | N  | N  | N  | N  |
+|     res_reg_reg     | Flip-flop |  512  |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (RCA_clk)
+Elaborated 1 design.
+Current design is now 'RCA_clk'.
+Information: Building the design 'RCA' instantiated from design 'RCA_clk' with
+	the parameters "WIDTH=512". (HDL-193)
+Presto compilation completed successfully. (RCA_WIDTH512)
+Information: Building the design 'FA'. (HDL-193)
+Presto compilation completed successfully. (FA)
+1
+current_design $NameDesign
+Current design is 'RCA_clk'.
+{RCA_clk}
+link
+
+  Linking design 'RCA_clk'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  NangateOpenCellLibrary (library) /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db
+  dw_foundation.sldb (library) /synopsys/Design_Compiler/libraries/syn/dw_foundation.sldb
+
+1
+uniquify
+Information: Uniquified 512 instances of design 'FA'. (OPT-1056)
+1
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+Information: Updating graph... (UID-83)
+Warning: Design 'RCA_clk' contains 4 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+set_max_area 0.0
+1
+#===== Timing and input/output load constraints
+create_clock $CLK -name $CLK -period $clk_period -waveform [list 0.0 [expr {$clk_period} / 2.0 ] ] 
+1
+set_clock_uncertainty $clock_skew $CLK
+1
+#set_clock_skew -plus_uncertainty $clock_skew $CLK
+#set_clock_skew -minus_uncertainty $clock_skew $CLK
+set_input_delay     $input_delay  -clock $CLK [all_inputs]
+1
+#remove_input_delay               -clock $CLK [all_inputs] 
+set_output_delay    $output_delay -clock $CLK [all_outputs]
+1
+set_load 1.5 [all_outputs]  
+1
+compile -map_effort medium
+Warning: Setting attribute 'fix_multiple_port_nets' on design 'RCA_clk'. (UIO-59)
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | S-2021.06-DWBB_202106.5 |     *     |
+| Licensed DW Building Blocks        | S-2021.06-DWBB_202106.5 |     *     |
+============================================================================
+
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler                                           |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 5121           |
+| Number of User Hierarchies                              | 0              |
+| Sequential Cell Count                                   | 1536           |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+
+Information: There are 1 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'RCA_clk'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:15   16352.4      1.90      18.9       0.0                          
+    0:00:16   16350.2      1.90      18.9       0.0                          
+    0:00:16   16350.2      1.90      18.9       0.0                          
+    0:00:16   16350.2      1.90      18.9       0.0                          
+    0:00:16   16350.2      1.90      18.9       0.0                          
+    0:00:16   15564.5      1.91      19.1       0.0                          
+    0:00:17   15562.3      1.82      18.2       0.0                          
+    0:00:17   15562.3      1.82      18.2       0.0                          
+    0:00:17   15562.3      1.82      18.2       0.0                          
+    0:00:17   15562.3      1.82      18.2       0.0                          
+    0:00:17   15562.3      1.82      18.2       0.0                          
+    0:00:17   15562.3      1.82      18.2       0.0                          
+    0:00:17   15562.3      1.82      18.2       0.0                          
+    0:00:17   15562.3      1.82      18.2       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:17   15562.3      1.82      18.2       0.0                          
+    0:00:17   15567.9      1.81      18.0       0.0 res_reg_reg[511]/D       
+    0:00:17   15574.3      1.77      17.4       0.0 res_reg_reg[511]/D       
+    0:00:18   15581.2      1.74      16.8       0.0 res_reg_reg[511]/D       
+    0:00:18   15586.5      1.73      16.6       0.0 res_reg_reg[511]/D       
+    0:00:18   15590.3      1.69      15.9       0.0 res_reg_reg[511]/D       
+    0:00:18   15592.4      1.66      15.3       0.0 res_reg_reg[511]/D       
+    0:00:18   15595.6      1.58      14.1       0.0 res_reg_reg[511]/D       
+    0:00:18   15603.3      1.50      12.9       0.0 res_reg_reg[511]/D       
+    0:00:19   15624.6      1.30       9.9       0.0 res_reg_reg[511]/D       
+    0:00:19   15632.0      1.16       8.1       0.0 res_reg_reg[511]/D       
+    0:00:19   15633.6      1.09       7.2       0.0 res_reg_reg[511]/D       
+    0:00:19   15633.6      1.06       7.0       0.0 res_reg_reg[511]/D       
+    0:00:20   15633.6      0.77       3.9       0.0 res_reg_reg[511]/D       
+    0:00:20   15641.9      0.55       2.2       0.0 res_reg_reg[511]/D       
+    0:00:20   15649.3      0.53       2.1       0.0 res_reg_reg[511]/D       
+    0:00:20   15658.1      0.23       0.5       0.0 res_reg_reg[511]/D       
+    0:00:20   15660.2      0.20       0.4       0.0 res_reg_reg[511]/D       
+    0:00:21   15665.5      0.10       0.1       0.0 res_reg_reg[511]/D       
+    0:00:21   15674.1      0.00       0.0       0.0                          
+    0:00:25   15269.7      0.00       0.0       0.0                          
+
+
+  Beginning Area-Recovery Phase  (max_area 0)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:25   15269.7      0.00       0.0       0.0                          
+    0:00:25   15269.7      0.00       0.0       0.0                          
+    0:00:26   15190.5      0.66       3.0       0.0                          
+    0:00:26   15189.4      0.66       3.0       0.0                          
+    0:00:26   15188.9      0.66       3.0       0.0                          
+    0:00:26   15188.3      0.66       3.0       0.0                          
+    0:00:26   15187.8      0.66       3.0       0.0                          
+    0:00:26   15187.3      0.66       3.0       0.0                          
+    0:00:27   15185.9      0.66       3.0       0.0                          
+    0:00:27   15185.4      0.66       3.0       0.0                          
+    0:00:27   15184.9      0.66       3.0       0.0                          
+    0:00:27   15184.3      0.66       3.0       0.0                          
+    0:00:27   15183.8      0.66       3.0       0.0                          
+    0:00:27   15183.3      0.66       3.0       0.0                          
+    0:00:28   15182.7      0.66       3.0       0.0                          
+    0:00:28   15182.2      0.66       3.0       0.0                          
+    0:00:28   15181.7      0.66       3.0       0.0                          
+    0:00:28   15181.2      0.66       3.0       0.0                          
+    0:00:28   15181.2      0.66       3.0       0.0                          
+    0:00:28   15181.2      0.66       2.9       0.0 res_reg_reg[511]/D       
+    0:00:29   15180.1      0.65       2.9       0.0 res_reg_reg[511]/D       
+    0:00:29   15179.3      0.64       2.8       0.0 res_reg_reg[511]/D       
+    0:00:29   15177.7      0.63       2.7       0.0 res_reg_reg[511]/D       
+    0:00:29   15177.4      0.63       2.7       0.0 res_reg_reg[511]/D       
+    0:00:29   15176.6      0.63       2.7       0.0 res_reg_reg[511]/D       
+    0:00:30   15176.4      0.62       2.7       0.0 res_reg_reg[511]/D       
+    0:00:30   15176.1      0.62       2.7       0.0 res_reg_reg[511]/D       
+    0:00:30   15175.6      0.61       2.6       0.0 res_reg_reg[511]/D       
+    0:00:30   15174.5      0.60       2.5       0.0 res_reg_reg[511]/D       
+    0:00:36   15175.6      0.58       2.3       0.0 res_reg_reg[511]/D       
+    0:00:38   15251.4      0.04       0.0       0.0 res_reg_reg[511]/D       
+    0:00:38   15253.0      0.00       0.0       0.0 res_reg_reg[511]/D       
+    0:00:38   15249.8      0.00       0.0       0.0 res_reg_reg[511]/D       
+    0:00:38   15249.8      0.00       0.0       0.0                          
+    0:00:39   15217.9      0.00       0.0       0.0                          
+    0:00:39   15217.3      0.00       0.0       0.0                          
+    0:00:39   15217.3      0.00       0.0       0.0                          
+    0:00:39   15217.3      0.00       0.0       0.0                          
+    0:00:39   15217.3      0.00       0.0       0.0                          
+    0:00:39   15217.3      0.00       0.0       0.0                          
+    0:00:39   15217.3      0.00       0.0       0.0                          
+    0:00:40   15103.2      0.00       0.0       0.0                          
+    0:00:42   14961.2      0.00       0.0       0.0                          
+    0:00:42   14958.5      0.00       0.0       0.0                          
+    0:00:42   14958.5      0.00       0.0       0.0                          
+    0:00:42   14958.5      0.00       0.0       0.0                          
+    0:00:42   14958.5      0.00       0.0       0.0                          
+    0:00:42   14958.5      0.00       0.0       0.0                          
+    0:00:42   14958.5      0.00       0.0       0.0                          
+    0:00:42   14958.5      0.00       0.0       0.0                          
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'RCA_clk' contains 3 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'clk': 1536 load(s), 1 driver(s)
+     Net 'rst_n': 1536 load(s), 1 driver(s)
+     Net 'en': 2496 load(s), 1 driver(s)
+1
+# Comment "ungroup" line to maybe see some submodules
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+# compile -map_effort medium    # May help, or maybe not
+#===== Reports
+write -format verilog -output RCA_clk.vg -hierarchy $NameDesign
+Writing verilog file '/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/FinalProject_MAC_512/CLA_Synthesis/RCA_Synthesis/RCA_clk.vg'.
+1
+write_sdc	RCA_clk.sdc
+1
+report_area               > RCA_clk.area
+report_power              > RCA_clk.pow
+report_timing -nworst 10  > RCA_clk.tim 
+check_timing
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+
+Information: Checking unconstrained_endpoints...
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1
+check_design
+1
+exit
+
+Memory usage for this session 163 Mbytes.
+Memory usage for this session including child processes 163 Mbytes.
+CPU usage for this session 48 seconds ( 0.01 hours ).
+Elapsed time for this session 50 seconds ( 0.01 hours ).
+
+Thank you...

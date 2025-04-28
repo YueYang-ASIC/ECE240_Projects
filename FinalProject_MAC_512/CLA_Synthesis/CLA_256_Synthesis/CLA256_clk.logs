@@ -81,16 +81,16 @@ CLA256_clk
 set CLK "clk"
 clk
 #===== All values are in units of ns for NanGate 45 nm library
-set clk_period      4.8
-4.8
+set clk_period      2.3
+2.3
 set clock_skew      [expr {$clk_period} * 0.05 ]
-0.24
+0.115
 set input_setup     [expr {$clk_period} * 0.97 ]
-4.656
+2.231
 set output_delay    [expr {$clk_period} * 0.04 ]
-0.192
+0.092
 set input_delay     [expr {$clk_period} - {$input_setup}]
-0.144
+0.069
 # It appears one "analyze" command is needed for each .v file. This works best
 # (only?) with one command line per module.
 analyze -format verilog CLA256_clk.v
@@ -101,9 +101,14 @@ Loading db file '/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v201
 Information: Using CCS timing libraries. (TIM-024)
 Loading db file '/synopsys/Design_Compiler/libraries/syn/dw_foundation.sldb'
 1
-analyze -format verilog CLA256.v
+analyze -format verilog CLA512.v
 Running PRESTO HDLC
-Compiling source file ./CLA256.v
+Error:  Unable to open file `CLA512.v': in search_path {. /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Verilog /synopsys/Design_Compiler/libraries/syn /synopsys/Design_Compiler/libraries/sim}. (VER-41)
+*** Presto compilation terminated with 1 errors. ***
+0
+analyze -format verilog CLA16.v
+Running PRESTO HDLC
+Compiling source file ./CLA16.v
 Presto compilation completed successfully.
 1
 analyze -format verilog CLA64.v
@@ -111,19 +116,19 @@ Running PRESTO HDLC
 Compiling source file ./CLA64.v
 Presto compilation completed successfully.
 1
-analyze -format verilog CLA16.v
+analyze -format verilog CLA256.v
 Running PRESTO HDLC
-Compiling source file ./CLA16.v
-Presto compilation completed successfully.
-1
-analyze -format verilog CLA4.v
-Running PRESTO HDLC
-Compiling source file ./CLA4.v
+Compiling source file ./CLA256.v
 Presto compilation completed successfully.
 1
 analyze -format verilog CLA_generator4.v
 Running PRESTO HDLC
 Compiling source file ./CLA_generator4.v
+Presto compilation completed successfully.
+1
+analyze -format verilog CLA4.v
+Running PRESTO HDLC
+Compiling source file ./CLA4.v
 Presto compilation completed successfully.
 1
 analyze -format verilog GPFA.v
@@ -213,9 +218,30 @@ set_output_delay    $output_delay -clock $CLK [all_outputs]
 1
 set_load 1.5 [all_outputs]
 1
-compile -map_effort medium
+#compile -map_effort medium
+# Force Tool to Work Harder
+set_optimization_effort high
+Error: unknown command 'set_optimization_effort' (CMD-005)
+set_max_area 0  ;# (if you want to push timing more, sacrifice area)
+1
+# Prioritize timing
+set_max_delay 1.2 -from [all_inputs] -to [all_outputs]
+1
+set_area_only false
+Error: unknown command 'set_area_only' (CMD-005)
+# Allow Low-Vt cells if available
+set_use_low_vt_cells true
+Error: unknown command 'set_use_low_vt_cells' (CMD-005)
+# Control fanout to force better buffering
+set_max_fanout 5 [current_design]
+Current design is 'CLA256_clk'.
+1
+# More aggressive compile
+compile_ultra -retime -gate_clock -timing_high_effort_script
+Warning: The -timing_high_effort_script option is ignored.  (OPT-1342)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
 Warning: Setting attribute 'fix_multiple_port_nets' on design 'CLA256_clk'. (UIO-59)
-Information: Checking out the license 'DesignWare'. (SEC-104)
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
 ============================================================================
@@ -228,7 +254,7 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 ============================================================================
 | Flow Information                                                         |
 ----------------------------------------------------------------------------
-| Flow         | Design Compiler                                           |
+| Flow         | Design Compiler WLM                                       |
 ============================================================================
 | Design Information                                      | Value          |
 ============================================================================
@@ -240,654 +266,195 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 | Number of Power Domains                                 | 0              |
 | Design with UPF Data                                    | false          |
 ============================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+Information: Retiming is enabled. SVF file must be used for formal verification. (OPT-1210)
 
 Information: There are 85 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
 
+  Simplifying Design 'CLA256_clk'
+Information: Performing clock-gating with positive edge logic: 'integrated' and negative edge logic: 'or'. (PWR-1047)
 
+Loaded alib file './alib-52/NangateOpenCellLibrary.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 2 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
 
   Beginning Pass 1 Mapping
   ------------------------
   Processing 'CLA256_clk'
+Information: Added key list 'DesignWare' to design 'CLA256_clk'. (DDB-72)
+  Processing 'SNPS_CLOCK_GATE_HIGH_CLA256_clk'
+  Mapping integrated clock gating circuitry
 
   Updating timing information
 Information: Updating design information... (UID-85)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_CLA256_clk, since there are no registers. (PWR-806)
+Information: Performing clock-gating on design CLA256_clk. (PWR-730)
 
-  Beginning Implementation Selection
-  ----------------------------------
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_255_256'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_254_255'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_253_254'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_252_253'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_251_252'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_250_251'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_249_250'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_248_249'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_247_248'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_246_247'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_245_246'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_244_245'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_243_244'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_242_243'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_241_242'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_240_241'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_239_240'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_238_239'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_237_238'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_236_237'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_235_236'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_234_235'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_233_234'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_232_233'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_231_232'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_230_231'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_229_230'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_228_229'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_227_228'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_226_227'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_225_226'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_224_225'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_223_224'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_222_223'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_221_222'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_220_221'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_219_220'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_218_219'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_217_218'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_216_217'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_215_216'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_214_215'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_213_214'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_212_213'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_211_212'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_210_211'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_209_210'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_208_209'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_207_208'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_206_207'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_205_206'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_204_205'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_203_204'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_202_203'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_201_202'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_200_201'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_199_200'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_198_199'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_197_198'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_196_197'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_195_196'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_194_195'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_193_194'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_192_193'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_191_192'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_190_191'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_189_190'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_188_189'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_187_188'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_186_187'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_185_186'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_184_185'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_183_184'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_182_183'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_181_182'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_180_181'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_179_180'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_178_179'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_177_178'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_176_177'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_175_176'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_174_175'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_173_174'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_172_173'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_171_172'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_170_171'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_169_170'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_168_169'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_167_168'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_166_167'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_165_166'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_164_165'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_163_164'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_162_163'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_161_162'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_160_161'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_159_160'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_158_159'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_157_158'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_156_157'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_155_156'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_154_155'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_153_154'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_152_153'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_151_152'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_150_151'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_149_150'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_148_149'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_147_148'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_146_147'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_145_146'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_144_145'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_143_144'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_142_143'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_141_142'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_140_141'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_139_140'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_138_139'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_137_138'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_136_137'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_135_136'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_134_135'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_133_134'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_132_133'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_131_132'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_130_131'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_129_130'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_128_129'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_127_128'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_126_127'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_125_126'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_124_125'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_123_124'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_122_123'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_121_122'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_120_121'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_119_120'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_118_119'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_117_118'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_116_117'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_115_116'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_114_115'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_113_114'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_112_113'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_111_112'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_110_111'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_109_110'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_108_109'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_107_108'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_106_107'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_105_106'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_104_105'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_103_104'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_102_103'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_101_102'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_100_101'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_99_100'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_98_99'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_97_98'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_96_97'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_95_96'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_94_95'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_93_94'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_92_93'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_91_92'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_90_91'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_89_90'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_88_89'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_87_88'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_86_87'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_85_86'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_84_85'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_83_84'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_82_83'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_81_82'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_80_81'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_79_80'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_78_79'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_77_78'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_76_77'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_75_76'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_74_75'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_73_74'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_72_73'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_71_72'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_70_71'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_69_70'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_68_69'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_67_68'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_66_67'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_65_66'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_64_65'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_63_64'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_62_63'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_61_62'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_60_61'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_59_60'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_58_59'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_57_58'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_56_57'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_55_56'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_54_55'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_53_54'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_52_53'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_51_52'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_50_51'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_49_50'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_48_49'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_47_48'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_46_47'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_45_46'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_44_45'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_43_44'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_42_43'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_41_42'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_40_41'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_39_40'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_38_39'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_37_38'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_36_37'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_35_36'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_34_35'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_33_34'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_32_33'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_31_32'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_30_31'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_29_30'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_28_29'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_27_28'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_26_27'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_25_26'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_24_25'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_23_24'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_22_23'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_21_22'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_20_21'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_19_20'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_18_19'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_17_18'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_16_17'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_15_16'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_14_15'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_13_14'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_12_13'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_11_12'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_10_11'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_9_10'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_8_9'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_7_8'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_6_7'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_5_6'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_4_5'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_3_4'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_2_3'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_1_2'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_0_1'. (DDB-72)
-Information: Added key list 'DesignWare' to design 'CLA256_clk'. (DDB-72)
-
-  Beginning Mapping Optimizations  (Medium effort)
+  Beginning Mapping Optimizations  (Ultra High effort)
   -------------------------------
+  Mapping Optimization (Phase 1)
 
-                                  TOTAL                                      
-   ELAPSED            WORST NEG   SETUP    DESIGN                            
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
-  --------- --------- --------- --------- --------- -------------------------
-    0:00:09    9775.5      0.88      15.6       9.3                          
-    0:00:09    9773.4      0.88      15.6       9.3                          
-    0:00:09    9773.4      0.88      15.6       9.3                          
-    0:00:09    9772.3      0.88      15.6       9.3                          
-    0:00:09    9772.3      0.88      15.6       9.3                          
-    0:00:10    7708.7      0.86      13.5       0.0                          
-    0:00:10    7702.6      0.84      13.2       0.0                          
-    0:00:10    7704.2      0.82      12.8       0.0                          
-    0:00:10    7706.0      0.80      12.1       0.0                          
-    0:00:10    7706.0      0.80      12.1       0.0                          
-    0:00:10    7706.0      0.80      12.1       0.0                          
-    0:00:10    7706.0      0.80      12.1       0.0                          
-    0:00:10    7706.0      0.80      12.1       0.0                          
-    0:00:10    7706.0      0.80      12.1       0.0                          
-    0:00:10    7706.0      0.80      12.1       0.0                          
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:08    7358.4      0.00       0.0     142.0                           565377.0000
+    0:00:08    7353.3      0.03       0.0     142.0                           564986.1250
+
+  Beginning Constant Register Removal
+  -----------------------------------
+    0:00:09    7518.2      0.00       0.0     110.0                           597131.5000
+    0:00:09    7518.2      0.00       0.0     110.0                           597131.5000
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:09    6110.8      0.00       0.0     110.0                           386671.9062
+    0:00:09    6110.8      0.00       0.0     110.0                           386671.9062
+    0:00:09    6110.8      0.00       0.0     110.0                           386671.9062
+    0:00:09    6110.8      0.00       0.0     110.0                           386671.9062
+    0:00:10    6110.8      0.00       0.0     110.0                           386671.9062
+    0:00:10    6110.8      0.00       0.0     110.0                           386671.9062
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:10    6099.4      0.00       0.0     110.0                           384283.4688
+    0:00:10    6099.4      0.00       0.0     110.0                           384283.4688
+    0:00:10    6099.4      0.00       0.0     110.0                           384283.4688
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
 
 
+  Beginning Design Rule Fixing  (max_fanout)
+  ----------------------------
 
-  Beginning Delay Optimization Phase
-  ----------------------------------
-
-                                  TOTAL                                      
-   ELAPSED            WORST NEG   SETUP    DESIGN                            
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
-  --------- --------- --------- --------- --------- -------------------------
-    0:00:10    7706.0      0.80      12.1       0.0                          
-    0:00:10    7714.8      0.70       9.0       0.0 res_reg_reg[255]/D       
-    0:00:10    7719.9      0.64       7.6       0.0 res_reg_reg[255]/D       
-    0:00:11    7728.9      0.61       6.3       0.0 res_reg_reg[255]/D       
-    0:00:11    7734.7      0.56       5.4       0.0 res_reg_reg[255]/D       
-    0:00:11    7740.3      0.52       4.6       0.0 res_reg_reg[255]/D       
-    0:00:11    7753.1      0.43       3.3      45.1 res_reg_reg[255]/D       
-    0:00:11    7763.5      0.38       2.7      45.1 res_reg_reg[255]/D       
-    0:00:11    7765.1      0.35       2.3      45.1 res_reg_reg[255]/D       
-    0:00:11    7765.1      0.35       2.2      45.1 res_reg_reg[255]/D       
-    0:00:11    7767.2      0.31       1.9      45.1 res_reg_reg[255]/D       
-    0:00:11    7768.0      0.31       1.8      45.1 res_reg_reg[255]/D       
-    0:00:11    7768.8      0.30       1.7      45.1 res_reg_reg[255]/D       
-    0:00:11    7780.0      0.28       1.5      90.4 res_reg_reg[255]/D       
-    0:00:11    7780.8      0.28       1.5      90.4 res_reg_reg[255]/D       
-    0:00:11    7781.3      0.28       1.5      90.4 res_reg_reg[255]/D       
-    0:00:11    7782.9      0.25       1.2      90.4 res_reg_reg[255]/D       
-    0:00:12    7783.7      0.25       1.2      90.4 res_reg_reg[255]/D       
-    0:00:12    7784.5      0.25       1.2      90.4 res_reg_reg[255]/D       
-    0:00:12    7784.5      0.25       1.2      90.4 res_reg_reg[255]/D       
-    0:00:12    7785.3      0.24       1.2      90.4 res_reg_reg[255]/D       
-    0:00:12    7786.1      0.24       1.1      90.4 res_reg_reg[255]/D       
-    0:00:12    7786.9      0.24       1.1      90.4 res_reg_reg[255]/D       
-    0:00:12    7788.5      0.24       1.1      90.4 res_reg_reg[255]/D       
-    0:00:13    7789.3      0.24       1.1      90.4 res_reg_reg[255]/D       
-    0:00:13    7790.9      0.23       1.1      90.4 res_reg_reg[255]/D       
-    0:00:13    7792.2      0.22       1.0      90.4 res_reg_reg[255]/D       
-    0:00:13    7793.0      0.22       1.0      90.4 res_reg_reg[255]/D       
-    0:00:14    7792.5      0.22       1.0      90.4 res_reg_reg[255]/D       
-    0:00:14    7771.2      0.09       0.2       0.0 res_reg_reg[255]/D       
-    0:00:15    7776.0      0.04       0.1       0.0 res_reg_reg[255]/D       
-    0:00:15    7776.0      0.04       0.1       0.0                          
-    0:00:17    7506.8      0.04       0.1       0.0                          
-    0:00:17    7508.4      0.03       0.0       0.0 res_reg_reg[255]/D       
-    0:00:17    7509.2      0.02       0.0       0.0 res_reg_reg[255]/D       
-    0:00:17    7510.0      0.02       0.0       0.0 res_reg_reg[255]/D       
-    0:00:17    7510.2      0.02       0.0       0.0 res_reg_reg[255]/D       
-    0:00:17    7510.2      0.02       0.0       0.0 res_reg_reg[255]/D       
-    0:00:17    7515.0      0.01       0.0       0.0 res_reg_reg[255]/D       
-    0:00:17    7516.9      0.00       0.0       0.0 res_reg_reg[255]/D       
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:10    6097.8      0.00       0.0     110.0                           378398.6875
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+    0:00:11    6132.9      0.00       0.0       0.0                           381505.9375
+    0:00:11    6132.9      0.00       0.0       0.0                           381505.9375
 
 
-  Beginning Area-Recovery Phase  (max_area 0)
-  -----------------------------
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
 
-                                  TOTAL                                      
-   ELAPSED            WORST NEG   SETUP    DESIGN                            
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
-  --------- --------- --------- --------- --------- -------------------------
-    0:00:17    7516.9      0.00       0.0       0.0                          
-    0:00:17    7516.9      0.00       0.0       0.0                          
-    0:00:18    7485.8      0.02       0.0       0.0                          
-    0:00:18    7482.8      0.02       0.0       0.0                          
-    0:00:18    7482.3      0.02       0.0       0.0                          
-    0:00:18    7481.8      0.02       0.0       0.0                          
-    0:00:18    7481.3      0.02       0.0       0.0                          
-    0:00:18    7480.7      0.02       0.0       0.0                          
-    0:00:18    7480.2      0.02       0.0       0.0                          
-    0:00:18    7479.7      0.02       0.0       0.0                          
-    0:00:18    7479.1      0.02       0.0       0.0                          
-    0:00:18    7478.6      0.02       0.0       0.0                          
-    0:00:18    7478.1      0.02       0.0       0.0                          
-    0:00:18    7477.5      0.02       0.0       0.0                          
-    0:00:18    7477.0      0.02       0.0       0.0                          
-    0:00:18    7476.5      0.02       0.0       0.0                          
-    0:00:18    7475.9      0.02       0.0       0.0                          
-    0:00:18    7475.4      0.02       0.0       0.0                          
-    0:00:18    7475.4      0.02       0.0       0.0                          
-    0:00:18    7477.0      0.01       0.0       0.0                          
-    0:00:18    7484.2      0.00       0.0       0.0                          
-    0:00:18    7487.4      0.00       0.0       0.0                          
-    0:00:18    7488.2      0.00       0.0       0.0                          
-    0:00:18    7488.2      0.00       0.0       0.0                          
-    0:00:18    7485.8      0.00       0.0       0.0                          
-    0:00:19    7485.8      0.00       0.0       0.0                          
-    0:00:19    7485.8      0.00       0.0       0.0                          
-    0:00:19    7485.8      0.00       0.0       0.0                          
-    0:00:19    7485.8      0.00       0.0       0.0                          
-    0:00:19    7485.8      0.00       0.0       0.0                          
-    0:00:20    7367.7      0.00       0.0       0.0                          
-    0:00:20    7345.1      0.00       0.0       0.0                          
-    0:00:20    7342.1      0.00       0.0       0.0                          
-    0:00:20    7342.1      0.00       0.0       0.0                          
-    0:00:20    7342.1      0.00       0.0       0.0                          
-    0:00:20    7342.1      0.00       0.0       0.0                          
-    0:00:20    7342.1      0.00       0.0       0.0                          
-    0:00:20    7342.1      0.00       0.0       0.0                          
-    0:00:20    7342.1      0.00       0.0       0.0                          
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:11    6132.9      0.00       0.0       0.0                           381505.9375
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:11    6113.7      0.00       0.0       0.0                           379923.6875
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+    0:00:12    6113.7      0.00       0.0       0.0                           379923.6875
+Loading db file '/synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db'
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -895,21 +462,32 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
 
   Optimization Complete
   ---------------------
-Warning: Design 'CLA256_clk' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
-     Net 'en': 1272 load(s), 1 driver(s)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 1
 # Comment "ungroup" line to maybe see some submodules
 if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
    ungroup -all -flatten -simple_names
    }
+Information: Updating graph... (UID-83)
+1
 # compile -map_effort medium    # May help, or maybe not
 #===== Reports
 write -format verilog -output CLA256_clk.vg -hierarchy $NameDesign
 Writing verilog file '/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/FinalProject_MAC_512/CLA_Synthesis/CLA_256_Synthesis/CLA256_clk.vg'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
 1
 write_sdc	CLA256_clk.sdc
 1
+write_sdf	CLA256_clk.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/c11879_csufresno/Documents/ECE240_Git/ECE240_Projects/FinalProject_MAC_512/CLA_Synthesis/CLA_256_Synthesis/CLA256_clk.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+1
 report_area               > CLA256_clk.area
+report_cell               > CLA256_clk.cell
+report_hierarchy          > CLA256_clk.hier
+report_net                > CLA256_clk.net
 report_power              > CLA256_clk.pow
 report_timing -nworst 10  > CLA256_clk.tim
 check_timing
@@ -929,12 +507,27 @@ Information: Checking no_driving_cell...
 Information: Checking partial_input_delay...
 1
 check_design
+ 
+****************************************
+check_design summary:
+Version:     S-2021.06-SP5-1
+Date:        Sun Apr 27 21:13:12 2025
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                               1
+    Connected to power or ground (LINT-32)                          1
+--------------------------------------------------------------------------------
+
+Warning: In design 'CLA256_clk', a pin on submodule 'clk_gate_B_reg_reg' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'TE' is connected to logic 0. 
 1
 exit
 
-Memory usage for this session 139 Mbytes.
-Memory usage for this session including child processes 139 Mbytes.
-CPU usage for this session 21 seconds ( 0.01 hours ).
-Elapsed time for this session 28 seconds ( 0.01 hours ).
+Memory usage for this session 191 Mbytes.
+Memory usage for this session including child processes 191 Mbytes.
+CPU usage for this session 16 seconds ( 0.00 hours ).
+Elapsed time for this session 19 seconds ( 0.01 hours ).
 
 Thank you...

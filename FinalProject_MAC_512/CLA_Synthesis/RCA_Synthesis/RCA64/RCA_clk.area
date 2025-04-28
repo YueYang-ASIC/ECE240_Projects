@@ -1,0 +1,31 @@
+ 
+****************************************
+Report : area
+Design : RCA_clk
+Version: S-2021.06-SP5-1
+Date   : Mon Apr 28 17:09:47 2025
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db)
+
+Number of ports:                          195
+Number of nets:                          1058
+Number of cells:                          839
+Number of combinational cells:            647
+Number of sequential cells:               192
+Number of macros/black boxes:               0
+Number of buf/inv:                         73
+Number of references:                      14
+
+Combinational area:                701.973998
+Buf/Inv area:                       39.102000
+Noncombinational area:            1021.440033
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                  1723.414031
+Total area:                 undefined
+1

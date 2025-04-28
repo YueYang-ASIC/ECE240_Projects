@@ -3,30 +3,28 @@
 Report : area
 Design : CLA256_clk
 Version: S-2021.06-SP5-1
-Date   : Fri Apr 25 23:47:45 2025
+Date   : Sun Apr 27 21:13:12 2025
 ****************************************
 
-Information: Updating design information... (UID-85)
-Warning: Design 'CLA256_clk' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
 Library(s) Used:
 
     NangateOpenCellLibrary (File: /synopsys/Nangate_FreePDK45/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/CCS/NangateOpenCellLibrary.db)
 
-Number of ports:                          771
-Number of nets:                          5095
-Number of cells:                         3814
-Number of combinational cells:           3046
-Number of sequential cells:               768
+Number of ports:                          775
+Number of nets:                          3514
+Number of cells:                         2798
+Number of combinational cells:           2007
+Number of sequential cells:               789
 Number of macros/black boxes:               0
-Number of buf/inv:                        309
-Number of references:                      23
+Number of buf/inv:                        467
+Number of references:                      14
 
-Combinational area:               3256.371988
-Buf/Inv area:                      173.166001
-Noncombinational area:            4085.760132
+Combinational area:               1917.593975
+Buf/Inv area:                      294.195998
+Noncombinational area:            4196.150135
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (Wire load has zero net area)
 
-Total cell area:                  7342.132120
+Total cell area:                  6113.744110
 Total area:                 undefined
 1
